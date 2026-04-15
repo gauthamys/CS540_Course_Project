@@ -14,6 +14,8 @@ Usage:
 
 Or auto-discover latest output files:
     python scripts/evaluate_pilot.py --auto
+
+Multi-agent V2 (test critic) is always auto-discovered from outputs/multi_agent_v2/.
 """
 import os
 import sys
@@ -117,10 +119,11 @@ def evaluate(args) -> None:
 
     # ── CodeGen ───────────────────────────────────────────────────────────────
     for system, tests_path, cost_pat in [
-        ("single_agent", args.cg_single_tests, "outputs/single_agent/codegen_cost_*.json"),
-        ("multi_agent",  args.cg_multi_tests,  "outputs/multi_agent/codegen_cost_*.json"),
+        ("single_agent",    args.cg_single_tests, "outputs/single_agent/codegen_cost_*.json"),
+        ("multi_agent",     args.cg_multi_tests,  "outputs/multi_agent/codegen_cost_*.json"),
+        ("multi_agent_v2",  "",                   "outputs/multi_agent_v2/codegen_cost_*.json"),
     ]:
-        if args.auto:
+        if args.auto or system == "multi_agent_v2":
             tests_path = latest_file(f"outputs/{system}/codegen_tests_pilot_*.jsonl")
         tests = load_jsonl(tests_path)
         if tests:
@@ -152,6 +155,7 @@ def main() -> None:
     parser.add_argument("--secreq-gt", default="data/pilots/secreq_pilot10.jsonl")
     parser.add_argument("--cg-single-tests", default="")
     parser.add_argument("--cg-multi-tests", default="")
+    parser.add_argument("--cg-v2-tests", default="")
     args = parser.parse_args()
 
     evaluate(args)
