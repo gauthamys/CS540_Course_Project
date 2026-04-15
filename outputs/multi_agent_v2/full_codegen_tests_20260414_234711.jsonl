@@ -1,0 +1,164 @@
+{"task_id": "HumanEval/0", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/1", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/2", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_2_g56xx02u.py\", line 26, in <module>\n    assert candidate(1.0) == 0.0  # integer value, decimal part should be 0\n           ^^^^^^^^^\nNameError: name 'candidate' is not defined\n", "attempt_number": 2}
+{"task_id": "HumanEval/3", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/4", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/5", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/6", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/7", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/8", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/9", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/10", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/11", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/12", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/13", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/14", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/15", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/16", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/17", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/18", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/19", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/20", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_20_cww7tf8_.py\", line 35, in <module>\n    assert find_closest_elements([-1.0, 1.0, -0.5, 0.5]) == (-0.5, -0.5) or find_closest_elements([-1.0, 1.0, -0.5, 0.5]) == (-0.5, 0.5)  # mixed negative/positive\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "attempt_number": 2}
+{"task_id": "HumanEval/21", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/22", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/23", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/24", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/25", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/26", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/27", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/28", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/29", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/30", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/31", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/32", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/33", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/34", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_34_io72ssg8.py\", line 17, in <module>\n    assert candidate([]) == []  # empty list\n           ^^^^^^^^^\nNameError: name 'candidate' is not defined\n", "attempt_number": 2}
+{"task_id": "HumanEval/35", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/36", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/37", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_37_7o8soc8o.py\", line 19\n    assert tuple(sort_even([])) == tuple([]))  # empty list\n                                            ^\nSyntaxError: unmatched ')'\n", "attempt_number": 2}
+{"task_id": "HumanEval/38", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/39", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/40", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/41", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/42", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/43", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/44", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/45", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_45_vjm50k7p.py\", line 25, in <module>\n    assert triangle_area(0.1, 0.1) == 0.005  # small float values\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "attempt_number": 2}
+{"task_id": "HumanEval/46", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/47", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/48", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/49", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/50", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/51", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/52", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/53", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/54", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/55", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/56", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/57", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/58", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/59", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_59_4vzfiwau.py\", line 42, in <module>\n    assert candidate(2048) == 2  # power of 2, largest prime factor is 2\n           ^^^^^^^^^\nNameError: name 'candidate' is not defined\n", "attempt_number": 2}
+{"task_id": "HumanEval/60", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/61", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/62", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/63", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_63_xgzng7fy.py\", line 47, in <module>\n    assert fibfib(20) == 19513  # larger input to check efficiency and correctness\n           ^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "attempt_number": 2}
+{"task_id": "HumanEval/64", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_64_ks23rllp.py\", line 54, in <module>\n    assert vowels_count(\"type\") == 2  # 'y' not at end, 'e' at end counts\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "attempt_number": 2}
+{"task_id": "HumanEval/65", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/66", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/67", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/68", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/69", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/70", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/71", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/72", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/73", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/74", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/75", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_75_c6fs6j2x.py\", line 42, in <module>\n    assert is_multiply_prime(99) == False  # 99=3*3*11, but 99 < 100, should be True\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "attempt_number": 2}
+{"task_id": "HumanEval/76", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/77", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/78", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/79", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/80", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/81", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/82", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/83", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/84", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/85", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_85_lnbr90go.py\", line 21, in <module>\n    assert add([1, 2, 3, 4, 5, 6, 7, 8]) == 14  # larger list: indices 1,3,5,7 -> 2,4,6,8 all even -> 2+4+6+8=20... wait\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "attempt_number": 2}
+{"task_id": "HumanEval/86", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_86_rl04xust.py\", line 41, in <module>\n    assert anti_shuffle('Hello  World') == 'Hello  dlroW'  # double space preserved\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "attempt_number": 2}
+{"task_id": "HumanEval/87", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/88", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/89", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_89_wvx6fbla.py\", line 30\n    assert encrypt('') == '', # empty string should return empty string\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nSyntaxError: invalid syntax\n", "attempt_number": 2}
+{"task_id": "HumanEval/90", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/91", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/92", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/93", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_93_t2gxkdrx.py\", line 28\n    assert encode('') == '', # empty string should return empty string\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nSyntaxError: invalid syntax\n", "attempt_number": 2}
+{"task_id": "HumanEval/94", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/95", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_95_a0z4txbm.py\", line 40, in <module>\n    assert check_dict_case({\"a1\": \"val\", \"b2\": \"val\"}) == False, \"Alphanumeric lowercase keys where islower is True but mixed - actually islower returns True for 'a1', so this tests that behavior\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Alphanumeric lowercase keys where islower is True but mixed - actually islower returns True for 'a1', so this tests that behavior\n", "attempt_number": 2}
+{"task_id": "HumanEval/96", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/97", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/98", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_98_a8c0ghg9.py\", line 34, in <module>\n    assert count_upper('aEiOu') == 1  # only O at index 3 is odd, E at index 1 is odd, only 'a'(0) and 'i'(2) and 'u'(4) are even but lowercase\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "attempt_number": 2}
+{"task_id": "HumanEval/99", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/100", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/101", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_101_7er31g5l.py\", line 27, in <module>\n    assert candidate(\"Hello\") == [\"Hello\"]  # single word, no separators\n           ^^^^^^^^^\nNameError: name 'candidate' is not defined\n", "attempt_number": 2}
+{"task_id": "HumanEval/102", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/103", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/104", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/105", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/106", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_106_du0zeopt.py\", line 29, in <module>\n    assert f(10)[9] == 55  # index 10 (odd): sum(1..10)=55\n           ^^^^^^^^^^^^^^\nAssertionError\n", "attempt_number": 2}
+{"task_id": "HumanEval/107", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/108", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/109", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/110", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_110_udw86v_e.py\", line 20, in <module>\n    assert candidate([2, 4, 6], [1, 3, 5]) == 'YES'  # lst1 already all even, no exchange needed\n           ^^^^^^^^^\nNameError: name 'candidate' is not defined\n", "attempt_number": 2}
+{"task_id": "HumanEval/111", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/112", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_112_wn82sbjk.py\", line 30, in <module>\n    assert reverse_delete('racecar', 'e') == ('raccar', False)  # non-palindrome after removing middle\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "attempt_number": 2}
+{"task_id": "HumanEval/113", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/114", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/115", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/116", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/117", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_117_gb6qane8.py\", line 34, in <module>\n    assert select_words(\"strength\", 6) == [\"strength\"], \"Word with many consonants\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Word with many consonants\n", "attempt_number": 2}
+{"task_id": "HumanEval/118", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/119", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/120", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_120_9lv4luyw.py\", line 25, in <module>\n    assert candidate([5], 1) == [5]  # single-element array, k=1\n           ^^^^^^^^^\nNameError: name 'candidate' is not defined\n", "attempt_number": 2}
+{"task_id": "HumanEval/121", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_121_ncyc_3or.py\", line 26, in <module>\n    assert candidate([1]) == 1  # single odd element at position 0\n           ^^^^^^^^^\nNameError: name 'candidate' is not defined\n", "attempt_number": 2}
+{"task_id": "HumanEval/122", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/123", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_123_tkgicztm.py\", line 30, in <module>\n    assert get_odd_collatz(27) == sorted(set([27, 41, 31, 47, 71, 107, 161, 121, 91, 137, 103, 155, 233, 175, 263, 395, 593, 445, 167, 251, 377, 283, 425, 319, 479, 719, 539, 809, 607, 911, 1367, 1025, 769, 577, 433, 325, 487, 365, 547, 821, 1231, 923, 1385, 1039, 779, 1169, 877, 1315, 1973, 1480, 740, 370, 185, 139, 209, 157, 235, 353, 265, 199, 299, 449, 337, 505, 379, 569, 853, 1279, 959, 1439, 2159, 3239, 4859, 7289, 10934, 5467, 8201, 12302, 6151, 9227, 13841, 20762, 10381, 15572, 7786, 3893, 5840, 2920, 1460, 730, 365, 1, 5]))  # large n stress test - just check it returns a sorted list with 1\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "attempt_number": 2}
+{"task_id": "HumanEval/124", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/125", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_125__u529g8c.py\", line 36, in <module>\n    assert split_words(\"z\") == 0  # z has index 25 which is odd, wait: 25%2==1 so should be 1\n           ^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "attempt_number": 2}
+{"task_id": "HumanEval/126", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/127", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/128", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_128_yzwfp7et.py\", line 32, in <module>\n    assert prod_signs([-2, -3]) == 6  # all negative, even count\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "attempt_number": 2}
+{"task_id": "HumanEval/129", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/130", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/131", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/132", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/133", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/134", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/135", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/136", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/137", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/138", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/139", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_139_wht5ilez.py\", line 34, in <module>\n    assert special_factorial(10) == 36288000000000000000000, \"Test 10: large value check\"  # known value for n=10\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Test 10: large value check\n", "attempt_number": 2}
+{"task_id": "HumanEval/140", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/141", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/142", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/143", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_143_qxxpdgu0.py\", line 69, in <module>\n    assert words_in_sentence(\"hello world foo\") == \"hello foo\"  # lengths 5,5,3 -> all prime; wait world=5 too\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "attempt_number": 2}
+{"task_id": "HumanEval/144", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/145", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/146", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/147", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/148", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/149", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/150", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/151", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/152", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/153", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/154", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/155", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_155_tcnhgd48.py\", line 30, in <module>\n    assert even_odd_count(100) == (3, 0)  # multiple zeros, all even\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "attempt_number": 2}
+{"task_id": "HumanEval/156", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 1}
+{"task_id": "HumanEval/157", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/158", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_158_ot9u6got.py\", line 21, in <module>\n    assert (candidate([\"a\", \"b\", \"c\"]) == \"a\"), 'all single chars, lexicographic first'  # tie in unique chars, pick lexicographically first\n            ^^^^^^^^^\nNameError: name 'candidate' is not defined\n", "attempt_number": 2}
+{"task_id": "HumanEval/159", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/160", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}
+{"task_id": "HumanEval/161", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_161_b_ul2ix9.py\", line 24, in <module>\n    assert candidate('') == ''  # empty string should return empty string\n           ^^^^^^^^^\nNameError: name 'candidate' is not defined\n", "attempt_number": 2}
+{"task_id": "HumanEval/162", "passed": false, "num_passed": 0, "num_total": 1, "error_output": "Traceback (most recent call last):\n  File \"/var/folders/3_/lspddv253js66zhsk3wb7fj00000gn/T/cs540_HumanEval_162_ly9htxng.py\", line 26, in <module>\n    assert candidate('a') == '60b725f10c9c85c70d97880dfe8191b3'  # single lowercase character\n           ^^^^^^^^^\nNameError: name 'candidate' is not defined\n", "attempt_number": 2}
+{"task_id": "HumanEval/163", "passed": true, "num_passed": 1, "num_total": 1, "error_output": null, "attempt_number": 2}

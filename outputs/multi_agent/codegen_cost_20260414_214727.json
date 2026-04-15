@@ -1,0 +1,67 @@
+{
+  "system": "multi_agent",
+  "dataset": "codegen",
+  "started_at": "2026-04-14T21:47:27.083094",
+  "finished_at": "2026-04-14T21:50:00.656995",
+  "summary": {
+    "system": "multi_agent",
+    "dataset": "codegen",
+    "n_tasks": 10,
+    "total_llm_calls": 40,
+    "total_tokens": 19306,
+    "avg_llm_calls": 4.0,
+    "avg_tokens": 1930.6
+  },
+  "per_task": [
+    {
+      "task_id": "HumanEval/61",
+      "llm_calls": 4,
+      "total_tokens": 1892
+    },
+    {
+      "task_id": "HumanEval/104",
+      "llm_calls": 4,
+      "total_tokens": 1935
+    },
+    {
+      "task_id": "HumanEval/105",
+      "llm_calls": 4,
+      "total_tokens": 2049
+    },
+    {
+      "task_id": "HumanEval/42",
+      "llm_calls": 4,
+      "total_tokens": 1126
+    },
+    {
+      "task_id": "HumanEval/145",
+      "llm_calls": 4,
+      "total_tokens": 2306
+    },
+    {
+      "task_id": "HumanEval/130",
+      "llm_calls": 4,
+      "total_tokens": 2546
+    },
+    {
+      "task_id": "HumanEval/88",
+      "llm_calls": 4,
+      "total_tokens": 2226
+    },
+    {
+      "task_id": "HumanEval/11",
+      "llm_calls": 4,
+      "total_tokens": 1667
+    },
+    {
+      "task_id": "HumanEval/137",
+      "llm_calls": 4,
+      "total_tokens": 2059
+    },
+    {
+      "task_id": "HumanEval/66",
+      "llm_calls": 4,
+      "total_tokens": 1500
+    }
+  ]
+}

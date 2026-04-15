@@ -1,0 +1,837 @@
+{
+  "system": "multi_agent",
+  "dataset": "codegen_full",
+  "started_at": "2026-04-14T22:50:19.813289",
+  "finished_at": "2026-04-14T23:33:25.958923",
+  "summary": {
+    "system": "multi_agent",
+    "dataset": "codegen_full",
+    "n_tasks": 164,
+    "total_llm_calls": 656,
+    "total_tokens": 334036,
+    "avg_llm_calls": 4.0,
+    "avg_tokens": 2036.8048780487804
+  },
+  "per_task": [
+    {
+      "task_id": "HumanEval/0",
+      "llm_calls": 4,
+      "total_tokens": 1734
+    },
+    {
+      "task_id": "HumanEval/1",
+      "llm_calls": 4,
+      "total_tokens": 2396
+    },
+    {
+      "task_id": "HumanEval/2",
+      "llm_calls": 4,
+      "total_tokens": 1862
+    },
+    {
+      "task_id": "HumanEval/3",
+      "llm_calls": 4,
+      "total_tokens": 1805
+    },
+    {
+      "task_id": "HumanEval/4",
+      "llm_calls": 4,
+      "total_tokens": 2161
+    },
+    {
+      "task_id": "HumanEval/5",
+      "llm_calls": 4,
+      "total_tokens": 1633
+    },
+    {
+      "task_id": "HumanEval/6",
+      "llm_calls": 4,
+      "total_tokens": 2190
+    },
+    {
+      "task_id": "HumanEval/7",
+      "llm_calls": 4,
+      "total_tokens": 1552
+    },
+    {
+      "task_id": "HumanEval/8",
+      "llm_calls": 4,
+      "total_tokens": 1901
+    },
+    {
+      "task_id": "HumanEval/9",
+      "llm_calls": 4,
+      "total_tokens": 1891
+    },
+    {
+      "task_id": "HumanEval/10",
+      "llm_calls": 4,
+      "total_tokens": 2607
+    },
+    {
+      "task_id": "HumanEval/11",
+      "llm_calls": 4,
+      "total_tokens": 1667
+    },
+    {
+      "task_id": "HumanEval/12",
+      "llm_calls": 4,
+      "total_tokens": 1703
+    },
+    {
+      "task_id": "HumanEval/13",
+      "llm_calls": 4,
+      "total_tokens": 1649
+    },
+    {
+      "task_id": "HumanEval/14",
+      "llm_calls": 4,
+      "total_tokens": 1309
+    },
+    {
+      "task_id": "HumanEval/15",
+      "llm_calls": 4,
+      "total_tokens": 1108
+    },
+    {
+      "task_id": "HumanEval/16",
+      "llm_calls": 4,
+      "total_tokens": 1359
+    },
+    {
+      "task_id": "HumanEval/17",
+      "llm_calls": 4,
+      "total_tokens": 2159
+    },
+    {
+      "task_id": "HumanEval/18",
+      "llm_calls": 4,
+      "total_tokens": 1708
+    },
+    {
+      "task_id": "HumanEval/19",
+      "llm_calls": 4,
+      "total_tokens": 2037
+    },
+    {
+      "task_id": "HumanEval/20",
+      "llm_calls": 4,
+      "total_tokens": 2214
+    },
+    {
+      "task_id": "HumanEval/21",
+      "llm_calls": 4,
+      "total_tokens": 2034
+    },
+    {
+      "task_id": "HumanEval/22",
+      "llm_calls": 4,
+      "total_tokens": 1771
+    },
+    {
+      "task_id": "HumanEval/23",
+      "llm_calls": 4,
+      "total_tokens": 1083
+    },
+    {
+      "task_id": "HumanEval/24",
+      "llm_calls": 4,
+      "total_tokens": 1451
+    },
+    {
+      "task_id": "HumanEval/25",
+      "llm_calls": 4,
+      "total_tokens": 2155
+    },
+    {
+      "task_id": "HumanEval/26",
+      "llm_calls": 4,
+      "total_tokens": 1486
+    },
+    {
+      "task_id": "HumanEval/27",
+      "llm_calls": 4,
+      "total_tokens": 1463
+    },
+    {
+      "task_id": "HumanEval/28",
+      "llm_calls": 4,
+      "total_tokens": 1278
+    },
+    {
+      "task_id": "HumanEval/29",
+      "llm_calls": 4,
+      "total_tokens": 1709
+    },
+    {
+      "task_id": "HumanEval/30",
+      "llm_calls": 4,
+      "total_tokens": 1495
+    },
+    {
+      "task_id": "HumanEval/31",
+      "llm_calls": 4,
+      "total_tokens": 1782
+    },
+    {
+      "task_id": "HumanEval/32",
+      "llm_calls": 4,
+      "total_tokens": 3495
+    },
+    {
+      "task_id": "HumanEval/33",
+      "llm_calls": 4,
+      "total_tokens": 1995
+    },
+    {
+      "task_id": "HumanEval/34",
+      "llm_calls": 4,
+      "total_tokens": 1345
+    },
+    {
+      "task_id": "HumanEval/35",
+      "llm_calls": 4,
+      "total_tokens": 1324
+    },
+    {
+      "task_id": "HumanEval/36",
+      "llm_calls": 4,
+      "total_tokens": 1708
+    },
+    {
+      "task_id": "HumanEval/37",
+      "llm_calls": 4,
+      "total_tokens": 1918
+    },
+    {
+      "task_id": "HumanEval/38",
+      "llm_calls": 4,
+      "total_tokens": 2517
+    },
+    {
+      "task_id": "HumanEval/39",
+      "llm_calls": 4,
+      "total_tokens": 2403
+    },
+    {
+      "task_id": "HumanEval/40",
+      "llm_calls": 4,
+      "total_tokens": 2332
+    },
+    {
+      "task_id": "HumanEval/41",
+      "llm_calls": 4,
+      "total_tokens": 2243
+    },
+    {
+      "task_id": "HumanEval/42",
+      "llm_calls": 4,
+      "total_tokens": 1126
+    },
+    {
+      "task_id": "HumanEval/43",
+      "llm_calls": 4,
+      "total_tokens": 2143
+    },
+    {
+      "task_id": "HumanEval/44",
+      "llm_calls": 4,
+      "total_tokens": 1866
+    },
+    {
+      "task_id": "HumanEval/45",
+      "llm_calls": 4,
+      "total_tokens": 1139
+    },
+    {
+      "task_id": "HumanEval/46",
+      "llm_calls": 4,
+      "total_tokens": 2069
+    },
+    {
+      "task_id": "HumanEval/47",
+      "llm_calls": 4,
+      "total_tokens": 1578
+    },
+    {
+      "task_id": "HumanEval/48",
+      "llm_calls": 4,
+      "total_tokens": 1443
+    },
+    {
+      "task_id": "HumanEval/49",
+      "llm_calls": 4,
+      "total_tokens": 1499
+    },
+    {
+      "task_id": "HumanEval/50",
+      "llm_calls": 4,
+      "total_tokens": 1957
+    },
+    {
+      "task_id": "HumanEval/51",
+      "llm_calls": 4,
+      "total_tokens": 1696
+    },
+    {
+      "task_id": "HumanEval/52",
+      "llm_calls": 4,
+      "total_tokens": 1483
+    },
+    {
+      "task_id": "HumanEval/53",
+      "llm_calls": 4,
+      "total_tokens": 1086
+    },
+    {
+      "task_id": "HumanEval/54",
+      "llm_calls": 4,
+      "total_tokens": 1793
+    },
+    {
+      "task_id": "HumanEval/55",
+      "llm_calls": 4,
+      "total_tokens": 1306
+    },
+    {
+      "task_id": "HumanEval/56",
+      "llm_calls": 4,
+      "total_tokens": 1912
+    },
+    {
+      "task_id": "HumanEval/57",
+      "llm_calls": 4,
+      "total_tokens": 1689
+    },
+    {
+      "task_id": "HumanEval/58",
+      "llm_calls": 4,
+      "total_tokens": 1496
+    },
+    {
+      "task_id": "HumanEval/59",
+      "llm_calls": 4,
+      "total_tokens": 1931
+    },
+    {
+      "task_id": "HumanEval/60",
+      "llm_calls": 4,
+      "total_tokens": 1416
+    },
+    {
+      "task_id": "HumanEval/61",
+      "llm_calls": 4,
+      "total_tokens": 1941
+    },
+    {
+      "task_id": "HumanEval/62",
+      "llm_calls": 4,
+      "total_tokens": 1655
+    },
+    {
+      "task_id": "HumanEval/63",
+      "llm_calls": 4,
+      "total_tokens": 1891
+    },
+    {
+      "task_id": "HumanEval/64",
+      "llm_calls": 4,
+      "total_tokens": 2166
+    },
+    {
+      "task_id": "HumanEval/65",
+      "llm_calls": 4,
+      "total_tokens": 1969
+    },
+    {
+      "task_id": "HumanEval/66",
+      "llm_calls": 4,
+      "total_tokens": 1742
+    },
+    {
+      "task_id": "HumanEval/67",
+      "llm_calls": 4,
+      "total_tokens": 2454
+    },
+    {
+      "task_id": "HumanEval/68",
+      "llm_calls": 4,
+      "total_tokens": 2509
+    },
+    {
+      "task_id": "HumanEval/69",
+      "llm_calls": 4,
+      "total_tokens": 2274
+    },
+    {
+      "task_id": "HumanEval/70",
+      "llm_calls": 4,
+      "total_tokens": 2048
+    },
+    {
+      "task_id": "HumanEval/71",
+      "llm_calls": 4,
+      "total_tokens": 2132
+    },
+    {
+      "task_id": "HumanEval/72",
+      "llm_calls": 4,
+      "total_tokens": 2338
+    },
+    {
+      "task_id": "HumanEval/73",
+      "llm_calls": 4,
+      "total_tokens": 2092
+    },
+    {
+      "task_id": "HumanEval/74",
+      "llm_calls": 4,
+      "total_tokens": 2099
+    },
+    {
+      "task_id": "HumanEval/75",
+      "llm_calls": 4,
+      "total_tokens": 3320
+    },
+    {
+      "task_id": "HumanEval/76",
+      "llm_calls": 4,
+      "total_tokens": 2247
+    },
+    {
+      "task_id": "HumanEval/77",
+      "llm_calls": 4,
+      "total_tokens": 2321
+    },
+    {
+      "task_id": "HumanEval/78",
+      "llm_calls": 4,
+      "total_tokens": 2045
+    },
+    {
+      "task_id": "HumanEval/79",
+      "llm_calls": 4,
+      "total_tokens": 1771
+    },
+    {
+      "task_id": "HumanEval/80",
+      "llm_calls": 4,
+      "total_tokens": 1981
+    },
+    {
+      "task_id": "HumanEval/81",
+      "llm_calls": 4,
+      "total_tokens": 3270
+    },
+    {
+      "task_id": "HumanEval/82",
+      "llm_calls": 4,
+      "total_tokens": 1471
+    },
+    {
+      "task_id": "HumanEval/83",
+      "llm_calls": 4,
+      "total_tokens": 1882
+    },
+    {
+      "task_id": "HumanEval/84",
+      "llm_calls": 4,
+      "total_tokens": 1843
+    },
+    {
+      "task_id": "HumanEval/85",
+      "llm_calls": 4,
+      "total_tokens": 1504
+    },
+    {
+      "task_id": "HumanEval/86",
+      "llm_calls": 4,
+      "total_tokens": 2369
+    },
+    {
+      "task_id": "HumanEval/87",
+      "llm_calls": 4,
+      "total_tokens": 2550
+    },
+    {
+      "task_id": "HumanEval/88",
+      "llm_calls": 4,
+      "total_tokens": 2024
+    },
+    {
+      "task_id": "HumanEval/89",
+      "llm_calls": 4,
+      "total_tokens": 2106
+    },
+    {
+      "task_id": "HumanEval/90",
+      "llm_calls": 4,
+      "total_tokens": 1662
+    },
+    {
+      "task_id": "HumanEval/91",
+      "llm_calls": 4,
+      "total_tokens": 2159
+    },
+    {
+      "task_id": "HumanEval/92",
+      "llm_calls": 4,
+      "total_tokens": 2158
+    },
+    {
+      "task_id": "HumanEval/93",
+      "llm_calls": 4,
+      "total_tokens": 2754
+    },
+    {
+      "task_id": "HumanEval/94",
+      "llm_calls": 4,
+      "total_tokens": 2352
+    },
+    {
+      "task_id": "HumanEval/95",
+      "llm_calls": 4,
+      "total_tokens": 2222
+    },
+    {
+      "task_id": "HumanEval/96",
+      "llm_calls": 4,
+      "total_tokens": 1918
+    },
+    {
+      "task_id": "HumanEval/97",
+      "llm_calls": 4,
+      "total_tokens": 1728
+    },
+    {
+      "task_id": "HumanEval/98",
+      "llm_calls": 4,
+      "total_tokens": 1507
+    },
+    {
+      "task_id": "HumanEval/99",
+      "llm_calls": 4,
+      "total_tokens": 2041
+    },
+    {
+      "task_id": "HumanEval/100",
+      "llm_calls": 4,
+      "total_tokens": 1840
+    },
+    {
+      "task_id": "HumanEval/101",
+      "llm_calls": 4,
+      "total_tokens": 1854
+    },
+    {
+      "task_id": "HumanEval/102",
+      "llm_calls": 4,
+      "total_tokens": 1549
+    },
+    {
+      "task_id": "HumanEval/103",
+      "llm_calls": 4,
+      "total_tokens": 2023
+    },
+    {
+      "task_id": "HumanEval/104",
+      "llm_calls": 4,
+      "total_tokens": 1939
+    },
+    {
+      "task_id": "HumanEval/105",
+      "llm_calls": 4,
+      "total_tokens": 2052
+    },
+    {
+      "task_id": "HumanEval/106",
+      "llm_calls": 4,
+      "total_tokens": 1951
+    },
+    {
+      "task_id": "HumanEval/107",
+      "llm_calls": 4,
+      "total_tokens": 2156
+    },
+    {
+      "task_id": "HumanEval/108",
+      "llm_calls": 4,
+      "total_tokens": 2085
+    },
+    {
+      "task_id": "HumanEval/109",
+      "llm_calls": 4,
+      "total_tokens": 2593
+    },
+    {
+      "task_id": "HumanEval/110",
+      "llm_calls": 4,
+      "total_tokens": 2628
+    },
+    {
+      "task_id": "HumanEval/111",
+      "llm_calls": 4,
+      "total_tokens": 2104
+    },
+    {
+      "task_id": "HumanEval/112",
+      "llm_calls": 4,
+      "total_tokens": 2011
+    },
+    {
+      "task_id": "HumanEval/113",
+      "llm_calls": 4,
+      "total_tokens": 2165
+    },
+    {
+      "task_id": "HumanEval/114",
+      "llm_calls": 4,
+      "total_tokens": 1873
+    },
+    {
+      "task_id": "HumanEval/115",
+      "llm_calls": 4,
+      "total_tokens": 2222
+    },
+    {
+      "task_id": "HumanEval/116",
+      "llm_calls": 4,
+      "total_tokens": 3048
+    },
+    {
+      "task_id": "HumanEval/117",
+      "llm_calls": 4,
+      "total_tokens": 2328
+    },
+    {
+      "task_id": "HumanEval/118",
+      "llm_calls": 4,
+      "total_tokens": 2613
+    },
+    {
+      "task_id": "HumanEval/119",
+      "llm_calls": 4,
+      "total_tokens": 2574
+    },
+    {
+      "task_id": "HumanEval/120",
+      "llm_calls": 4,
+      "total_tokens": 1566
+    },
+    {
+      "task_id": "HumanEval/121",
+      "llm_calls": 4,
+      "total_tokens": 1708
+    },
+    {
+      "task_id": "HumanEval/122",
+      "llm_calls": 4,
+      "total_tokens": 1974
+    },
+    {
+      "task_id": "HumanEval/123",
+      "llm_calls": 4,
+      "total_tokens": 2811
+    },
+    {
+      "task_id": "HumanEval/124",
+      "llm_calls": 4,
+      "total_tokens": 3489
+    },
+    {
+      "task_id": "HumanEval/125",
+      "llm_calls": 4,
+      "total_tokens": 2815
+    },
+    {
+      "task_id": "HumanEval/126",
+      "llm_calls": 4,
+      "total_tokens": 2640
+    },
+    {
+      "task_id": "HumanEval/127",
+      "llm_calls": 4,
+      "total_tokens": 2467
+    },
+    {
+      "task_id": "HumanEval/128",
+      "llm_calls": 4,
+      "total_tokens": 1846
+    },
+    {
+      "task_id": "HumanEval/129",
+      "llm_calls": 4,
+      "total_tokens": 3690
+    },
+    {
+      "task_id": "HumanEval/130",
+      "llm_calls": 4,
+      "total_tokens": 2552
+    },
+    {
+      "task_id": "HumanEval/131",
+      "llm_calls": 4,
+      "total_tokens": 1511
+    },
+    {
+      "task_id": "HumanEval/132",
+      "llm_calls": 4,
+      "total_tokens": 2517
+    },
+    {
+      "task_id": "HumanEval/133",
+      "llm_calls": 4,
+      "total_tokens": 1785
+    },
+    {
+      "task_id": "HumanEval/134",
+      "llm_calls": 4,
+      "total_tokens": 2684
+    },
+    {
+      "task_id": "HumanEval/135",
+      "llm_calls": 4,
+      "total_tokens": 2064
+    },
+    {
+      "task_id": "HumanEval/136",
+      "llm_calls": 4,
+      "total_tokens": 1876
+    },
+    {
+      "task_id": "HumanEval/137",
+      "llm_calls": 4,
+      "total_tokens": 2282
+    },
+    {
+      "task_id": "HumanEval/138",
+      "llm_calls": 4,
+      "total_tokens": 1466
+    },
+    {
+      "task_id": "HumanEval/139",
+      "llm_calls": 4,
+      "total_tokens": 1713
+    },
+    {
+      "task_id": "HumanEval/140",
+      "llm_calls": 4,
+      "total_tokens": 2255
+    },
+    {
+      "task_id": "HumanEval/141",
+      "llm_calls": 4,
+      "total_tokens": 3123
+    },
+    {
+      "task_id": "HumanEval/142",
+      "llm_calls": 4,
+      "total_tokens": 2342
+    },
+    {
+      "task_id": "HumanEval/143",
+      "llm_calls": 4,
+      "total_tokens": 2609
+    },
+    {
+      "task_id": "HumanEval/144",
+      "llm_calls": 4,
+      "total_tokens": 2180
+    },
+    {
+      "task_id": "HumanEval/145",
+      "llm_calls": 4,
+      "total_tokens": 2462
+    },
+    {
+      "task_id": "HumanEval/146",
+      "llm_calls": 4,
+      "total_tokens": 1999
+    },
+    {
+      "task_id": "HumanEval/147",
+      "llm_calls": 4,
+      "total_tokens": 2657
+    },
+    {
+      "task_id": "HumanEval/148",
+      "llm_calls": 4,
+      "total_tokens": 2408
+    },
+    {
+      "task_id": "HumanEval/149",
+      "llm_calls": 4,
+      "total_tokens": 2427
+    },
+    {
+      "task_id": "HumanEval/150",
+      "llm_calls": 4,
+      "total_tokens": 1486
+    },
+    {
+      "task_id": "HumanEval/151",
+      "llm_calls": 4,
+      "total_tokens": 2929
+    },
+    {
+      "task_id": "HumanEval/152",
+      "llm_calls": 4,
+      "total_tokens": 1867
+    },
+    {
+      "task_id": "HumanEval/153",
+      "llm_calls": 4,
+      "total_tokens": 2677
+    },
+    {
+      "task_id": "HumanEval/154",
+      "llm_calls": 4,
+      "total_tokens": 2148
+    },
+    {
+      "task_id": "HumanEval/155",
+      "llm_calls": 4,
+      "total_tokens": 1514
+    },
+    {
+      "task_id": "HumanEval/156",
+      "llm_calls": 4,
+      "total_tokens": 2063
+    },
+    {
+      "task_id": "HumanEval/157",
+      "llm_calls": 4,
+      "total_tokens": 2065
+    },
+    {
+      "task_id": "HumanEval/158",
+      "llm_calls": 4,
+      "total_tokens": 2387
+    },
+    {
+      "task_id": "HumanEval/159",
+      "llm_calls": 4,
+      "total_tokens": 2067
+    },
+    {
+      "task_id": "HumanEval/160",
+      "llm_calls": 4,
+      "total_tokens": 2904
+    },
+    {
+      "task_id": "HumanEval/161",
+      "llm_calls": 4,
+      "total_tokens": 1908
+    },
+    {
+      "task_id": "HumanEval/162",
+      "llm_calls": 4,
+      "total_tokens": 1758
+    },
+    {
+      "task_id": "HumanEval/163",
+      "llm_calls": 4,
+      "total_tokens": 1962
+    }
+  ]
+}
