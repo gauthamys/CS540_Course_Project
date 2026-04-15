@@ -1,4 +1,5 @@
 from typing import TypedDict, Optional, Annotated
+from typing import List
 import operator
 
 
@@ -84,3 +85,36 @@ class CodeGenGraphStateV2(TypedDict):
     # Bookkeeping (accumulated across nodes via reducer)
     llm_calls: Annotated[int, operator.add]
     total_tokens: Annotated[int, operator.add]
+
+
+class REElicitationState(TypedDict):
+    # Input
+    project_id: str
+    use_case_description: str
+
+    # Planner outputs
+    plan: str
+    domain: str
+    sme_subject: str
+    key_quality_attributes: List[str]
+
+    # Extractor outputs
+    draft_requirements: List[dict]
+
+    # SME node outputs (System 3 only)
+    sme_requirements: List[dict]
+
+    # Combiner outputs (System 3 only)
+    combined_requirements: List[dict]
+
+    # Critic outputs
+    critique: Optional[str]
+    critique_approved: bool
+
+    # Final output
+    final_requirements: List[dict]
+
+    # Bookkeeping (accumulated across nodes via reducer)
+    llm_calls: Annotated[int, operator.add]
+    total_tokens: Annotated[int, operator.add]
+    iteration: int

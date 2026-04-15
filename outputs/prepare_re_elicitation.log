@@ -1,0 +1,22 @@
+/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langchain_core/_api/deprecation.py:25: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
+  from pydantic.v1.fields import FieldInfo as FieldInfoV1
+=== Preparing RE Elicitation dataset ===
+  Loaded 15 projects from NICE dataset
+  15 projects with >= 4 requirements
+  [  1/15] 1 (28 reqs) ... OK
+  [  2/15] 2 (40 reqs) ... OK
+  [  3/15] 3 (79 reqs) ... OK
+  [  4/15] 4 (55 reqs) ... OK
+  [  5/15] 5 (73 reqs) ... OK
+  [  6/15] 6 (74 reqs) ... OK
+  [  7/15] 7 (23 reqs) ... OK
+  [  8/15] 8 (92 reqs) ... OK
+  [  9/15] 9 (24 reqs) ... OK
+  [ 10/15] 10 (52 reqs) ... OK
+  [ 11/15] 11 (13 reqs) ... OK
+  [ 12/15] 12 (22 reqs) ... OK
+  [ 13/15] 13 (19 reqs) ... OK
+  [ 14/15] 14 (16 reqs) ... OK
+  [ 15/15] 15 (12 reqs) ... OK
+
+  Saved 15 project records → data/processed/re_elicitation_projects.jsonl
