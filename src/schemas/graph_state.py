@@ -98,14 +98,14 @@ class REElicitationState(TypedDict):
     sme_subject: str
     key_quality_attributes: List[str]
 
+    # SME advisory outputs (System 3 only)
+    # The SME provides domain knowledge to inform the extractor — not requirements
+    sme_advisory: str          # prose guidance for the extractor
+    sme_constraints: List[str] # domain-specific constraints/compliance concerns
+    sme_patterns: List[str]    # common requirement patterns for this domain
+
     # Extractor outputs
     draft_requirements: List[dict]
-
-    # SME node outputs (System 3 only)
-    sme_requirements: List[dict]
-
-    # Combiner outputs (System 3 only)
-    combined_requirements: List[dict]
 
     # Critic outputs
     critique: Optional[str]

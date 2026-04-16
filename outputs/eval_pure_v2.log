@@ -1,0 +1,45 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+=== RE Elicitation Evaluation [PURE] ===
+  Similarity threshold: 0.6
+  Loaded 15 results from outputs/re_elicitation_pure/single_agent/results_20260416_203405.jsonl
+  Loaded 15 results from outputs/re_elicitation_pure/multi_agent_v1/results_20260416_203405.jsonl
+  Loaded 15 results from outputs/re_elicitation_pure/multi_agent_v2_sme/results_20260416_203405.jsonl
+
+  Evaluating multi_agent_v1 (15 projects)...
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7760.67it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+    coverage (recall): 0.329 ± 0.134
+    precision:         0.375 ± 0.200
+    semantic F1:       0.325 ± 0.128
+    FR coverage:       0.317
+    NFR coverage:      0.210
+
+  Evaluating multi_agent_v2_sme (15 projects)...
+    coverage (recall): 0.260 ± 0.163
+    precision:         0.300 ± 0.213
+    semantic F1:       0.258 ± 0.158
+    FR coverage:       0.254
+    NFR coverage:      0.085
+
+  Evaluating single_agent (15 projects)...
+    coverage (recall): 0.359 ± 0.174
+    precision:         0.367 ± 0.197
+    semantic F1:       0.338 ± 0.148
+    FR coverage:       0.352
+    NFR coverage:      0.186
+
+======================================================================
+System                         Coverage  Precision         F1
+----------------------------------------------------------------------
+multi_agent_v1                    0.329      0.375      0.325
+multi_agent_v2_sme                0.260      0.300      0.258
+single_agent                      0.359      0.367      0.338
+======================================================================
+
+  Full results saved → outputs/re_elicitation_pure/evaluation_20260416_220255.json

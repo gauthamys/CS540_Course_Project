@@ -2,12 +2,12 @@
 Run all three RE Elicitation systems on the prepared project dataset.
 
 Usage (from project root):
-    python scripts/run_re_elicitation.py [--system single|multi|v2|all] [--pilot] [--max_projects N]
+    python scripts/run_re_elicitation.py [--system single|multi|v2|all] [--dataset nice|pure] [--pilot] [--max_projects N]
 
 Outputs go to:
-    outputs/re_elicitation/single_agent/results_<TIMESTAMP>.jsonl
-    outputs/re_elicitation/multi_agent_v1/results_<TIMESTAMP>.jsonl
-    outputs/re_elicitation/multi_agent_v2_sme/results_<TIMESTAMP>.jsonl
+    outputs/re_elicitation{_pure}/single_agent/results_<TIMESTAMP>.jsonl
+    outputs/re_elicitation{_pure}/multi_agent_v1/results_<TIMESTAMP>.jsonl
+    outputs/re_elicitation{_pure}/multi_agent_v2_sme/results_<TIMESTAMP>.jsonl
 
 Each output line:
   {
@@ -30,8 +30,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 TIMESTAMP = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
-DATA_PATH = "data/processed/re_elicitation_projects.jsonl"
+DATA_PATHS = {
+    "nice": "data/processed/re_elicitation_projects.jsonl",
+    "pure": "data/processed/re_elicitation_projects_pure.jsonl",
+}
 PILOT_N = 5
+_OUTPUT_SUFFIX = ""  # set to "_pure" at runtime when --dataset pure
 
 
 def load_jsonl(path: str) -> list[dict]:
@@ -57,7 +61,7 @@ def write_jsonl(records: list[dict], path: str) -> None:
 def run_single(projects: list[dict]) -> None:
     from src.systems.single_agent.re_elicitation_agent import REElicitationAgent
 
-    out_path = f"outputs/re_elicitation/single_agent/results_{TIMESTAMP}.jsonl"
+    out_path = f"outputs/re_elicitation{_OUTPUT_SUFFIX}/single_agent/results_{TIMESTAMP}.jsonl"
     print(f"\n[single_agent] Running on {len(projects)} projects...")
 
     agent = REElicitationAgent()
@@ -103,7 +107,7 @@ def run_multi(projects: list[dict]) -> None:
         make_initial_state,
     )
 
-    out_path = f"outputs/re_elicitation/multi_agent_v1/results_{TIMESTAMP}.jsonl"
+    out_path = f"outputs/re_elicitation{_OUTPUT_SUFFIX}/multi_agent_v1/results_{TIMESTAMP}.jsonl"
     print(f"\n[multi_agent_v1] Running on {len(projects)} projects...")
 
     graph = build_re_elicitation_graph()
@@ -151,7 +155,7 @@ def run_v2(projects: list[dict]) -> None:
         make_initial_state,
     )
 
-    out_path = f"outputs/re_elicitation/multi_agent_v2_sme/results_{TIMESTAMP}.jsonl"
+    out_path = f"outputs/re_elicitation{_OUTPUT_SUFFIX}/multi_agent_v2_sme/results_{TIMESTAMP}.jsonl"
     print(f"\n[multi_agent_v2_sme] Running on {len(projects)} projects...")
 
     graph = build_re_elicitation_graph_v2()
@@ -165,7 +169,6 @@ def run_v2(projects: list[dict]) -> None:
             state = make_initial_state(pid, use_case)
             result_state = graph.invoke(state)
             reqs = result_state.get("final_requirements", [])
-            sme_count = sum(1 for r in reqs if r.get("source") == "sme")
             result = {
                 "project_id": pid,
                 "system": "multi_agent_v2_sme",
@@ -174,10 +177,11 @@ def run_v2(projects: list[dict]) -> None:
                 "total_tokens": result_state.get("total_tokens", 0),
                 "domain": result_state.get("domain", ""),
                 "sme_subject": result_state.get("sme_subject", ""),
+                "sme_advisory": result_state.get("sme_advisory", ""),
                 "ground_truth_requirements": proj["ground_truth_requirements"],
             }
             results.append(result)
-            print(f"OK ({len(reqs)} reqs [{sme_count} SME], {result_state.get('llm_calls', 0)} calls)")
+            print(f"OK ({len(reqs)} reqs, {result_state.get('llm_calls', 0)} calls)")
         except Exception as e:
             print(f"FAIL ({e})")
             results.append({
@@ -199,21 +203,33 @@ def run_v2(projects: list[dict]) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--system", choices=["single", "multi", "v2", "all"], default="all")
+    parser.add_argument("--dataset", choices=["nice", "pure"], default="nice",
+                        help="Which prepared dataset to run on (default: nice)")
     parser.add_argument("--pilot", action="store_true",
                         help=f"Run on first {PILOT_N} projects only")
     parser.add_argument("--max_projects", type=int, default=None)
     args = parser.parse_args()
 
-    if not os.path.exists(DATA_PATH):
-        print(f"ERROR: {DATA_PATH} not found. Run scripts/prepare_re_elicitation.py first.")
+    data_path = DATA_PATHS[args.dataset]
+    if not os.path.exists(data_path):
+        prepare_cmd = (
+            "scripts/prepare_re_elicitation.py"
+            if args.dataset == "nice"
+            else "scripts/prepare_re_elicitation_pure.py"
+        )
+        print(f"ERROR: {data_path} not found. Run {prepare_cmd} first.")
         sys.exit(1)
 
-    projects = load_jsonl(DATA_PATH)
+    # Output dirs use dataset suffix for PURE to keep results separate
+    global _OUTPUT_SUFFIX
+    _OUTPUT_SUFFIX = "_pure" if args.dataset == "pure" else ""
+
+    projects = load_jsonl(data_path)
     limit = PILOT_N if args.pilot else args.max_projects
     if limit:
         projects = projects[:limit]
 
-    print(f"=== RE Elicitation Run — {len(projects)} projects ===")
+    print(f"=== RE Elicitation Run [{args.dataset.upper()}] — {len(projects)} projects ===")
 
     if args.system in ("single", "all"):
         run_single(projects)

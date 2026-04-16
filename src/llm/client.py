@@ -9,7 +9,7 @@ from langchain_anthropic import ChatAnthropic
 load_dotenv()
 
 MODEL_ID = "claude-sonnet-4-6"
-DEFAULT_MAX_TOKENS = 4096
+DEFAULT_MAX_TOKENS = 8192
 DEFAULT_TEMPERATURE = 0  # deterministic for reproducibility
 
 

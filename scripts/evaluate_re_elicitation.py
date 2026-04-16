@@ -2,22 +2,23 @@
 Evaluate RE Elicitation results saved by run_re_elicitation.py.
 
 Usage (from project root):
-    python scripts/evaluate_re_elicitation.py [--results GLOB_PATTERN] [--threshold FLOAT]
+    python scripts/evaluate_re_elicitation.py [--results GLOB_PATTERN] [--dataset nice|pure] [--threshold FLOAT]
 
 Example:
     python scripts/evaluate_re_elicitation.py
-    python scripts/evaluate_re_elicitation.py --results "outputs/re_elicitation/*/results_*.jsonl"
+    python scripts/evaluate_re_elicitation.py --dataset pure
+    python scripts/evaluate_re_elicitation.py --results "outputs/re_elicitation_pure/*/results_*.jsonl"
     python scripts/evaluate_re_elicitation.py --threshold 0.5
 
 Prints a summary table and saves:
-    outputs/re_elicitation/evaluation_<TIMESTAMP>.json
+    outputs/re_elicitation{_pure}/evaluation_<TIMESTAMP>.json
 """
 import os
 import sys
 import json
 import glob
 import argparse
-from datetime import datetime
+import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from dotenv import load_dotenv
@@ -29,9 +30,7 @@ from src.evaluation.re_elicitation_metrics import (
     SIM_THRESHOLD,
 )
 
-TIMESTAMP = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
-DEFAULT_RESULTS_GLOB = "outputs/re_elicitation/*/results_*.jsonl"
-OUTPUT_DIR = "outputs/re_elicitation"
+TIMESTAMP = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d_%H%M%S")
 
 
 def load_jsonl(path: str) -> list[dict]:
@@ -44,11 +43,11 @@ def load_jsonl(path: str) -> list[dict]:
     return records
 
 
-def latest_results_per_system() -> dict[str, str]:
+def latest_results_per_system(output_dir: str) -> dict[str, str]:
     """Find the most recent results file for each system."""
     found = {}
     for system in ("single_agent", "multi_agent_v1", "multi_agent_v2_sme"):
-        files = sorted(glob.glob(f"outputs/re_elicitation/{system}/results_*.jsonl"))
+        files = sorted(glob.glob(f"{output_dir}/{system}/results_*.jsonl"))
         if files:
             found[system] = files[-1]
     return found
@@ -58,18 +57,23 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--results", type=str, default=None,
                         help="Glob pattern for results JSONL files. Defaults to latest per system.")
+    parser.add_argument("--dataset", choices=["nice", "pure"], default="nice",
+                        help="Which dataset's results to evaluate (default: nice)")
     parser.add_argument("--threshold", type=float, default=SIM_THRESHOLD,
                         help=f"Cosine similarity threshold (default {SIM_THRESHOLD})")
     args = parser.parse_args()
 
-    print("=== RE Elicitation Evaluation ===")
+    suffix = "_pure" if args.dataset == "pure" else ""
+    output_dir = f"outputs/re_elicitation{suffix}"
+
+    print(f"=== RE Elicitation Evaluation [{args.dataset.upper()}] ===")
     print(f"  Similarity threshold: {args.threshold}")
 
     # Collect result files
     if args.results:
         result_files = sorted(glob.glob(args.results))
     else:
-        latest = latest_results_per_system()
+        latest = latest_results_per_system(output_dir)
         result_files = list(latest.values())
 
     if not result_files:
@@ -127,8 +131,8 @@ def main() -> None:
     print("=" * 70)
 
     # Save
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-    out_path = f"{OUTPUT_DIR}/evaluation_{TIMESTAMP}.json"
+    os.makedirs(output_dir, exist_ok=True)
+    out_path = f"{output_dir}/evaluation_{TIMESTAMP}.json"
     with open(out_path, "w") as f:
         json.dump(all_results, f, indent=2)
     print(f"\n  Full results saved → {out_path}")

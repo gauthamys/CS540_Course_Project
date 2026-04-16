@@ -32,7 +32,8 @@ def format_elicitation_prompt(use_case: str) -> str:
         f"  - nfr_subtype: string or null (only for NFR)\n"
         f"  - source: 'main'\n"
         f"  - rationale: string (brief justification)\n\n"
-        f"Generate between 8 and 20 requirements. Cover both functional and non-functional concerns."
+        f"Generate up to 50 requirements. Be comprehensive — cover all major functional areas "
+        f"and non-functional concerns. Keep each rationale to one sentence."
     )
 
 
@@ -67,6 +68,9 @@ def format_extractor_prompt(
     strategy: str,
     key_quality_attributes: list[str],
     critique: Optional[str] = None,
+    sme_advisory: Optional[str] = None,
+    sme_constraints: Optional[list[str]] = None,
+    sme_patterns: Optional[list[str]] = None,
 ) -> str:
     qa_str = ", ".join(key_quality_attributes) if key_quality_attributes else "general quality"
     critique_block = (
@@ -74,11 +78,23 @@ def format_extractor_prompt(
         if critique
         else ""
     )
+    sme_block = ""
+    if sme_advisory or sme_constraints or sme_patterns:
+        parts = ["\nDOMAIN EXPERT ADVISORY (incorporate this knowledge into your requirements):"]
+        if sme_advisory:
+            parts.append(f"  Summary: {sme_advisory}")
+        if sme_constraints:
+            parts.append("  Constraints to address:\n" + "\n".join(f"    - {c}" for c in sme_constraints))
+        if sme_patterns:
+            parts.append("  Requirement patterns to include:\n" + "\n".join(f"    - {p}" for p in sme_patterns))
+        sme_block = "\n".join(parts)
+
     return (
         f"Generate a comprehensive list of software requirements for the following use case.\n\n"
         f"USE CASE DESCRIPTION:\n{use_case}\n\n"
         f"ELICITATION STRATEGY:\n{strategy}\n\n"
         f"KEY QUALITY ATTRIBUTES TO COVER: {qa_str}"
+        f"{sme_block}"
         f"{critique_block}\n\n"
         f"Return a JSON object with a single key 'requirements', whose value is a list of objects. "
         f"Each object must have:\n"
@@ -88,45 +104,45 @@ def format_extractor_prompt(
         f"  - nfr_subtype: string or null (only for NFR)\n"
         f"  - source: 'main'\n"
         f"  - rationale: string (brief justification)\n\n"
-        f"Generate between 8 and 20 requirements."
+        f"Generate up to 50 requirements. Be comprehensive — cover all major functional areas "
+        f"and non-functional concerns. Keep each rationale to one sentence."
     )
 
 
-# ── SME prompt ─────────────────────────────────────────────────────────────────
+# ── SME prompts ────────────────────────────────────────────────────────────────
 
 def format_sme_system_prompt(domain: str, sme_subject: str) -> str:
     return (
         f"You are a {sme_subject} with deep expertise in the {domain} domain. "
-        f"Your role is to identify requirements that a generalist requirements engineer might miss — "
-        f"especially domain-specific compliance, risk, and quality concerns. "
+        f"Your role is to advise a requirements engineer by sharing domain knowledge, "
+        f"constraints, and patterns they should consider — not to write requirements yourself. "
         f"Output valid JSON only."
     )
 
 
-def format_sme_prompt(
+def format_sme_advisory_prompt(
     use_case: str,
     domain: str,
     sme_subject: str,
-    existing_requirements: list[dict],
+    key_quality_attributes: list[str],
 ) -> str:
-    existing_texts = "\n".join(
-        f"  - [{r.get('type','?')}] {r.get('text','')}" for r in existing_requirements
-    )
+    qa_str = ", ".join(key_quality_attributes) if key_quality_attributes else "general quality"
     return (
-        f"A generalist engineer has already produced the following requirements for a {domain} system:\n\n"
-        f"{existing_texts}\n\n"
+        f"A requirements engineer is about to elicit requirements for the following {domain} system.\n\n"
         f"USE CASE DESCRIPTION:\n{use_case}\n\n"
-        f"As a {sme_subject}, identify ADDITIONAL requirements that the above list is missing. "
-        f"Focus on {domain}-specific concerns: compliance, domain standards, edge cases a non-expert would overlook.\n\n"
-        f"Return a JSON object with a single key 'requirements', whose value is a list of objects. "
-        f"Each object must have:\n"
-        f"  - req_id: string (e.g. 'SME001')\n"
-        f"  - text: string (the requirement)\n"
-        f"  - type: 'FR' or 'NFR'\n"
-        f"  - nfr_subtype: string or null (only for NFR)\n"
-        f"  - source: 'sme'\n"
-        f"  - rationale: string (why a {sme_subject} considers this important)\n\n"
-        f"Generate between 3 and 10 additional requirements. Do NOT repeat requirements already in the list above."
+        f"Quality attributes to consider: {qa_str}\n\n"
+        f"As a {sme_subject}, provide advisory context to help the engineer produce a comprehensive "
+        f"requirements list. Do NOT write requirements yourself — instead identify what constraints, "
+        f"patterns, and risks the engineer should be aware of.\n\n"
+        f"Return a JSON object with:\n"
+        f"  - domain_constraints: list of strings — regulatory, compliance, or domain-specific "
+        f"constraints the system must satisfy (e.g. 'Must comply with GDPR Article 17')\n"
+        f"  - common_requirement_patterns: list of strings — typical requirement areas for {domain} "
+        f"systems that a generalist might overlook (e.g. 'Audit logging for all data modifications')\n"
+        f"  - risks_and_concerns: list of strings — domain risks or failure modes the requirements "
+        f"should address (e.g. 'Data loss during network partition')\n"
+        f"  - advisory_summary: string — 2-3 sentences of prose guidance for the extractor\n\n"
+        f"Be specific and domain-precise. Aim for 3-8 items per list."
     )
 
 

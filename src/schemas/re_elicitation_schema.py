@@ -7,8 +7,18 @@ class GeneratedRequirement(BaseModel):
     text: str
     type: Literal["FR", "NFR"]
     nfr_subtype: Optional[str] = None
-    source: Literal["main", "sme"] = "main"  # "sme" = from SME node
+    source: Literal["main"] = "main"
     rationale: Optional[str] = None
+
+
+class SMEAdvisory(BaseModel):
+    """Domain-expert advisory context produced by the SME node.
+    This informs the extractor but does NOT contain requirements directly.
+    """
+    domain_constraints: list[str]         # compliance/regulatory constraints
+    common_requirement_patterns: list[str] # typical reqs for this domain an extractor should cover
+    risks_and_concerns: list[str]          # domain risks a generalist might miss
+    advisory_summary: str                  # 2-3 sentence prose guidance for the extractor
 
 
 class REElicitationOutput(BaseModel):

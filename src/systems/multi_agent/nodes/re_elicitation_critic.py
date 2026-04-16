@@ -31,12 +31,7 @@ def _get_llm():
 def re_elicitation_critic_node(state: dict) -> dict:
     """LangGraph node: critiques the current requirements list."""
     use_case = state["use_case_description"]
-    # For System 3, use combined_requirements if available; otherwise draft_requirements
-    requirements = (
-        state.get("combined_requirements")
-        or state.get("draft_requirements")
-        or []
-    )
+    requirements = state.get("draft_requirements") or []
     llm_calls = state.get("llm_calls", 0)
     total_tokens = state.get("total_tokens", 0)
     check_budget(llm_calls, total_tokens)
