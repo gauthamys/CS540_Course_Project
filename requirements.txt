@@ -1,0 +1,31 @@
+# Core LLM & AI Dependencies
+anthropic>=0.28
+langchain>=0.2
+langchain-anthropic>=0.1
+langchain-community>=0.0.10
+langgraph>=0.1
+pydantic>=2.0
+
+# Code Generation & Evaluation
+evalplus>=0.3
+datasets>=2.19
+
+# Data Processing & Analysis
+pandas>=2.0
+scikit-learn>=1.4
+numpy>=2.0
+
+# Requirements Engineering Evaluation
+sentence-transformers>=3.0
+
+# Utilities
+python-dotenv>=1.0
+jsonlines>=4.0
+tqdm>=4.66
+requests>=2.32
+
+# Development (optional, install with: pip install -r requirements.txt[dev])
+# jupyter>=1.0
+# ipykernel>=6.0
+# pytest>=8.0
+# pytest-asyncio>=0.23

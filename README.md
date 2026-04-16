@@ -109,57 +109,188 @@ CS540_Project/
 
 ## Setup
 
-### 1. Create and activate a virtual environment
+### Quick Start (5 minutes)
+
+**Prerequisites:**
+- Python 3.11+
+- Ollama installed (for local LLM, optional)
+
+**Step 1: Clone & Setup Environment**
 
 ```bash
+# Windows (PowerShell)
+python -m venv .venv
+.\.venv\Scripts\activate
+
+# macOS/Linux (bash)
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-### 2. Install dependencies
+**Step 2: Install Dependencies**
 
 ```bash
-pip install anthropic "langchain>=0.2" "langchain-anthropic>=0.1" "langgraph>=0.1" \
-    "pydantic>=2.0" "evalplus>=0.3" "datasets>=2.19" pandas scikit-learn \
-    python-dotenv jsonlines tqdm jupyter ipykernel pytest pytest-asyncio
+pip install -r requirements.txt
 ```
 
-> `pip install -e ".[dev]"` is blocked on Python 3.14 due to a setuptools compatibility issue.
+**Step 3: Configure LLM**
 
-### 3. Configure environment
+```bash
+# Copy template
+cp .env.example .env
 
+# Choose your LLM:
+# Option A: Use LOCAL Mistral Nemo (FREE, requires Ollama)
+#   - Install Ollama: https://ollama.ai
+#   - Run: ollama pull mistral-nemo
+#   - Run: ollama serve
+#   - Set in .env: USE_LOCAL_LLM=true
+
+# Option B: Use Claude API (requires API key)
+#   - Get key from: https://console.anthropic.com/account/keys
+#   - Set in .env: USE_LOCAL_LLM=false
+#   - Set: ANTHROPIC_API_KEY=sk-ant-...
+```
+
+**Step 4: Download Datasets** (optional, for full experiments)
+
+```bash
+python scripts/prepare_datasets.py
+```
+
+> Note: RE datasets (NICE, SecReq) require manual download. See [MISSING_DATASETS.md](MISSING_DATASETS.md).
+
+---
+
+### Detailed Setup
+
+#### 1. Prerequisites
+
+- **Python 3.11 or 3.12** (3.14 not yet supported)
+- **Git** (for cloning repo)
+- **Ollama** (optional, for free local LLM): https://ollama.ai
+
+#### 2. Clone Repository
+
+```bash
+git clone <repository-url>
+cd CS540_Course_Project
+```
+
+#### 3. Create Virtual Environment
+
+```bash
+# Windows (PowerShell)
+python -m venv .venv
+.\.venv\Scripts\activate
+
+# macOS/Linux (bash)
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+#### 4. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+**What's installed:**
+- **LangChain + LangGraph** — Agent orchestration
+- **Anthropic SDK** — Claude API
+- **LangChain Community** — Local model support (Ollama)
+- **EvalPlus** — Code evaluation
+- **Sentence Transformers** — RE evaluation
+- **Datasets, Pandas, scikit-learn** — Data processing
+
+#### 5. Setup LLM Configuration
+
+Copy the template:
 ```bash
 cp .env.example .env
-# Edit .env and fill in your ANTHROPIC_API_KEY
 ```
 
-### 4. Obtain missing datasets
+Edit `.env` and choose **ONE** of these options:
 
-See [MISSING_DATASETS.md](MISSING_DATASETS.md) for instructions on downloading NICE and SecReq.
-EvalPlus (HumanEval+) downloads automatically.
-
-### 5. Prepare datasets
+**Option A: Local Ollama (Recommended for cost-free experimentation)**
 
 ```bash
-.venv/bin/python scripts/prepare_datasets.py
+# .env
+USE_LOCAL_LLM=true
+LOCAL_MODEL_ID=mistral-nemo
+OLLAMA_BASE_URL=http://localhost:11434
 ```
+
+Then install & run Ollama:
+```bash
+# Download from https://ollama.ai
+# Pull the model:
+ollama pull mistral-nemo
+
+# In a separate terminal, start the server:
+ollama serve
+```
+
+**Option B: Claude API (Better quality, costs $)**
+
+```bash
+# .env
+USE_LOCAL_LLM=false
+ANTHROPIC_API_KEY=sk-ant-v0-...
+```
+
+Get your API key: https://console.anthropic.com/account/keys
+
+#### 6. Download Datasets (Optional)
+
+For full experiments, prepare datasets:
+
+```bash
+python scripts/prepare_datasets.py
+```
+
+**Note:** 
+- **EvalPlus** (HumanEval+) downloads automatically
+- **NICE & SecReq** require manual download (see [MISSING_DATASETS.md](MISSING_DATASETS.md))
 
 ---
 
 ## Running the Pilots
 
+### Basic Usage
+
 ```bash
-# Single-agent baseline
-.venv/bin/python scripts/run_pilot_single.py
-
-# Multi-agent system
-.venv/bin/python scripts/run_pilot_multi.py
-
-# Evaluate and compare
-.venv/bin/python scripts/evaluate_pilot.py --auto
+# Activate virtual environment first
+.venv/bin/python scripts/run_pilot_single.py     # Single-agent baseline
+.venv/bin/python scripts/run_pilot_multi.py      # Multi-agent system
+.venv/bin/python scripts/evaluate_pilot.py --auto # Evaluate and compare
 ```
 
 Outputs are written to `outputs/single_agent/` and `outputs/multi_agent/`.
+
+### Switching Between LLMs at Runtime
+
+You can override the LLM **without editing `.env`**:
+
+**Windows (PowerShell):**
+```powershell
+# Use Ollama (cheap, free)
+$env:USE_LOCAL_LLM="true"; python scripts/run_pilot_single.py
+
+# Use Claude (better quality, costs $)
+$env:USE_LOCAL_LLM="false"; python scripts/run_pilot_single.py
+```
+
+**macOS/Linux (bash):**
+```bash
+# Use Ollama
+USE_LOCAL_LLM=true python scripts/run_pilot_single.py
+
+# Use Claude
+USE_LOCAL_LLM=false python scripts/run_pilot_single.py
+```
+
+**Pro tip:** Test with Ollama first to iterate cheaply, then run final experiments with Claude.
 
 ---
 
