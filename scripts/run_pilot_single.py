@@ -41,7 +41,7 @@ def write_jsonl(records: list, path: str) -> None:
         for r in records:
             obj = r.model_dump() if hasattr(r, "model_dump") else r
             f.write(json.dumps(obj) + "\n")
-    print(f"  Saved {len(records)} records → {path}")
+    print(f"  Saved {len(records)} records -> {path}")
 
 
 def run_re_pilot(pilot_path: str, dataset_name: str) -> None:
@@ -64,7 +64,7 @@ def run_re_pilot(pilot_path: str, dataset_name: str) -> None:
             total_tokens=usage["total_tokens"],
             task_id=rec["id"],
         )
-        print(f"  {rec['id']} → {pred.requirement_type} ({pred.nfr_subtype or '-'})")
+        print(f"  {rec['id']} -> {pred.requirement_type} ({pred.nfr_subtype or '-'})")
 
     out_path = os.path.join(OUTPUT_DIR, f"{dataset_name}_pilot_{TIMESTAMP}.jsonl")
     write_jsonl(predictions, out_path)
@@ -105,7 +105,7 @@ def run_codegen_pilot(pilot_path: str) -> None:
         )
         test_results.append(test_result)
         status = "PASS" if test_result.passed else "FAIL"
-        print(f"  {rec['id']} → {status}")
+        print(f"  {rec['id']} -> {status}")
 
     out_path = os.path.join(OUTPUT_DIR, f"codegen_solutions_pilot_{TIMESTAMP}.jsonl")
     write_jsonl(solutions, out_path)
