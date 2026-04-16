@@ -8,18 +8,9 @@ Used by both System 2 (multi_agent V1) and System 3 (multi_agent V2 + SME).
 """
 from langchain_core.messages import SystemMessage, HumanMessage
 
-from src.llm.client import get_llm, check_budget
+from src.llm.client import get_structured_llm, check_budget
 from src.llm.prompts.re_elicitation_prompts import SYSTEM_PLANNER, format_planner_prompt
 from src.schemas.re_elicitation_schema import PlannerOutput
-
-_llm = None
-
-
-def _get_llm():
-    global _llm
-    if _llm is None:
-        _llm = get_llm()
-    return _llm
 
 
 def re_elicitation_planner_node(state: dict) -> dict:
@@ -30,7 +21,7 @@ def re_elicitation_planner_node(state: dict) -> dict:
     check_budget(llm_calls, total_tokens)
 
     prompt = format_planner_prompt(use_case)
-    structured_llm = _get_llm().with_structured_output(PlannerOutput)
+    structured_llm = get_structured_llm(PlannerOutput)
 
     try:
         result: PlannerOutput = structured_llm.invoke(

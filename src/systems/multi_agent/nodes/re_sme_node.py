@@ -11,21 +11,12 @@ and returns sme_requirements with source='sme'.
 from pydantic import BaseModel
 from langchain_core.messages import SystemMessage, HumanMessage
 
-from src.llm.client import get_llm, check_budget
+from src.llm.client import get_structured_llm, check_budget
 from src.llm.prompts.re_elicitation_prompts import (
     format_sme_system_prompt,
     format_sme_prompt,
 )
 from src.schemas.re_elicitation_schema import GeneratedRequirement
-
-_llm = None
-
-
-def _get_llm():
-    global _llm
-    if _llm is None:
-        _llm = get_llm()
-    return _llm
 
 
 class _RequirementsList(BaseModel):
@@ -50,7 +41,7 @@ def re_sme_node(state: dict) -> dict:
         existing_requirements=draft_requirements,
     )
 
-    structured_llm = _get_llm().with_structured_output(_RequirementsList)
+    structured_llm = get_structured_llm(_RequirementsList)
     try:
         result: _RequirementsList = structured_llm.invoke(
             [SystemMessage(content=system_prompt), HumanMessage(content=user_prompt)]

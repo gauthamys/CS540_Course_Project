@@ -10,21 +10,12 @@ from typing import Optional
 from pydantic import BaseModel
 from langchain_core.messages import SystemMessage, HumanMessage
 
-from src.llm.client import get_llm, check_budget
+from src.llm.client import get_structured_llm, check_budget
 from src.llm.prompts.re_elicitation_prompts import (
     SYSTEM_RE_ELICITATION,
     format_extractor_prompt,
 )
 from src.schemas.re_elicitation_schema import GeneratedRequirement
-
-_llm = None
-
-
-def _get_llm():
-    global _llm
-    if _llm is None:
-        _llm = get_llm()
-    return _llm
 
 
 class _RequirementsList(BaseModel):
@@ -48,7 +39,7 @@ def re_elicitation_extractor_node(state: dict) -> dict:
         critique=critique,
     )
 
-    structured_llm = _get_llm().with_structured_output(_RequirementsList)
+    structured_llm = get_structured_llm(_RequirementsList)
     try:
         result: _RequirementsList = structured_llm.invoke(
             [SystemMessage(content=SYSTEM_RE_ELICITATION), HumanMessage(content=prompt)]
