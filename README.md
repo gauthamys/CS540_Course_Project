@@ -107,194 +107,348 @@ CS540_Project/
 
 ---
 
-## Setup
+## Quick Start: Run with Ollama (Free, Local) — 10 minutes
 
-### Quick Start (5 minutes)
+**Goal:** Run the code generation system with Mistral Nemo on your machine (no API costs).
 
-**Prerequisites:**
-- Python 3.11+
-- Ollama installed (for local LLM, optional)
+### Prerequisites
+- **Python 3.11+** (check with `python --version`)
+- **Ollama** (download from https://ollama.ai)
+- **Git** (for cloning)
 
-**Step 1: Clone & Setup Environment**
-
-```bash
-# Windows (PowerShell)
-python -m venv .venv
-.\.venv\Scripts\activate
-
-# macOS/Linux (bash)
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-**Step 2: Install Dependencies**
+### Step 1: Download & Setup Ollama (First Time Only)
 
 ```bash
-pip install -r requirements.txt
-```
-
-**Step 3: Configure LLM**
-
-```bash
-# Copy template
-cp .env.example .env
-
-# Choose your LLM:
-# Option A: Use LOCAL Mistral Nemo (FREE, requires Ollama)
-#   - Install Ollama: https://ollama.ai
-#   - Run: ollama pull mistral-nemo
-#   - Run: ollama serve
-#   - Set in .env: USE_LOCAL_LLM=true
-
-# Option B: Use Claude API (requires API key)
-#   - Get key from: https://console.anthropic.com/account/keys
-#   - Set in .env: USE_LOCAL_LLM=false
-#   - Set: ANTHROPIC_API_KEY=sk-ant-...
-```
-
-**Step 4: Download Datasets** (optional, for full experiments)
-
-```bash
-python scripts/prepare_datasets.py
-```
-
-> Note: RE datasets (NICE, SecReq) require manual download. See [MISSING_DATASETS.md](MISSING_DATASETS.md).
-
----
-
-### Detailed Setup
-
-#### 1. Prerequisites
-
-- **Python 3.11 or 3.12** (3.14 not yet supported)
-- **Git** (for cloning repo)
-- **Ollama** (optional, for free local LLM): https://ollama.ai
-
-#### 2. Clone Repository
-
-```bash
-git clone <repository-url>
-cd CS540_Course_Project
-```
-
-#### 3. Create Virtual Environment
-
-```bash
-# Windows (PowerShell)
-python -m venv .venv
-.\.venv\Scripts\activate
-
-# macOS/Linux (bash)
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-#### 4. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-**What's installed:**
-- **LangChain + LangGraph** — Agent orchestration
-- **Anthropic SDK** — Claude API
-- **LangChain Community** — Local model support (Ollama)
-- **EvalPlus** — Code evaluation
-- **Sentence Transformers** — RE evaluation
-- **Datasets, Pandas, scikit-learn** — Data processing
-
-#### 5. Setup LLM Configuration
-
-Copy the template:
-```bash
-cp .env.example .env
-```
-
-Edit `.env` and choose **ONE** of these options:
-
-**Option A: Local Ollama (Recommended for cost-free experimentation)**
-
-```bash
-# .env
-USE_LOCAL_LLM=true
-LOCAL_MODEL_ID=mistral-nemo
-OLLAMA_BASE_URL=http://localhost:11434
-```
-
-Then install & run Ollama:
-```bash
-# Download from https://ollama.ai
-# Pull the model:
-ollama pull mistral-nemo
-
-# In a separate terminal, start the server:
+# 1. Download Ollama from https://ollama.ai
+# 2. Install it
+# 3. In a NEW terminal, start the Ollama server:
 ollama serve
 ```
 
-**Option B: Claude API (Better quality, costs $)**
+This will start Ollama on `http://localhost:11434`. Keep this terminal running.
+
+### Step 2: Pull Mistral Nemo Model (First Time Only)
+
+Open a **different terminal** and run:
 
 ```bash
-# .env
-USE_LOCAL_LLM=false
-ANTHROPIC_API_KEY=sk-ant-v0-...
+ollama pull mistral-nemo
 ```
 
-Get your API key: https://console.anthropic.com/account/keys
+This downloads the 12B parameter Mistral Nemo model (~7 GB). Takes ~5 minutes on a good connection.
 
-#### 6. Download Datasets (Optional)
-
-For full experiments, prepare datasets:
+### Step 3: Clone & Setup Python Environment
 
 ```bash
+# Clone the repository
+git clone https://github.com/gauthamys/CS540_Course_Project.git
+cd CS540_Course_Project
+
+# Create virtual environment
+python -m venv .venv
+
+# Activate it
+# Windows (PowerShell):
+.\.venv\Scripts\activate
+# OR Windows (Git Bash):
+source .venv/Scripts/activate
+# OR macOS/Linux (bash):
+source .venv/bin/activate
+```
+
+### Step 4: Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Takes ~2 minutes. Installs:
+- LangChain + LangGraph (orchestration)
+- Pydantic (structured outputs)
+- EvalPlus (code evaluation)
+- Anthropic SDK (for Claude fallback option)
+
+### Step 5: Configure .env File
+
+```bash
+# Copy the example config
+cp .env.example .env
+
+# Edit .env and verify these settings:
+# USE_LOCAL_LLM=true
+# LOCAL_MODEL_ID=mistral-nemo
+# OLLAMA_BASE_URL=http://localhost:11434
+```
+
+**File should look like:**
+```ini
+USE_LOCAL_LLM=true
+LOCAL_MODEL_ID=mistral-nemo
+OLLAMA_BASE_URL=http://localhost:11434
+MAX_LLM_CALLS_PER_TASK=10
+MAX_TOKENS_PER_TASK=8000
+MAX_REPAIR_ITERATIONS=3
+RANDOM_SEED=42
+```
+
+### Step 6: Run the System!
+
+```bash
+# Make sure Ollama server is still running in another terminal!
+
+# Run single-agent system on 10 test problems
+python scripts/run_pilot_single.py
+
+# Or run multi-agent system
+python scripts/run_pilot_multi.py
+```
+
+**Expected output:**
+```
+=== Single-Agent Pilot Run ===
+[CodeGen] Running single-agent on 10 problems...
+  HumanEval/61 -> PASS
+  HumanEval/104 -> PASS
+  HumanEval/105 -> FAIL
+  ...
+  pass@1: 9/10
+```
+
+Results are saved to `outputs/single_agent/`
+
+---
+
+## Detailed Setup Instructions
+
+## Detailed Setup Instructions
+
+### System Requirements
+
+| Component | Requirement | Why |
+|-----------|-------------|-----|
+| Python | 3.11+ | Uses modern type hints + asyncio features |
+| RAM | 8GB minimum | For Ollama + processing |
+| Disk | 10GB+ free | Ollama model (~7GB) + outputs |
+| OS | Windows/macOS/Linux | All supported |
+
+### For Ollama (Recommended - FREE)
+
+**Hardware:**
+- GPU: Optional but recommended (CUDA/Metal speeds up inference 5-10x)
+- CPU: Works but slower (takes ~30-60s per task vs ~5-10s with GPU)
+
+**Installation:**
+1. Download Ollama: https://ollama.ai
+2. Install and run
+3. Model downloads automatically when first needed
+
+### For Claude API (Alternative - PAID)
+
+Cost: ~$0.003 per 1K input tokens, ~$0.015 per 1K output tokens
+
+1. Get API key: https://console.anthropic.com/account/keys
+2. Keep it in `.env`: `ANTHROPIC_API_KEY=sk-ant-...`
+
+---
+
+### Advanced: Environment Configuration
+
+**All .env options:**
+
+```ini
+# ============================================================================
+# LLM Selection
+# ============================================================================
+USE_LOCAL_LLM=true              # true = Ollama, false = Claude API
+LOCAL_MODEL_ID=mistral-nemo    # Model to use with Ollama
+OLLAMA_BASE_URL=http://localhost:11434  # Ollama server address
+ANTHROPIC_API_KEY=sk-ant-...   # Claude API key (if USE_LOCAL_LLM=false)
+
+# ============================================================================
+# Constraints (prevents runaway loops)
+# ============================================================================
+MAX_LLM_CALLS_PER_TASK=10      # Max LLM calls per problem
+MAX_TOKENS_PER_TASK=8000       # Max tokens per problem
+MAX_REPAIR_ITERATIONS=3        # Max code repair attempts
+
+# ============================================================================
+# Other
+# ============================================================================
+RANDOM_SEED=42                 # For reproducible dataset splits
+```
+
+---
+
+### Troubleshooting
+
+**Problem:** `Connection refused` to Ollama
+```
+Solution: Make sure Ollama server is running in another terminal
+          Run: ollama serve
+```
+
+**Problem:** `Model not found: mistral-nemo`
+```
+Solution: Pull the model first
+          Run: ollama pull mistral-nemo
+          (First time takes ~5 minutes)
+```
+
+**Problem:** `ANTHROPIC_API_KEY is not set`
+```
+Solution: If using Claude, set the key in .env:
+          ANTHROPIC_API_KEY=sk-ant-v0-...
+          OR switch to Ollama: USE_LOCAL_LLM=true
+```
+
+**Problem:** Out of memory / very slow
+```
+Solution 1: Use a smaller Ollama model
+            ollama pull mistral:7b  # 7B instead of 12B
+            
+Solution 2: Free up RAM on your machine
+            Close other applications
+            
+Solution 3: Use Claude API (faster, better quality)
+            Set: USE_LOCAL_LLM=false
+```
+
+**Problem:** Windows encoding error (→ character)
+```
+Solution: Already fixed in latest version
+          Update repo: git pull
+```
+
+---
+
+### Download Datasets (Optional)
+
+For full experiments with RE (Requirements Engineering) datasets:
+
+```bash
+# Download EvalPlus (code generation - automatic)
 python scripts/prepare_datasets.py
+
+# For NICE & SecReq datasets (manual):
+# See MISSING_DATASETS.md
 ```
 
-**Note:** 
-- **EvalPlus** (HumanEval+) downloads automatically
-- **NICE & SecReq** require manual download (see [MISSING_DATASETS.md](MISSING_DATASETS.md))
+For **pilot experiments** (10 test samples): Already included, no download needed.
 
 ---
 
-## Running the Pilots
+---
 
-### Basic Usage
+## Running Different Systems
+
+| Script | What it does | Duration | LLM | Output |
+|--------|-------------|----------|-----|--------|
+| `run_pilot_single.py` | Single-agent on 10 test problems | ~1-2 min | Ollama/Claude | `outputs/single_agent/` |
+| `run_pilot_multi.py` | Multi-agent V1 on 10 problems | ~5-10 min | Ollama/Claude | `outputs/multi_agent/` |
+| `run_pilot_multi_v2.py` | Multi-agent V2 on 10 problems | ~5-10 min | Ollama/Claude | `outputs/multi_agent_v2/` |
+| `run_full.py` | Full dataset (all 164 problems) | ~30 min | Ollama/Claude | `outputs/single_agent/` |
+
+**Quick test:** `python scripts/run_pilot_single.py` (~1 min)
+**Full comparison:** `python scripts/run_pilot_multi.py` + `run_pilot_single.py` (~15 min)
+
+### Example: Run with Both Ollama and Claude
+
+Compare results side-by-side:
 
 ```bash
-# Activate virtual environment first
-.venv/bin/python scripts/run_pilot_single.py     # Single-agent baseline
-.venv/bin/python scripts/run_pilot_multi.py      # Multi-agent system
-.venv/bin/python scripts/evaluate_pilot.py --auto # Evaluate and compare
+# Run with Ollama (local, free)
+python scripts/run_pilot_single.py
+# Outputs: outputs/single_agent/codegen_solutions_pilot_20260416_103022.jsonl
+
+# Switch to Claude in .env, then:
+python scripts/run_pilot_single.py
+# Outputs: outputs/single_agent/codegen_solutions_pilot_20260416_103145.jsonl
+
+# Both files coexist - never overwritten!
+ls -lt outputs/single_agent/*.jsonl
 ```
-
-Outputs are written to `outputs/single_agent/` and `outputs/multi_agent/`.
-
-### Switching Between LLMs at Runtime
-
-You can override the LLM **without editing `.env`**:
-
-**Windows (PowerShell):**
-```powershell
-# Use Ollama (cheap, free)
-$env:USE_LOCAL_LLM="true"; python scripts/run_pilot_single.py
-
-# Use Claude (better quality, costs $)
-$env:USE_LOCAL_LLM="false"; python scripts/run_pilot_single.py
-```
-
-**macOS/Linux (bash):**
-```bash
-# Use Ollama
-USE_LOCAL_LLM=true python scripts/run_pilot_single.py
-
-# Use Claude
-USE_LOCAL_LLM=false python scripts/run_pilot_single.py
-```
-
-**Pro tip:** Test with Ollama first to iterate cheaply, then run final experiments with Claude.
 
 ---
 
-## Datasets
+## Understanding Outputs
+
+### File Structure
+
+```
+outputs/
+├── single_agent/
+│   ├── codegen_solutions_pilot_[timestamp].jsonl    ← Generated code solutions
+│   ├── codegen_tests_pilot_[timestamp].jsonl        ← Test results (PASS/FAIL)
+│   └── codegen_cost_[timestamp].json                ← LLM cost tracking
+└── multi_agent/
+    ├── codegen_solutions_pilot_[timestamp].jsonl
+    ├── codegen_tests_pilot_[timestamp].jsonl
+    └── codegen_cost_[timestamp].json
+```
+
+### Sample Output (CodeGen Solution)
+
+```json
+{
+  "task_id": "HumanEval/61",
+  "code": "def correct_bracketing(brackets: str) -> bool:\n    stack = []\n    for b in brackets:\n        if b == '(': stack.append(')')\n        elif not stack or b != stack.pop(): return False\n    return not stack",
+  "explanation": "Uses a stack to track unmatched opening brackets..."
+}
+```
+
+### Sample Output (Test Result)
+
+```json
+{
+  "task_id": "HumanEval/61",
+  "passed": true,
+  "num_passed": 1,
+  "num_total": 1,
+  "error_output": null,
+  "attempt_number": 1
+}
+```
+
+### Sample Output (Cost Summary)
+
+```json
+{
+  "system": "single_agent",
+  "dataset": "codegen",
+  "summary": {
+    "n_tasks": 10,
+    "total_llm_calls": 10,
+    "total_tokens": 2642,
+    "avg_llm_calls": 1.0,
+    "avg_tokens": 264.2
+  }
+}
+```
+
+---
+
+## Quick Commands Reference
+
+```bash
+# Activate environment (do this first every session!)
+.venv\Scripts\activate           # Windows PowerShell
+source .venv/bin/activate         # macOS/Linux or Git Bash
+
+# Run systems
+python scripts/run_pilot_single.py         # Quick test (~1 min)
+python scripts/run_pilot_multi.py          # Multi-agent comparison (~10 min)
+python scripts/run_full.py                 # Full dataset (~30 min)
+
+# View results
+cat outputs/single_agent/codegen_solutions_pilot_*.jsonl
+cat outputs/single_agent/codegen_cost_*.json | python -m json.tool
+
+# Switch LLMs (without editing .env)
+USE_LOCAL_LLM=true python scripts/run_pilot_single.py    # Use Ollama
+USE_LOCAL_LLM=false python scripts/run_pilot_single.py   # Use Claude
+```
+
+---
 
 | Dataset | Task | Status |
 |---------|------|--------|
