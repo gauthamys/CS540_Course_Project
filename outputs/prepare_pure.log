@@ -1,0 +1,22 @@
+/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langchain_core/_api/deprecation.py:25: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
+  from pydantic.v1.fields import FieldInfo as FieldInfoV1
+=== Preparing RE Elicitation dataset (PURE) ===
+  Loaded 17 documents from PURE dataset
+  15 documents with >= 5 requirements
+  [  1/15] 0000 - cctns (114 reqs) ... OK
+  [  2/15] 0000 - gamma j (51 reqs) ... OK
+  [  3/15] 1995 - gemini (55 reqs) ... OK
+  [  4/15] 1998 - themas (41 reqs) ... OK
+  [  5/15] 1999 - dii (12 reqs) ... OK
+  [  6/15] 1999 - tcs (99 reqs) ... OK
+  [  7/15] 2003 - qheadache (8 reqs) ... OK
+  [  8/15] 2005 - phin (49 reqs) ... OK
+  [  9/15] 2006 - eirene sys 15 (247 reqs) ... OK
+  [ 10/15] 2007-eirene_fun_7-2 (583 reqs) ... OK
+  [ 11/15] 2007-ertms (198 reqs) ... OK
+  [ 12/15] 2008 - keepass (32 reqs) ... OK
+  [ 13/15] 2008 - peering (20 reqs) ... OK
+  [ 14/15] 2009 - peppol approved (61 reqs) ... OK
+  [ 15/15] 2010-blitdraft (54 reqs) ... OK
+
+  Saved 15 project records → data/processed/re_elicitation_projects_pure.jsonl

@@ -38,10 +38,17 @@ class REElicitationMetrics:
         return asdict(self)
 
 
+_MODEL_CACHE = None
+
+
 def _load_model():
+    global _MODEL_CACHE
+    if _MODEL_CACHE is not None:
+        return _MODEL_CACHE
     try:
         from sentence_transformers import SentenceTransformer
-        return SentenceTransformer("all-MiniLM-L6-v2")
+        _MODEL_CACHE = SentenceTransformer("all-MiniLM-L6-v2")
+        return _MODEL_CACHE
     except ImportError:
         raise ImportError(
             "sentence-transformers is required for RE evaluation. "

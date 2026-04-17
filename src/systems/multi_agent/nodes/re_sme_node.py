@@ -1,68 +1,62 @@
 """
-RE SME (Subject Matter Expert) node — System 3 only.
+RE SME (Subject Matter Expert) advisory node — System 3 only.
 
-Uses Claude with a dynamically constructed system prompt that adopts a domain-expert
-persona identified by the planner. Generates additional requirements that a generalist
-engineer might miss (compliance, domain standards, edge cases).
+Runs BEFORE the extractor. Uses Claude with a dynamically constructed system prompt
+that adopts the domain-expert persona identified by the planner.
 
-The SME node runs AFTER the extractor, receives draft_requirements as context,
-and returns sme_requirements with source='sme'.
+The SME does NOT generate requirements. Instead it produces structured advisory
+context (constraints, patterns, risks) that is passed to the extractor to inform
+more comprehensive requirement generation.
+
+Graph flow (V2):
+    planner → sme (advisory) → extractor (SME-informed) → critic → [revise loop]
 """
-from pydantic import BaseModel
 from langchain_core.messages import SystemMessage, HumanMessage
 
 from src.llm.client import get_structured_llm, check_budget
 from src.llm.prompts.re_elicitation_prompts import (
     format_sme_system_prompt,
-    format_sme_prompt,
+    format_sme_advisory_prompt,
 )
-from src.schemas.re_elicitation_schema import GeneratedRequirement
-
-
-class _RequirementsList(BaseModel):
-    requirements: list[GeneratedRequirement]
+from src.schemas.re_elicitation_schema import SMEAdvisory
 
 
 def re_sme_node(state: dict) -> dict:
-    """LangGraph node: generates domain-specific requirements via a Claude SME persona."""
+    """LangGraph node: produces domain-expert advisory context for the extractor."""
     use_case = state["use_case_description"]
     domain = state.get("domain", "software")
     sme_subject = state.get("sme_subject", "software architect")
-    draft_requirements = state.get("draft_requirements", [])
+    key_quality_attributes = state.get("key_quality_attributes", [])
     llm_calls = state.get("llm_calls", 0)
     total_tokens = state.get("total_tokens", 0)
     check_budget(llm_calls, total_tokens)
 
     system_prompt = format_sme_system_prompt(domain=domain, sme_subject=sme_subject)
-    user_prompt = format_sme_prompt(
+    user_prompt = format_sme_advisory_prompt(
         use_case=use_case,
         domain=domain,
         sme_subject=sme_subject,
-        existing_requirements=draft_requirements,
+        key_quality_attributes=key_quality_attributes,
     )
 
-    structured_llm = get_structured_llm(_RequirementsList)
+    structured_llm = get_structured_llm(SMEAdvisory)
     try:
-        result: _RequirementsList = structured_llm.invoke(
+        advisory: SMEAdvisory = structured_llm.invoke(
             [SystemMessage(content=system_prompt), HumanMessage(content=user_prompt)]
         )
-        # Ensure all SME reqs have source='sme'
-        sme_reqs = []
-        for r in result.requirements:
-            d = r.model_dump()
-            d["source"] = "sme"
-            sme_reqs.append(d)
-
-        tokens = (len(user_prompt) + len(str(sme_reqs))) // 4
+        tokens = (len(system_prompt) + len(user_prompt) + len(str(advisory.model_dump()))) // 4
         return {
-            "sme_requirements": sme_reqs,
+            "sme_advisory": advisory.advisory_summary,
+            "sme_constraints": advisory.domain_constraints,
+            "sme_patterns": advisory.common_requirement_patterns,
             "llm_calls": 1,
             "total_tokens": tokens,
         }
-    except Exception as e:
-        # Fail-safe: return empty list, don't crash the pipeline
+    except Exception:
         return {
-            "sme_requirements": [],
+            "sme_advisory": "",
+            "sme_constraints": [],
+            "sme_patterns": [],
             "llm_calls": 1,
             "total_tokens": 0,
         }

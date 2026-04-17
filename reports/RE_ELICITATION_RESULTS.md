@@ -3,7 +3,8 @@
 **Dataset:** NICE PROMISE-relabeled (15 projects, 622 ground-truth requirements)  
 **Model:** `claude-sonnet-4-6`, `temperature=0`  
 **Evaluation:** Semantic cosine similarity via `all-MiniLM-L6-v2`, threshold = 0.60  
-**Date:** 2026-04-15
+**Date:** 2026-04-16  
+**Architecture:** V2-SME redesigned — SME acts as domain advisor (advisory context only), not requirement generator
 
 ---
 
@@ -11,9 +12,9 @@
 
 | System | Coverage (Recall) | Precision | Semantic F1 | FR Coverage | NFR Coverage | Avg Reqs/Project | Avg LLM Calls | Avg Tokens/Task | Total Tokens |
 |---|---|---|---|---|---|---|---|---|---|
-| Single-Agent | **0.402 ± 0.118** | **0.479 ± 0.094** | **0.426 ± 0.091** | **0.529** | **0.239** | 19.1 | 1.0 | 2,402 | 36,036 |
-| Multi-Agent V1 | 0.334 ± 0.087 | 0.390 ± 0.094 | 0.348 ± 0.064 | 0.486 | 0.160 | 20.0 | 3.0 | 5,460 | 81,899 |
-| Multi-Agent V2 (SME) | 0.358 ± 0.100 | 0.328 ± 0.100 | 0.330 ± 0.074 | 0.525 | 0.189 | 28.8 | 4.0 | 10,373 | 155,597 |
+| Single-Agent | **0.497 ± 0.099** | **0.384 ± 0.122** | **0.420 ± 0.100** | **0.647** | **0.302** | 50.0 | 1.0 | 4,839 | 72,590 |
+| Multi-Agent V1 | 0.424 ± 0.105 | 0.308 ± 0.103 | 0.348 ± 0.089 | 0.573 | 0.230 | 50.0 | 3.0 | 9,098 | 136,474 |
+| Multi-Agent V2 (SME) | 0.327 ± 0.075 | 0.209 ± 0.072 | 0.246 ± 0.059 | 0.465 | 0.176 | 50.0 | 4.1 | 14,455 | 216,830 |
 
 Ground truth: 622 requirements across 15 projects.
 
@@ -34,9 +35,9 @@ Ground truth: 622 requirements across 15 projects.
 
 | System | Semantic F1 | Δ vs Single-Agent |
 |---|---|---|
-| Single-Agent | **0.426** | — |
-| Multi-Agent V1 | 0.348 | −0.078 (−18%) |
-| Multi-Agent V2 (SME) | 0.330 | −0.096 (−23%) |
+| Single-Agent | **0.420** | — |
+| Multi-Agent V1 | 0.348 | −0.072 (−17%) |
+| Multi-Agent V2 (SME) | 0.246 | −0.174 (−41%) |
 
 Single-Agent achieves the best Semantic F1. Both multi-agent systems underperform the single-shot baseline on all three metrics.
 
@@ -46,11 +47,11 @@ All systems cover Functional Requirements substantially better than Non-Function
 
 | System | FR Coverage | NFR Coverage | Gap |
 |---|---|---|---|
-| Single-Agent | 0.529 | 0.239 | 0.290 |
-| Multi-Agent V2 (SME) | 0.525 | 0.189 | 0.336 |
-| Multi-Agent V1 | 0.486 | 0.160 | 0.326 |
+| Single-Agent | 0.647 | 0.302 | 0.345 |
+| Multi-Agent V1 | 0.573 | 0.230 | 0.343 |
+| Multi-Agent V2 (SME) | 0.465 | 0.176 | 0.289 |
 
-The SME node in V2 was designed to improve NFR coverage by adopting a domain-expert persona. It does improve NFR coverage relative to V1 (0.189 vs 0.160), but the improvement is modest and precision suffers as a result.
+Despite the SME advisory being designed to surface domain-specific NFR constraints and patterns, V2-SME has the lowest NFR coverage. The advisory context appears to cause the extractor to over-focus on elaborating specific NFR areas while missing others, rather than broadening coverage.
 
 ---
 
@@ -62,49 +63,49 @@ The SME node in V2 was designed to improve NFR coverage by adopting a domain-exp
 |---|---|---|
 | Single-Agent | 1.0 | 1× |
 | Multi-Agent V1 | 3.0 | 3× |
-| Multi-Agent V2 (SME) | 4.0 | 4× |
+| Multi-Agent V2 (SME) | 4.1 | 4.1× |
 
-Multi-Agent V1 uses exactly 3 calls per project (Planner + Extractor + Critic) — the critic approved all 15 projects on first pass, so no revision loops were triggered. V2 adds a 4th call for the SME node. The Combiner node makes no LLM call (pure embedding-based deduplication).
+Multi-Agent V1 uses exactly 3 calls per project (Planner + Extractor + Critic) — the critic approved all 15 projects on first pass. V2 adds a 4th call for the SME advisory node; occasional 6-call projects (2nd critique cycle) push the average above 4.
 
 ### Tokens per Task
 
 | System | Avg Tokens | Multiplier vs Single-Agent | Total Tokens |
 |---|---|---|---|
-| Single-Agent | 2,402 | 1× | 36,036 |
-| Multi-Agent V1 | 5,460 | 2.3× | 81,899 |
-| Multi-Agent V2 (SME) | 10,373 | 4.3× | 155,597 |
+| Single-Agent | 4,839 | 1× | 72,590 |
+| Multi-Agent V1 | 9,098 | 1.9× | 136,474 |
+| Multi-Agent V2 (SME) | 14,455 | 3.0× | 216,830 |
 
-V2 uses 4.3× more tokens than Single-Agent per project. The SME node's dynamically constructed system prompt (domain + persona) and the combiner's larger combined requirement list passed to the critic account for the additional overhead.
+V2 uses 3× more tokens than Single-Agent per project due to the SME advisory call and the SME context block injected into the extractor prompt.
 
 ---
 
 ## 5. Quality vs Cost Trade-off
 
-Single-Agent produces the best Semantic F1 at the lowest cost. The multi-agent systems pay 3–4× in LLM calls and 2.3–4.3× in tokens for *lower* quality on this task.
+Single-Agent produces the best Semantic F1 at the lowest cost. The multi-agent systems pay 3–4× in LLM calls and 1.9–3× in tokens for *lower* quality on this task.
 
 | System | Semantic F1 | Total Tokens | F1 per 1K Tokens |
 |---|---|---|---|
-| Single-Agent | 0.426 | 36,036 | 0.0118 |
-| Multi-Agent V1 | 0.348 | 81,899 | 0.0043 |
-| Multi-Agent V2 (SME) | 0.330 | 155,597 | 0.0021 |
+| Single-Agent | 0.420 | 72,590 | 0.0058 |
+| Multi-Agent V1 | 0.348 | 136,474 | 0.0026 |
+| Multi-Agent V2 (SME) | 0.246 | 216,830 | 0.0011 |
 
-Single-Agent is **5.6× more token-efficient** than V2 on this task.
+Single-Agent is **5.3× more token-efficient** than V2 on this task.
 
 ---
 
 ## 6. Key Finding: Single-Agent Wins on RE Elicitation
 
-Unlike Code Generation (where both single-agent and multi-agent V1 achieved 100% pass@1), RE Elicitation shows a clear ranking: **simpler is better**.
+RE Elicitation shows a clear ranking: **simpler is better**.
 
 **Why the multi-agent systems underperform:**
 
 1. **Planner constrains the extractor.** The Planner node produces a strategy and a fixed list of key quality attributes. This narrows the Extractor's focus — useful for correctness on well-specified tasks, but harmful for open-ended elicitation where breadth matters.
 
-2. **Critic approves too readily.** The Critic approved all 15 projects on first pass across both V1 and V2 — no revision loops ran at all. This means the multi-agent overhead of planner + critic adds cost with no quality benefit when the baseline output is already "good enough" by the critic's assessment.
+2. **Critic approves too readily.** The Critic approved all 15 projects on first pass — no revision loops ran at all. This means the multi-agent overhead of planner + critic adds cost with no quality benefit when the baseline output is already "good enough" by the critic's assessment.
 
-3. **SME precision penalty.** V2 generates 28.8 requirements/project vs V1's 20.0 and Single-Agent's 19.1. More generated requirements improve recall marginally (+0.024 vs V1) but hurt precision significantly (−0.062 vs V1), yielding a lower F1 overall.
+3. **SME advisory introduces topic drift.** In the redesigned V2, the SME provides advisory context (domain constraints, requirement patterns, risks) that the extractor incorporates. While the intent is to improve domain precision, the advisory context pulls the extractor toward specific regulatory/compliance concerns while reducing its breadth — lowering both coverage and precision compared to unconstrained generation.
 
-4. **Single-agent generates more freely.** With no planner constraining it and no structured output schema beyond the final list, the single-agent prompt elicits a broader, more natural set of requirements that aligns better with the ground truth's diversity.
+4. **Single-agent generates more freely.** With no planner constraining it and no advisory context to narrow focus, the single-agent prompt elicits a broader, more natural set of requirements that aligns better with the ground truth's diversity.
 
 ---
 
@@ -112,10 +113,10 @@ Unlike Code Generation (where both single-agent and multi-agent V1 achieved 100%
 
 | System | Total Tokens | Est. Cost @ claude-sonnet-4-6 |
 |---|---|---|
-| Single-Agent | 36,036 | ~$0.11 |
-| Multi-Agent V1 | 81,899 | ~$0.25 |
-| Multi-Agent V2 (SME) | 155,597 | ~$0.47 |
-| **Total** | **273,532** | **~$0.83** |
+| Single-Agent | 72,590 | ~$0.22 |
+| Multi-Agent V1 | 136,474 | ~$0.41 |
+| Multi-Agent V2 (SME) | 216,830 | ~$0.65 |
+| **Total** | **425,894** | **~$1.28** |
 
 ---
 
@@ -125,14 +126,15 @@ Unlike Code Generation (where both single-agent and multi-agent V1 achieved 100%
 - **622 total ground-truth requirements** (mix of FR, NFR, and NONE labels)
 - **Use-case descriptions** were synthesized by Claude from each project's requirements (offline preprocessing via `prepare_re_elicitation.py`), then used as input to all three systems — ensuring a fair, identical input across systems
 - **Ground-truth split:** NICE labels FR/NFR/NONE via `IsFunctional` and `IsQuality` one-hot columns; NFR subtypes derived from 12 quality-attribute columns (availability, security, performance, etc.)
+- All systems generate **up to 50 requirements** per project (increased from 20 in earlier runs to allow fuller coverage)
 - Low NFR coverage across all systems is partly a reflection of the evaluation task difficulty: NFRs are less specific and more abstract, making semantic matching harder
 
 ---
 
 ## 9. Limitations
 
-- **15 projects only** — a larger sample is needed to draw statistically robust conclusions; standard deviations are high (±0.09–0.12 on F1)
+- **15 projects only** — a larger sample is needed to draw statistically robust conclusions; standard deviations are high (±0.06–0.12 on F1)
 - **No revision loops triggered** — the critic's threshold may be too lenient; tighter criteria could surface the multi-agent pipeline's repair capabilities
 - **Use-case descriptions are synthetic** — the ground-truth use cases were generated by Claude from the existing requirements, not written by human stakeholders; this may bias all systems in similar ways
 - **Semantic threshold sensitivity** — results at threshold = 0.60; a lower threshold (e.g. 0.50) would inflate all scores; relative rankings may shift at different thresholds
-- **SME persona quality** — the SME node's domain/persona is determined by the Planner, which may choose suboptimal personas for some project types
+- **SME advisory quality** — the domain/persona is determined by the Planner, which may choose suboptimal personas for some project types; advisory may narrow rather than broaden coverage

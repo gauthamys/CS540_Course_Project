@@ -32,11 +32,19 @@ def re_elicitation_extractor_node(state: dict) -> dict:
     total_tokens = state.get("total_tokens", 0)
     check_budget(llm_calls, total_tokens)
 
+    # SME advisory context (present in V2 only; None/empty in V1)
+    sme_advisory: Optional[str] = state.get("sme_advisory") or None
+    sme_constraints: list = state.get("sme_constraints") or []
+    sme_patterns: list = state.get("sme_patterns") or []
+
     prompt = format_extractor_prompt(
         use_case=use_case,
         strategy=strategy,
         key_quality_attributes=key_quality_attributes,
         critique=critique,
+        sme_advisory=sme_advisory,
+        sme_constraints=sme_constraints,
+        sme_patterns=sme_patterns,
     )
 
     structured_llm = get_structured_llm(_RequirementsList)
