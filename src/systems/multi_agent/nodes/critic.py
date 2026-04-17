@@ -9,18 +9,22 @@ If approved, the graph routes to END (or coder for codegen).
 If rejected and budget allows, the graph loops back to extractor.
 """
 from langchain_core.messages import SystemMessage, HumanMessage
+from pydantic import BaseModel
+from typing import Optional
 
-from src.llm.client import get_llm, check_budget
+from src.llm.client import get_structured_llm, check_budget
 
 
-_llm = None
+# ── Pydantic schemas for critic structured output ─────────────────────────────
+
+class _RECriticOutput(BaseModel):
+    approved: bool
+    feedback: Optional[str] = None
 
 
-def _get_llm():
-    global _llm
-    if _llm is None:
-        _llm = get_llm()
-    return _llm
+class _CodeCriticOutput(BaseModel):
+    approved: bool
+    feedback: Optional[str] = None
 
 
 # ── RE Critic ─────────────────────────────────────────────────────────────────
@@ -52,7 +56,7 @@ def re_critic_node(state: dict) -> dict:
         f"Draft classification:\n{json.dumps(draft, indent=2)}\n\n"
         "Is this classification correct? Respond with JSON only."
     )
-    structured_llm = _get_llm().with_structured_output(_RECriticOutput)
+    structured_llm = get_structured_llm(_RECriticOutput)
     try:
         result = structured_llm.invoke(
             [SystemMessage(content=RE_CRITIC_SYSTEM), HumanMessage(content=prompt)]
@@ -95,7 +99,7 @@ def codegen_critic_node(state: dict) -> dict:
         f"Draft implementation:\n```python\n{draft_code}\n```\n\n"
         "Is this implementation correct? Respond with JSON only."
     )
-    structured_llm = _get_llm().with_structured_output(_CodeCriticOutput)
+    structured_llm = get_structured_llm(_CodeCriticOutput)
     try:
         result = structured_llm.invoke(
             [SystemMessage(content=CODEGEN_CRITIC_SYSTEM), HumanMessage(content=prompt)]
@@ -109,19 +113,3 @@ def codegen_critic_node(state: dict) -> dict:
         }
     except Exception:
         return {"critique_approved": True, "critique": None, "llm_calls": 1, "total_tokens": 0}
-
-
-# ── Pydantic schemas for critic structured output ─────────────────────────────
-
-from pydantic import BaseModel
-from typing import Optional
-
-
-class _RECriticOutput(BaseModel):
-    approved: bool
-    feedback: Optional[str] = None
-
-
-class _CodeCriticOutput(BaseModel):
-    approved: bool
-    feedback: Optional[str] = None

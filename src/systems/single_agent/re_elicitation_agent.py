@@ -14,7 +14,7 @@ import logging
 from pydantic import BaseModel
 from langchain_core.messages import SystemMessage, HumanMessage
 
-from src.llm.client import get_llm
+from src.llm.client import get_structured_llm
 from src.llm.prompts.re_elicitation_prompts import (
     SYSTEM_RE_ELICITATION,
     format_elicitation_prompt,
@@ -31,8 +31,7 @@ class _RequirementsList(BaseModel):
 class REElicitationAgent:
     def __init__(self, max_retries: int = 2):
         self.max_retries = max_retries
-        self._llm = get_llm()
-        self._structured_llm = self._llm.with_structured_output(_RequirementsList)
+        self._structured_llm = get_structured_llm(_RequirementsList)
 
     def elicit(
         self, project_id: str, use_case_description: str

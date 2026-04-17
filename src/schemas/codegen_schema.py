@@ -8,6 +8,7 @@ class CodeSolution(BaseModel):
         description="Complete Python function implementation. No markdown fencing, raw Python only."
     )
     explanation: str = Field(
+        default="",
         description="Brief explanation of approach and edge cases handled"
     )
 

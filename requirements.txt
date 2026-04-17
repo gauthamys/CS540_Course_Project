@@ -1,0 +1,30 @@
+# Core LLM & AI Dependencies
+anthropic
+langchain
+langchain-anthropic
+langchain-community
+langgraph
+pydantic
+
+# Code Generation & Evaluation
+evalplus
+datasets
+
+# Data Processing & Analysis
+pandas
+scikit-learn
+
+# Requirements Engineering Evaluation
+sentence-transformers
+
+# Utilities
+python-dotenv
+jsonlines
+tqdm
+requests
+
+# Development (optional)
+# jupyter
+# ipykernel
+# pytest
+# pytest-asyncio

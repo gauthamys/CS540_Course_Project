@@ -11,7 +11,7 @@ Algorithm per record:
 import logging
 from langchain_core.messages import SystemMessage, HumanMessage
 
-from src.llm.client import get_llm
+from src.llm.client import get_structured_llm
 from src.llm.prompts.re_prompts import SYSTEM_RE, format_re_classify_prompt
 from src.schemas.re_schema import REPrediction
 
@@ -21,8 +21,7 @@ logger = logging.getLogger(__name__)
 class REAgent:
     def __init__(self, max_retries: int = 2):
         self.max_retries = max_retries
-        self._llm = get_llm()
-        self._structured_llm = self._llm.with_structured_output(REPrediction)
+        self._structured_llm = get_structured_llm(REPrediction)
 
     def classify(self, record: dict) -> tuple[REPrediction, dict]:
         """

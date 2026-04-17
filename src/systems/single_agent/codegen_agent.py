@@ -11,7 +11,7 @@ Algorithm per record:
 import logging
 from langchain_core.messages import SystemMessage, HumanMessage
 
-from src.llm.client import get_llm
+from src.llm.client import get_structured_llm
 from src.llm.prompts.codegen_prompts import (
     SYSTEM_CODEGEN,
     format_codegen_prompt,
@@ -26,8 +26,7 @@ logger = logging.getLogger(__name__)
 class CodeGenAgent:
     def __init__(self, max_retries: int = 2):
         self.max_retries = max_retries
-        self._llm = get_llm()
-        self._structured_llm = self._llm.with_structured_output(CodeSolution)
+        self._structured_llm = get_structured_llm(CodeSolution)
 
     def generate(self, record: dict) -> tuple[CodeSolution, dict]:
         """

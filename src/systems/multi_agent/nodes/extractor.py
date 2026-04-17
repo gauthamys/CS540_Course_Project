@@ -8,21 +8,11 @@ Both produce structured output (Pydantic models) stored in graph state.
 """
 from langchain_core.messages import SystemMessage, HumanMessage
 
-from src.llm.client import get_llm, check_budget
+from src.llm.client import get_structured_llm, check_budget
 from src.llm.prompts.re_prompts import SYSTEM_RE, format_re_classify_prompt
 from src.llm.prompts.codegen_prompts import SYSTEM_CODEGEN, format_codegen_prompt
 from src.schemas.re_schema import REPrediction
 from src.schemas.codegen_schema import CodeSolution
-
-
-_llm = None
-
-
-def _get_llm():
-    global _llm
-    if _llm is None:
-        _llm = get_llm()
-    return _llm
 
 
 # ── RE Extractor ──────────────────────────────────────────────────────────────
@@ -50,7 +40,7 @@ def re_extractor_node(state: dict) -> dict:
     if critique:
         user_prompt += f"\n\nCritic feedback (previous draft was rejected):\n{critique}\nPlease revise accordingly."
 
-    structured_llm = _get_llm().with_structured_output(REPrediction)
+    structured_llm = get_structured_llm(REPrediction)
     try:
         prediction = structured_llm.invoke(
             [SystemMessage(content=system), HumanMessage(content=user_prompt)]
@@ -104,7 +94,7 @@ def codegen_extractor_node(state: dict) -> dict:
             + user_prompt
         )
 
-    structured_llm = _get_llm().with_structured_output(CodeSolution)
+    structured_llm = get_structured_llm(CodeSolution)
     try:
         solution = structured_llm.invoke(
             [SystemMessage(content=system), HumanMessage(content=user_prompt)]

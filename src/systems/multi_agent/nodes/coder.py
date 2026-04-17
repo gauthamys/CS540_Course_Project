@@ -6,19 +6,9 @@ then produces the final code implementation.
 """
 from langchain_core.messages import SystemMessage, HumanMessage
 
-from src.llm.client import get_llm, check_budget
+from src.llm.client import get_structured_llm, check_budget
 from src.llm.prompts.codegen_prompts import SYSTEM_CODEGEN
 from src.schemas.codegen_schema import CodeSolution
-
-
-_llm = None
-
-
-def _get_llm():
-    global _llm
-    if _llm is None:
-        _llm = get_llm()
-    return _llm
 
 
 CODER_ROLE = (
@@ -71,7 +61,7 @@ def coder_node(state: dict) -> dict:
         '{"task_id": "<id>", "code": "<raw Python only>", "explanation": "<what you did>"}'
     )
 
-    structured_llm = _get_llm().with_structured_output(CodeSolution)
+    structured_llm = get_structured_llm(CodeSolution)
     try:
         solution = structured_llm.invoke(
             [SystemMessage(content=SYSTEM_CODEGEN + "\n\n" + CODER_ROLE),

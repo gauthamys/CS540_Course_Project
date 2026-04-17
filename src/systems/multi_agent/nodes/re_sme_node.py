@@ -13,21 +13,12 @@ Graph flow (V2):
 """
 from langchain_core.messages import SystemMessage, HumanMessage
 
-from src.llm.client import get_llm, check_budget
+from src.llm.client import get_structured_llm, check_budget
 from src.llm.prompts.re_elicitation_prompts import (
     format_sme_system_prompt,
     format_sme_advisory_prompt,
 )
 from src.schemas.re_elicitation_schema import SMEAdvisory
-
-_llm = None
-
-
-def _get_llm():
-    global _llm
-    if _llm is None:
-        _llm = get_llm()
-    return _llm
 
 
 def re_sme_node(state: dict) -> dict:
@@ -48,7 +39,7 @@ def re_sme_node(state: dict) -> dict:
         key_quality_attributes=key_quality_attributes,
     )
 
-    structured_llm = _get_llm().with_structured_output(SMEAdvisory)
+    structured_llm = get_structured_llm(SMEAdvisory)
     try:
         advisory: SMEAdvisory = structured_llm.invoke(
             [SystemMessage(content=system_prompt), HumanMessage(content=user_prompt)]
