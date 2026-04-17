@@ -7,3 +7,6 @@ __pycache__/
 .DS_Store
 notebooks/.ipynb_checkpoints/
 requirements.lock
+.venv/
+venv/
+test_env.py
