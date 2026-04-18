@@ -1,0 +1,479 @@
+=== MBPP+ Run — 378 problems ===
+/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langchain_core/_api/deprecation.py:25: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
+  from pydantic.v1.fields import FieldInfo as FieldInfoV1
+
+[multi_agent_v2] Running on 378 MBPP+ problems...
+  [  1/378] Mbpp/2 → PASS  [6 calls] [critic×2]
+  [  2/378] Mbpp/3 → PASS  [6 calls] [critic×2]
+  [  3/378] Mbpp/4 → PASS  [6 calls] [critic×2]
+  [  4/378] Mbpp/6 → FAIL  [5 calls] [critic×1]
+  [  5/378] Mbpp/7 → PASS  [6 calls] [critic×2]
+  [  6/378] Mbpp/8 → PASS  [6 calls] [critic×2]
+  [  7/378] Mbpp/9 → PASS  [6 calls] [critic×2]
+  [  8/378] Mbpp/11 → FAIL  [5 calls] [critic×1]
+  [  9/378] Mbpp/12 → FAIL  [5 calls] [critic×1]
+  [ 10/378] Mbpp/14 → PASS  [6 calls] [critic×2]
+  [ 11/378] Mbpp/16 → PASS  [6 calls] [critic×2]
+  [ 12/378] Mbpp/17 → PASS  [6 calls] [critic×2]
+  [ 13/378] Mbpp/18 → PASS  [6 calls] [critic×2]
+  [ 14/378] Mbpp/19 → PASS  [6 calls] [critic×2]
+  [ 15/378] Mbpp/20 → PASS  [6 calls] [critic×2]
+  [ 16/378] Mbpp/56 → FAIL  [5 calls] [critic×1]
+  [ 17/378] Mbpp/57 → PASS  [6 calls] [critic×2]
+  [ 18/378] Mbpp/58 → PASS  [6 calls] [critic×2]
+  [ 19/378] Mbpp/59 → PASS  [6 calls] [critic×2]
+  [ 20/378] Mbpp/61 → FAIL  [5 calls] [critic×1]
+  [ 21/378] Mbpp/62 → PASS  [6 calls] [critic×2]
+  [ 22/378] Mbpp/63 → FAIL  [5 calls] [critic×1]
+  [ 23/378] Mbpp/64 → PASS  [6 calls] [critic×2]
+  [ 24/378] Mbpp/65 → PASS  [6 calls] [critic×2]
+  [ 25/378] Mbpp/66 → PASS  [6 calls] [critic×2]
+  [ 26/378] Mbpp/67 → PASS  [6 calls] [critic×2]
+  [ 27/378] Mbpp/68 → PASS  [6 calls] [critic×2]
+  [ 28/378] Mbpp/69 → PASS  [6 calls] [critic×2]
+  [ 29/378] Mbpp/70 → PASS  [6 calls] [critic×2]
+  [ 30/378] Mbpp/71 → FAIL  [5 calls] [critic×1]
+  [ 31/378] Mbpp/72 → PASS  [6 calls] [critic×2]
+  [ 32/378] Mbpp/74 → PASS  [6 calls] [critic×2]
+test_critic: failed to parse JSON response, approving.
+  [ 33/378] Mbpp/75 → PASS  [6 calls] [critic×2]
+  [ 34/378] Mbpp/77 → FAIL  [5 calls] [critic×1]
+  [ 35/378] Mbpp/79 → PASS  [6 calls] [critic×2]
+  [ 36/378] Mbpp/80 → PASS  [6 calls] [critic×2]
+  [ 37/378] Mbpp/82 → PASS  [6 calls] [critic×2]
+  [ 38/378] Mbpp/84 → FAIL  [5 calls] [critic×1]
+  [ 39/378] Mbpp/85 → PASS  [6 calls] [critic×2]
+  [ 40/378] Mbpp/86 → PASS  [6 calls] [critic×2]
+  [ 41/378] Mbpp/87 → PASS  [6 calls] [critic×2]
+  [ 42/378] Mbpp/88 → PASS  [6 calls] [critic×2]
+  [ 43/378] Mbpp/89 → PASS  [6 calls] [critic×2]
+  [ 44/378] Mbpp/90 → PASS  [6 calls] [critic×2]
+  [ 45/378] Mbpp/91 → PASS  [6 calls] [critic×2]
+  [ 46/378] Mbpp/92 → PASS  [6 calls] [critic×2]
+  [ 47/378] Mbpp/93 → PASS  [6 calls] [critic×2]
+  [ 48/378] Mbpp/94 → PASS  [6 calls] [critic×2]
+  [ 49/378] Mbpp/95 → PASS  [6 calls] [critic×2]
+  [ 50/378] Mbpp/96 → PASS  [6 calls] [critic×2]
+  [ 51/378] Mbpp/97 → PASS  [6 calls] [critic×2]
+  [ 52/378] Mbpp/98 → PASS  [6 calls] [critic×2]
+  [ 53/378] Mbpp/99 → PASS  [6 calls] [critic×2]
+  [ 54/378] Mbpp/100 → PASS  [6 calls] [critic×2]
+  [ 55/378] Mbpp/101 → PASS  [6 calls] [critic×2]
+  [ 56/378] Mbpp/102 → PASS  [6 calls] [critic×2]
+  [ 57/378] Mbpp/103 → PASS  [6 calls] [critic×2]
+  [ 58/378] Mbpp/104 → PASS  [6 calls] [critic×2]
+test_critic: failed to parse JSON response, approving.
+  [ 59/378] Mbpp/105 → PASS  [6 calls] [critic×2]
+  [ 60/378] Mbpp/106 → PASS  [6 calls] [critic×2]
+  [ 61/378] Mbpp/108 → PASS  [6 calls] [critic×2]
+  [ 62/378] Mbpp/109 → PASS  [6 calls] [critic×2]
+  [ 63/378] Mbpp/111 → PASS  [6 calls] [critic×2]
+  [ 64/378] Mbpp/113 → PASS  [6 calls] [critic×2]
+  [ 65/378] Mbpp/116 → PASS  [6 calls] [critic×2]
+  [ 66/378] Mbpp/118 → PASS  [6 calls] [critic×2]
+  [ 67/378] Mbpp/119 → PASS  [6 calls] [critic×2]
+  [ 68/378] Mbpp/120 → PASS  [6 calls] [critic×2]
+  [ 69/378] Mbpp/123 → PASS  [6 calls] [critic×2]
+  [ 70/378] Mbpp/124 → PASS  [6 calls] [critic×2]
+  [ 71/378] Mbpp/125 → FAIL  [5 calls] [critic×1]
+  [ 72/378] Mbpp/126 → FAIL  [5 calls] [critic×1]
+  [ 73/378] Mbpp/127 → PASS  [6 calls] [critic×2]
+  [ 74/378] Mbpp/128 → FAIL  [5 calls] [critic×1]
+  [ 75/378] Mbpp/129 → FAIL  [5 calls] [critic×1]
+  [ 76/378] Mbpp/130 → PASS  [6 calls] [critic×2]
+  [ 77/378] Mbpp/131 → FAIL  [5 calls] [critic×1]
+  [ 78/378] Mbpp/132 → PASS  [6 calls] [critic×2]
+  [ 79/378] Mbpp/133 → PASS  [6 calls] [critic×2]
+  [ 80/378] Mbpp/135 → PASS  [6 calls] [critic×2]
+  [ 81/378] Mbpp/137 → PASS  [6 calls] [critic×2]
+test_critic: failed to parse JSON response, approving.
+  [ 82/378] Mbpp/138 → PASS  [5 calls] [critic×1]
+  [ 83/378] Mbpp/139 → PASS  [6 calls] [critic×2]
+  [ 84/378] Mbpp/140 → PASS  [6 calls] [critic×2]
+  [ 85/378] Mbpp/141 → PASS  [6 calls] [critic×2]
+  [ 86/378] Mbpp/142 → FAIL  [5 calls] [critic×1]
+  [ 87/378] Mbpp/145 → PASS  [6 calls] [critic×2]
+test_critic: failed to parse JSON response, approving.
+  [ 88/378] Mbpp/160 → PASS  [5 calls] [critic×1]
+  [ 89/378] Mbpp/161 → PASS  [6 calls] [critic×2]
+  [ 90/378] Mbpp/162 → FAIL  [5 calls] [critic×1]
+  [ 91/378] Mbpp/165 → FAIL  [5 calls] [critic×1]
+  [ 92/378] Mbpp/166 → PASS  [6 calls] [critic×2]
+  [ 93/378] Mbpp/167 → PASS  [6 calls] [critic×2]
+  [ 94/378] Mbpp/168 → PASS  [6 calls] [critic×2]
+  [ 95/378] Mbpp/170 → PASS  [6 calls] [critic×2]
+  [ 96/378] Mbpp/171 → PASS  [6 calls] [critic×2]
+  [ 97/378] Mbpp/172 → FAIL  [5 calls] [critic×1]
+  [ 98/378] Mbpp/222 → FAIL  [5 calls] [critic×1]
+  [ 99/378] Mbpp/223 → PASS  [6 calls] [critic×2]
+  [100/378] Mbpp/224 → PASS  [6 calls] [critic×2]
+  [101/378] Mbpp/226 → FAIL  [5 calls] [critic×1]
+  [102/378] Mbpp/227 → PASS  [6 calls] [critic×2]
+  [103/378] Mbpp/230 → FAIL  [5 calls] [critic×1]
+  [104/378] Mbpp/232 → FAIL  [5 calls] [critic×1]
+  [105/378] Mbpp/233 → PASS  [6 calls] [critic×2]
+  [106/378] Mbpp/234 → PASS  [6 calls] [critic×2]
+test_critic: failed to parse JSON response, approving.
+  [107/378] Mbpp/235 → PASS  [5 calls] [critic×1]
+  [108/378] Mbpp/237 → PASS  [6 calls] [critic×2]
+  [109/378] Mbpp/238 → PASS  [6 calls] [critic×2]
+  [110/378] Mbpp/239 → FAIL  [5 calls] [critic×1]
+  [111/378] Mbpp/240 → PASS  [6 calls] [critic×2]
+  [112/378] Mbpp/242 → PASS  [6 calls] [critic×2]
+  [113/378] Mbpp/244 → PASS  [6 calls] [critic×2]
+  [114/378] Mbpp/245 → FAIL  [5 calls] [critic×1]
+  [115/378] Mbpp/247 → FAIL  [5 calls] [critic×1]
+  [116/378] Mbpp/250 → PASS  [6 calls] [critic×2]
+  [117/378] Mbpp/251 → PASS  [6 calls] [critic×2]
+  [118/378] Mbpp/252 → PASS  [6 calls] [critic×2]
+  [119/378] Mbpp/253 → PASS  [6 calls] [critic×2]
+  [120/378] Mbpp/255 → PASS  [6 calls] [critic×2]
+  [121/378] Mbpp/256 → PASS  [6 calls] [critic×2]
+  [122/378] Mbpp/257 → PASS  [6 calls] [critic×2]
+  [123/378] Mbpp/259 → PASS  [6 calls] [critic×2]
+test_critic: failed to parse JSON response, approving.
+  [124/378] Mbpp/260 → PASS  [5 calls] [critic×1]
+  [125/378] Mbpp/261 → PASS  [6 calls] [critic×2]
+  [126/378] Mbpp/262 → PASS  [6 calls] [critic×2]
+  [127/378] Mbpp/264 → PASS  [6 calls] [critic×2]
+  [128/378] Mbpp/265 → PASS  [6 calls] [critic×2]
+  [129/378] Mbpp/266 → PASS  [6 calls] [critic×2]
+  [130/378] Mbpp/267 → PASS  [6 calls] [critic×2]
+  [131/378] Mbpp/268 → PASS  [6 calls] [critic×2]
+  [132/378] Mbpp/269 → PASS  [6 calls] [critic×2]
+  [133/378] Mbpp/270 → PASS  [6 calls] [critic×2]
+  [134/378] Mbpp/271 → FAIL  [5 calls] [critic×1]
+  [135/378] Mbpp/272 → PASS  [6 calls] [critic×2]
+  [136/378] Mbpp/273 → PASS  [6 calls] [critic×2]
+  [137/378] Mbpp/274 → PASS  [6 calls] [critic×2]
+  [138/378] Mbpp/276 → PASS  [6 calls] [critic×2]
+  [139/378] Mbpp/277 → PASS  [6 calls] [critic×2]
+  [140/378] Mbpp/278 → PASS  [6 calls] [critic×2]
+  [141/378] Mbpp/279 → PASS  [6 calls] [critic×2]
+  [142/378] Mbpp/280 → PASS  [6 calls] [critic×2]
+  [143/378] Mbpp/281 → PASS  [6 calls] [critic×2]
+  [144/378] Mbpp/282 → PASS  [6 calls] [critic×2]
+test_critic: failed to parse JSON response, approving.
+  [145/378] Mbpp/283 → PASS  [5 calls] [critic×1]
+  [146/378] Mbpp/284 → PASS  [6 calls] [critic×2]
+  [147/378] Mbpp/285 → FAIL  [5 calls] [critic×1]
+  [148/378] Mbpp/286 → FAIL  [5 calls] [critic×1]
+  [149/378] Mbpp/287 → PASS  [6 calls] [critic×2]
+  [150/378] Mbpp/290 → PASS  [6 calls] [critic×2]
+  [151/378] Mbpp/292 → PASS  [6 calls] [critic×2]
+  [152/378] Mbpp/293 → PASS  [6 calls] [critic×2]
+test_critic: failed to parse JSON response, approving.
+  [153/378] Mbpp/294 → PASS  [5 calls] [critic×1]
+  [154/378] Mbpp/296 → PASS  [6 calls] [critic×2]
+  [155/378] Mbpp/297 → PASS  [6 calls] [critic×2]
+  [156/378] Mbpp/299 → PASS  [6 calls] [critic×2]
+  [157/378] Mbpp/300 → PASS  [6 calls] [critic×2]
+  [158/378] Mbpp/301 → PASS  [6 calls] [critic×2]
+  [159/378] Mbpp/305 → PASS  [6 calls] [critic×2]
+  [160/378] Mbpp/306 → FAIL  [5 calls] [critic×1]
+test_critic: failed to parse JSON response, approving.
+  [161/378] Mbpp/308 → PASS  [5 calls] [critic×1]
+  [162/378] Mbpp/309 → FAIL  [5 calls] [critic×1]
+  [163/378] Mbpp/310 → PASS  [6 calls] [critic×2]
+  [164/378] Mbpp/311 → FAIL  [5 calls] [critic×1]
+  [165/378] Mbpp/312 → PASS  [6 calls] [critic×2]
+  [166/378] Mbpp/388 → PASS  [6 calls] [critic×2]
+  [167/378] Mbpp/389 → PASS  [6 calls] [critic×2]
+  [168/378] Mbpp/390 → PASS  [6 calls] [critic×2]
+  [169/378] Mbpp/391 → PASS  [6 calls] [critic×2]
+  [170/378] Mbpp/392 → FAIL  [5 calls] [critic×1]
+  [171/378] Mbpp/394 → PASS  [6 calls] [critic×2]
+  [172/378] Mbpp/395 → FAIL  [5 calls] [critic×1]
+  [173/378] Mbpp/397 → PASS  [6 calls] [critic×2]
+  [174/378] Mbpp/398 → PASS  [6 calls] [critic×2]
+  [175/378] Mbpp/404 → PASS  [6 calls] [critic×2]
+  [176/378] Mbpp/405 → PASS  [6 calls] [critic×2]
+  [177/378] Mbpp/406 → PASS  [6 calls] [critic×2]
+  [178/378] Mbpp/409 → PASS  [6 calls] [critic×2]
+  [179/378] Mbpp/410 → PASS  [6 calls] [critic×2]
+  [180/378] Mbpp/412 → PASS  [6 calls] [critic×2]
+  [181/378] Mbpp/413 → PASS  [6 calls] [critic×2]
+  [182/378] Mbpp/414 → PASS  [6 calls] [critic×2]
+  [183/378] Mbpp/415 → FAIL  [5 calls] [critic×1]
+  [184/378] Mbpp/418 → PASS  [6 calls] [critic×2]
+  [185/378] Mbpp/419 → FAIL  [5 calls] [critic×1]
+  [186/378] Mbpp/420 → FAIL  [5 calls] [critic×1]
+  [187/378] Mbpp/421 → PASS  [6 calls] [critic×2]
+  [188/378] Mbpp/422 → PASS  [6 calls] [critic×2]
+  [189/378] Mbpp/424 → PASS  [6 calls] [critic×2]
+  [190/378] Mbpp/425 → PASS  [6 calls] [critic×2]
+  [191/378] Mbpp/426 → PASS  [6 calls] [critic×2]
+  [192/378] Mbpp/427 → PASS  [6 calls] [critic×2]
+  [193/378] Mbpp/428 → PASS  [6 calls] [critic×2]
+  [194/378] Mbpp/429 → PASS  [6 calls] [critic×2]
+  [195/378] Mbpp/430 → PASS  [6 calls] [critic×2]
+  [196/378] Mbpp/432 → PASS  [6 calls] [critic×2]
+  [197/378] Mbpp/433 → PASS  [6 calls] [critic×2]
+  [198/378] Mbpp/435 → PASS  [6 calls] [critic×2]
+  [199/378] Mbpp/436 → PASS  [6 calls] [critic×2]
+  [200/378] Mbpp/437 → FAIL  [5 calls] [critic×1]
+  [201/378] Mbpp/439 → PASS  [6 calls] [critic×2]
+  [202/378] Mbpp/440 → FAIL  [5 calls] [critic×1]
+  [203/378] Mbpp/441 → PASS  [6 calls] [critic×2]
+  [204/378] Mbpp/445 → PASS  [6 calls] [critic×2]
+  [205/378] Mbpp/446 → PASS  [6 calls] [critic×2]
+  [206/378] Mbpp/447 → PASS  [6 calls] [critic×2]
+  [207/378] Mbpp/448 → FAIL  [5 calls] [critic×1]
+  [208/378] Mbpp/450 → PASS  [6 calls] [critic×2]
+  [209/378] Mbpp/451 → PASS  [6 calls] [critic×2]
+  [210/378] Mbpp/453 → FAIL  [5 calls] [critic×1]
+  [211/378] Mbpp/454 → PASS  [6 calls] [critic×2]
+  [212/378] Mbpp/455 → PASS  [6 calls] [critic×2]
+  [213/378] Mbpp/456 → PASS  [6 calls] [critic×2]
+  [214/378] Mbpp/457 → PASS  [6 calls] [critic×2]
+  [215/378] Mbpp/458 → PASS  [6 calls] [critic×2]
+  [216/378] Mbpp/459 → PASS  [6 calls] [critic×2]
+  [217/378] Mbpp/460 → PASS  [6 calls] [critic×2]
+  [218/378] Mbpp/462 → FAIL  [5 calls] [critic×1]
+  [219/378] Mbpp/463 → PASS  [6 calls] [critic×2]
+  [220/378] Mbpp/465 → PASS  [6 calls] [critic×2]
+  [221/378] Mbpp/468 → FAIL  [5 calls] [critic×1]
+  [222/378] Mbpp/470 → PASS  [6 calls] [critic×2]
+  [223/378] Mbpp/471 → PASS  [6 calls] [critic×2]
+  [224/378] Mbpp/472 → PASS  [6 calls] [critic×2]
+  [225/378] Mbpp/473 → PASS  [6 calls] [critic×2]
+  [226/378] Mbpp/474 → PASS  [6 calls] [critic×2]
+  [227/378] Mbpp/475 → PASS  [6 calls] [critic×2]
+  [228/378] Mbpp/476 → PASS  [6 calls] [critic×2]
+  [229/378] Mbpp/477 → PASS  [6 calls] [critic×2]
+  [230/378] Mbpp/478 → FAIL  [5 calls] [critic×1]
+  [231/378] Mbpp/479 → PASS  [6 calls] [critic×2]
+  [232/378] Mbpp/554 → PASS  [6 calls] [critic×2]
+  [233/378] Mbpp/555 → FAIL  [5 calls] [critic×1]
+  [234/378] Mbpp/556 → PASS  [6 calls] [critic×2]
+  [235/378] Mbpp/557 → PASS  [6 calls] [critic×2]
+  [236/378] Mbpp/558 → FAIL  [5 calls] [critic×1]
+  [237/378] Mbpp/559 → PASS  [6 calls] [critic×2]
+  [238/378] Mbpp/560 → PASS  [6 calls] [critic×2]
+  [239/378] Mbpp/562 → PASS  [6 calls] [critic×2]
+  [240/378] Mbpp/563 → PASS  [6 calls] [critic×2]
+  [241/378] Mbpp/564 → PASS  [6 calls] [critic×2]
+  [242/378] Mbpp/565 → PASS  [6 calls] [critic×2]
+  [243/378] Mbpp/566 → PASS  [6 calls] [critic×2]
+  [244/378] Mbpp/567 → PASS  [6 calls] [critic×2]
+  [245/378] Mbpp/568 → PASS  [6 calls] [critic×2]
+  [246/378] Mbpp/569 → PASS  [6 calls] [critic×2]
+  [247/378] Mbpp/572 → PASS  [6 calls] [critic×2]
+  [248/378] Mbpp/573 → PASS  [6 calls] [critic×2]
+  [249/378] Mbpp/576 → PASS  [6 calls] [critic×2]
+  [250/378] Mbpp/577 → PASS  [6 calls] [critic×2]
+  [251/378] Mbpp/578 → PASS  [6 calls] [critic×2]
+  [252/378] Mbpp/579 → PASS  [6 calls] [critic×2]
+  [253/378] Mbpp/580 → PASS  [6 calls] [critic×2]
+test_critic: failed to parse JSON response, approving.
+  [254/378] Mbpp/581 → PASS  [5 calls] [critic×1]
+  [255/378] Mbpp/583 → PASS  [6 calls] [critic×2]
+  [256/378] Mbpp/585 → PASS  [6 calls] [critic×2]
+  [257/378] Mbpp/586 → PASS  [6 calls] [critic×2]
+  [258/378] Mbpp/587 → PASS  [6 calls] [critic×2]
+  [259/378] Mbpp/588 → PASS  [6 calls] [critic×2]
+  [260/378] Mbpp/589 → PASS  [6 calls] [critic×2]
+  [261/378] Mbpp/590 → FAIL  [5 calls] [critic×1]
+  [262/378] Mbpp/591 → PASS  [6 calls] [critic×2]
+  [263/378] Mbpp/592 → FAIL  [5 calls] [critic×1]
+  [264/378] Mbpp/593 → PASS  [6 calls] [critic×2]
+  [265/378] Mbpp/594 → PASS  [6 calls] [critic×2]
+  [266/378] Mbpp/596 → PASS  [6 calls] [critic×2]
+  [267/378] Mbpp/597 → PASS  [6 calls] [critic×2]
+  [268/378] Mbpp/598 → PASS  [6 calls] [critic×2]
+  [269/378] Mbpp/599 → PASS  [6 calls] [critic×2]
+  [270/378] Mbpp/600 → PASS  [6 calls] [critic×2]
+  [271/378] Mbpp/602 → PASS  [6 calls] [critic×2]
+  [272/378] Mbpp/603 → FAIL  [5 calls] [critic×1]
+  [273/378] Mbpp/604 → PASS  [6 calls] [critic×2]
+  [274/378] Mbpp/605 → PASS  [6 calls] [critic×2]
+  [275/378] Mbpp/606 → PASS  [6 calls] [critic×2]
+  [276/378] Mbpp/607 → PASS  [6 calls] [critic×2]
+  [277/378] Mbpp/608 → PASS  [6 calls] [critic×2]
+  [278/378] Mbpp/610 → PASS  [6 calls] [critic×2]
+  [279/378] Mbpp/611 → PASS  [6 calls] [critic×2]
+  [280/378] Mbpp/612 → PASS  [6 calls] [critic×2]
+  [281/378] Mbpp/614 → PASS  [6 calls] [critic×2]
+  [282/378] Mbpp/615 → PASS  [6 calls] [critic×2]
+  [283/378] Mbpp/616 → FAIL  [5 calls] [critic×1]
+  [284/378] Mbpp/618 → PASS  [6 calls] [critic×2]
+  [285/378] Mbpp/619 → PASS  [6 calls] [critic×2]
+  [286/378] Mbpp/620 → FAIL  [5 calls] [critic×1]
+  [287/378] Mbpp/622 → PASS  [6 calls] [critic×2]
+  [288/378] Mbpp/623 → PASS  [6 calls] [critic×2]
+  [289/378] Mbpp/624 → PASS  [6 calls] [critic×2]
+  [290/378] Mbpp/626 → PASS  [6 calls] [critic×2]
+  [291/378] Mbpp/628 → PASS  [6 calls] [critic×2]
+  [292/378] Mbpp/629 → PASS  [6 calls] [critic×2]
+  [293/378] Mbpp/630 → PASS  [6 calls] [critic×2]
+  [294/378] Mbpp/631 → PASS  [6 calls] [critic×2]
+  [295/378] Mbpp/632 → PASS  [6 calls] [critic×2]
+  [296/378] Mbpp/633 → PASS  [6 calls] [critic×2]
+  [297/378] Mbpp/635 → PASS  [6 calls] [critic×2]
+  [298/378] Mbpp/637 → PASS  [6 calls] [critic×2]
+  [299/378] Mbpp/638 → FAIL  [5 calls] [critic×1]
+  [300/378] Mbpp/639 → PASS  [6 calls] [critic×2]
+  [301/378] Mbpp/641 → FAIL  [5 calls] [critic×1]
+  [302/378] Mbpp/643 → PASS  [6 calls] [critic×2]
+  [303/378] Mbpp/644 → PASS  [6 calls] [critic×2]
+  [304/378] Mbpp/720 → PASS  [6 calls] [critic×2]
+  [305/378] Mbpp/721 → FAIL  [5 calls] [critic×1]
+  [306/378] Mbpp/722 → PASS  [6 calls] [critic×2]
+  [307/378] Mbpp/723 → PASS  [6 calls] [critic×2]
+  [308/378] Mbpp/724 → PASS  [6 calls] [critic×2]
+  [309/378] Mbpp/725 → PASS  [6 calls] [critic×2]
+  [310/378] Mbpp/726 → PASS  [6 calls] [critic×2]
+  [311/378] Mbpp/728 → PASS  [6 calls] [critic×2]
+  [312/378] Mbpp/730 → PASS  [6 calls] [critic×2]
+  [313/378] Mbpp/731 → PASS  [6 calls] [critic×2]
+  [314/378] Mbpp/732 → PASS  [6 calls] [critic×2]
+  [315/378] Mbpp/733 → PASS  [6 calls] [critic×2]
+  [316/378] Mbpp/734 → FAIL  [5 calls] [critic×1]
+  [317/378] Mbpp/735 → PASS  [6 calls] [critic×2]
+  [318/378] Mbpp/736 → PASS  [6 calls] [critic×2]
+  [319/378] Mbpp/737 → PASS  [6 calls] [critic×2]
+  [320/378] Mbpp/739 → PASS  [6 calls] [critic×2]
+  [321/378] Mbpp/740 → PASS  [6 calls] [critic×2]
+  [322/378] Mbpp/741 → PASS  [6 calls] [critic×2]
+  [323/378] Mbpp/742 → PASS  [6 calls] [critic×2]
+  [324/378] Mbpp/743 → PASS  [6 calls] [critic×2]
+  [325/378] Mbpp/744 → PASS  [6 calls] [critic×2]
+  [326/378] Mbpp/745 → FAIL  [5 calls] [critic×1]
+  [327/378] Mbpp/748 → PASS  [6 calls] [critic×2]
+  [328/378] Mbpp/749 → PASS  [6 calls] [critic×2]
+  [329/378] Mbpp/750 → PASS  [6 calls] [critic×2]
+  [330/378] Mbpp/751 → FAIL  [5 calls] [critic×1]
+  [331/378] Mbpp/752 → PASS  [6 calls] [critic×2]
+  [332/378] Mbpp/753 → PASS  [6 calls] [critic×2]
+  [333/378] Mbpp/754 → PASS  [6 calls] [critic×2]
+  [334/378] Mbpp/755 → PASS  [6 calls] [critic×2]
+test_critic: failed to parse JSON response, approving.
+  [335/378] Mbpp/757 → PASS  [5 calls] [critic×1]
+  [336/378] Mbpp/758 → PASS  [6 calls] [critic×2]
+  [337/378] Mbpp/759 → PASS  [6 calls] [critic×2]
+  [338/378] Mbpp/760 → PASS  [6 calls] [critic×2]
+  [339/378] Mbpp/762 → PASS  [6 calls] [critic×2]
+  [340/378] Mbpp/763 → PASS  [6 calls] [critic×2]
+  [341/378] Mbpp/764 → PASS  [6 calls] [critic×2]
+  [342/378] Mbpp/765 → FAIL  [5 calls] [critic×1]
+  [343/378] Mbpp/766 → PASS  [6 calls] [critic×2]
+  [344/378] Mbpp/767 → FAIL  [5 calls] [critic×1]
+  [345/378] Mbpp/769 → FAIL  [5 calls] [critic×1]
+  [346/378] Mbpp/770 → FAIL  [5 calls] [critic×1]
+  [347/378] Mbpp/771 → PASS  [6 calls] [critic×2]
+  [348/378] Mbpp/772 → FAIL  [5 calls] [critic×1]
+  [349/378] Mbpp/773 → PASS  [6 calls] [critic×2]
+  [350/378] Mbpp/775 → PASS  [6 calls] [critic×2]
+  [351/378] Mbpp/777 → PASS  [6 calls] [critic×2]
+  [352/378] Mbpp/778 → PASS  [6 calls] [critic×2]
+  [353/378] Mbpp/780 → PASS  [6 calls] [critic×2]
+  [354/378] Mbpp/781 → PASS  [6 calls] [critic×2]
+  [355/378] Mbpp/782 → FAIL  [5 calls] [critic×1]
+test_critic: failed to parse JSON response, approving.
+  [356/378] Mbpp/784 → PASS  [5 calls] [critic×1]
+test_critic error: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CaAZsWxjLJS4Mis9KvCir'}
+  [357/378] Mbpp/785 → PASS  [6 calls] [critic×2]
+Traceback (most recent call last):
+  File "/Users/gauthamys/Desktop/CS540_Project/scripts/run_mbpp.py", line 214, in <module>
+    main()
+    ~~~~^^
+  File "/Users/gauthamys/Desktop/CS540_Project/scripts/run_mbpp.py", line 208, in main
+    run_multi_v2(records)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/gauthamys/Desktop/CS540_Project/scripts/run_mbpp.py", line 162, in run_multi_v2
+    result = graph.invoke(make_initial_state(rec))
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langgraph/pregel/main.py", line 3290, in invoke
+    for chunk in self.stream(
+                 ~~~~~~~~~~~^
+        input,
+        ^^^^^^
+    ...<10 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ):
+    ^
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langgraph/pregel/main.py", line 2724, in stream
+    for _ in runner.tick(
+             ~~~~~~~~~~~^
+        [t for t in loop.tasks.values() if not t.writes],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        schedule_task=loop.accept_push,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langgraph/pregel/_runner.py", line 167, in tick
+    run_with_retry(
+    ~~~~~~~~~~~~~~^
+        t,
+        ^^
+    ...<10 lines>...
+        },
+        ^^
+    )
+    ^
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langgraph/pregel/_retry.py", line 71, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langgraph/_internal/_runnable.py", line 656, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langgraph/_internal/_runnable.py", line 400, in invoke
+    ret = self.func(*args, **kwargs)
+  File "/Users/gauthamys/Desktop/CS540_Project/src/systems/multi_agent/nodes/planner.py", line 85, in codegen_planner_node
+    response = _get_llm().invoke(
+        [SystemMessage(content=CODEGEN_PLANNER_SYSTEM), HumanMessage(content=prompt)]
+    )
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 454, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1185, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 995, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1297, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langchain_anthropic/chat_models.py", line 1617, in _generate
+    _handle_anthropic_bad_request(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langchain_anthropic/chat_models.py", line 1615, in _generate
+    data = self._create(payload)
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langchain_anthropic/chat_models.py", line 1287, in _create
+    return self._client.messages.create(**payload)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/anthropic/_utils/_utils.py", line 282, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/anthropic/resources/messages/messages.py", line 996, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/v1/messages",
+        ^^^^^^^^^^^^^^^
+    ...<30 lines>...
+        stream_cls=Stream[RawMessageStreamEvent],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/anthropic/_base_client.py", line 1364, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/anthropic/_base_client.py", line 1137, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CaAZsXisf4QeNEJun97Di'}
+During task with name 'planner' and id '061f2912-cce7-71a6-9c9d-b98f4bc26636'
