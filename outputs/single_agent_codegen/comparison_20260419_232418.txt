@@ -1,0 +1,17 @@
+============================================================
+  Single-Agent vs Multi-Agent — HumanEval+ Comparison
+============================================================
+
+  Metric                       Single-Agent     Multi-Agent
+  -------------------------------------------------------
+  pass@1                             100.0%          100.0%
+  problems passed                       164             164
+  total problems                        164             164
+  avg LLM calls                         1.0             4.0
+  total LLM calls                       164             656
+  total tokens                        42525          334036
+
+  pass@1 delta (single - multi) : +0.0%
+  LLM calls delta               : +-3.00 avg calls
+
+============================================================
