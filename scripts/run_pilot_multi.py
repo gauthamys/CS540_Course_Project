@@ -39,7 +39,7 @@ def write_jsonl(records: list, path: str) -> None:
         for r in records:
             obj = r if isinstance(r, dict) else r.model_dump()
             f.write(json.dumps(obj) + "\n")
-    print(f"  Saved {len(records)} records → {path}")
+    print(f"  Saved {len(records)} records -> {path}")
 
 
 def run_re_pilot(pilot_path: str, dataset_name: str) -> None:
@@ -66,7 +66,7 @@ def run_re_pilot(pilot_path: str, dataset_name: str) -> None:
         )
         rt = pred.get("requirement_type", "?")
         sub = pred.get("nfr_subtype") or "-"
-        print(f"  {rec['id']} → {rt} ({sub})  [{result.get('llm_calls', 0)} calls]")
+        print(f"  {rec['id']} -> {rt} ({sub})  [{result.get('llm_calls', 0)} calls]")
 
     out_path = os.path.join(OUTPUT_DIR, f"{dataset_name}_pilot_{TIMESTAMP}.jsonl")
     write_jsonl(predictions, out_path)
@@ -103,7 +103,7 @@ def run_codegen_pilot(pilot_path: str) -> None:
             task_id=rec["id"],
         )
         status = "PASS" if (test_result or {}).get("passed", False) else "FAIL"
-        print(f"  {rec['id']} → {status}  [{result.get('llm_calls', 0)} calls]")
+        print(f"  {rec['id']} -> {status}  [{result.get('llm_calls', 0)} calls]")
 
     out_path = os.path.join(OUTPUT_DIR, f"codegen_solutions_pilot_{TIMESTAMP}.jsonl")
     write_jsonl(solutions, out_path)

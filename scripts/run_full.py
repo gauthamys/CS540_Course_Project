@@ -42,7 +42,7 @@ def write_jsonl(records: list, path: str) -> None:
         for r in records:
             obj = r if isinstance(r, dict) else r.model_dump()
             f.write(json.dumps(obj) + "\n")
-    print(f"  Saved {len(records)} records → {path}")
+    print(f"  Saved {len(records)} records -> {path}")
 
 
 # ── Single-agent ──────────────────────────────────────────────────────────────
@@ -71,7 +71,7 @@ def run_single(records: list[dict]) -> None:
         )
         test_results.append(result)
         status = "PASS" if result.passed else "FAIL"
-        print(f"  [{i:3d}/164] {rec['id']} → {status}")
+        print(f"  [{i:3d}/164] {rec['id']} -> {status}")
 
     write_jsonl(solutions, f"{out_dir}/full_codegen_solutions_{TIMESTAMP}.jsonl")
     write_jsonl([r.model_dump() for r in test_results], f"{out_dir}/full_codegen_tests_{TIMESTAMP}.jsonl")
@@ -104,7 +104,7 @@ def run_multi(records: list[dict]) -> None:
         tracker.record(llm_calls=result.get("llm_calls", 0), total_tokens=result.get("total_tokens", 0), task_id=rec["id"])
 
         status = "PASS" if (test_result or {}).get("passed", False) else "FAIL"
-        print(f"  [{i:3d}/164] {rec['id']} → {status}  [{result.get('llm_calls', 0)} calls]")
+        print(f"  [{i:3d}/164] {rec['id']} -> {status}  [{result.get('llm_calls', 0)} calls]")
 
     write_jsonl(solutions, f"{out_dir}/full_codegen_solutions_{TIMESTAMP}.jsonl")
     write_jsonl(test_results, f"{out_dir}/full_codegen_tests_{TIMESTAMP}.jsonl")
@@ -139,7 +139,7 @@ def run_multi_v2(records: list[dict]) -> None:
 
         status = "PASS" if (test_result or {}).get("passed", False) else "FAIL"
         critic_note = f" [critic×{critique_iters}]" if critique_iters else ""
-        print(f"  [{i:3d}/164] {rec['id']} → {status}  [{result.get('llm_calls', 0)} calls]{critic_note}")
+        print(f"  [{i:3d}/164] {rec['id']} -> {status}  [{result.get('llm_calls', 0)} calls]{critic_note}")
 
     write_jsonl(solutions, f"{out_dir}/full_codegen_solutions_{TIMESTAMP}.jsonl")
     write_jsonl(test_results, f"{out_dir}/full_codegen_tests_{TIMESTAMP}.jsonl")

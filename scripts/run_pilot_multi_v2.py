@@ -38,7 +38,7 @@ def write_jsonl(records: list, path: str) -> None:
         for r in records:
             obj = r if isinstance(r, dict) else r.model_dump()
             f.write(json.dumps(obj) + "\n")
-    print(f"  Saved {len(records)} records → {path}")
+    print(f"  Saved {len(records)} records -> {path}")
 
 
 def run_codegen_pilot(pilot_path: str) -> None:
@@ -75,7 +75,7 @@ def run_codegen_pilot(pilot_path: str) -> None:
         status = "PASS" if (test_result or {}).get("passed", False) else "FAIL"
         augmented_note = f"  [test_critic ran {critique_iters}x]" if critique_iters else ""
         print(
-            f"  {rec['id']} → {status}"
+            f"  {rec['id']} -> {status}"
             f"  [{result.get('llm_calls', 0)} calls]{augmented_note}"
         )
         if augmented and augmented != rec.get("test_code", ""):

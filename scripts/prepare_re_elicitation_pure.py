@@ -105,7 +105,7 @@ def main() -> None:
         for r in records:
             f.write(json.dumps(r) + "\n")
 
-    print(f"\n  Saved {len(records)} project records → {OUTPUT_PATH}")
+    print(f"\n  Saved {len(records)} project records -> {OUTPUT_PATH}")
 
 
 if __name__ == "__main__":

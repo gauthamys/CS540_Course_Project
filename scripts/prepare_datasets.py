@@ -33,7 +33,7 @@ def write_jsonl(records: list[dict], path: str) -> None:
     with open(path, "w") as f:
         for r in records:
             f.write(json.dumps(r) + "\n")
-    print(f"  Wrote {len(records):>5} records → {path}")
+    print(f"  Wrote {len(records):>5} records -> {path}")
 
 
 def main() -> None:

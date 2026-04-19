@@ -53,7 +53,7 @@ def write_jsonl(records: list[dict], path: str) -> None:
     with open(path, "w") as f:
         for r in records:
             f.write(json.dumps(r) + "\n")
-    print(f"  Saved {len(records)} records → {path}")
+    print(f"  Saved {len(records)} records -> {path}")
 
 
 # ── System 1: Single-Agent ─────────────────────────────────────────────────────

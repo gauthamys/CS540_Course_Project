@@ -49,7 +49,7 @@ def write_jsonl(records: list, path: str) -> None:
         for r in records:
             obj = r if isinstance(r, dict) else r.model_dump()
             f.write(json.dumps(obj) + "\n")
-    print(f"  Saved {len(records)} records → {path}")
+    print(f"  Saved {len(records)} records -> {path}")
 
 
 def append_jsonl(record, path: str) -> None:
@@ -107,7 +107,7 @@ def run_single(records: list[dict]) -> None:
 
     for i, rec in enumerate(records, 1):
         if rec["id"] in done:
-            print(f"  [{i:3d}/{n}] {rec['id']} → SKIP")
+            print(f"  [{i:3d}/{n}] {rec['id']} -> SKIP")
             continue
         sol, usage = agent.generate(rec)
         tracker.record(llm_calls=usage["llm_calls"], total_tokens=usage["total_tokens"], task_id=rec["id"])
@@ -122,7 +122,7 @@ def run_single(records: list[dict]) -> None:
         append_jsonl(sol, sols_path)
         append_jsonl(result.model_dump(), tests_path)
         status = "PASS" if result.passed else "FAIL"
-        print(f"  [{i:3d}/{n}] {rec['id']} → {status}")
+        print(f"  [{i:3d}/{n}] {rec['id']} -> {status}")
 
     tracker.save(f"{out_dir}/mbpp_cost_{TIMESTAMP}.json")
     metrics = compute_codegen_metrics(test_results)
@@ -150,7 +150,7 @@ def run_multi(records: list[dict]) -> None:
 
     for i, rec in enumerate(records, 1):
         if rec["id"] in done:
-            print(f"  [{i:3d}/{n}] {rec['id']} → SKIP")
+            print(f"  [{i:3d}/{n}] {rec['id']} -> SKIP")
             continue
         result = graph.invoke(make_initial_state(rec))
         final_code = result.get("final_code", "# no code")
@@ -162,7 +162,7 @@ def run_multi(records: list[dict]) -> None:
         tracker.record(llm_calls=result.get("llm_calls", 0), total_tokens=result.get("total_tokens", 0), task_id=rec["id"])
 
         status = "PASS" if (test_result or {}).get("passed", False) else "FAIL"
-        print(f"  [{i:3d}/{n}] {rec['id']} → {status}  [{result.get('llm_calls', 0)} calls]")
+        print(f"  [{i:3d}/{n}] {rec['id']} -> {status}  [{result.get('llm_calls', 0)} calls]")
 
     tracker.save(f"{out_dir}/mbpp_cost_{TIMESTAMP}.json")
     metrics = compute_codegen_metrics(test_results)
@@ -191,7 +191,7 @@ def run_multi_v2(records: list[dict]) -> None:
 
     for i, rec in enumerate(records, 1):
         if rec["id"] in done:
-            print(f"  [{i:3d}/{n}] {rec['id']} → SKIP")
+            print(f"  [{i:3d}/{n}] {rec['id']} -> SKIP")
             continue
         result = graph.invoke(make_initial_state(rec))
         final_code = result.get("final_code", "# no code")
@@ -205,7 +205,7 @@ def run_multi_v2(records: list[dict]) -> None:
 
         status = "PASS" if (test_result or {}).get("passed", False) else "FAIL"
         critic_note = f" [critic×{critique_iters}]" if critique_iters else ""
-        print(f"  [{i:3d}/{n}] {rec['id']} → {status}  [{result.get('llm_calls', 0)} calls]{critic_note}")
+        print(f"  [{i:3d}/{n}] {rec['id']} -> {status}  [{result.get('llm_calls', 0)} calls]{critic_note}")
 
     tracker.save(f"{out_dir}/mbpp_cost_{TIMESTAMP}.json")
     metrics = compute_codegen_metrics(test_results)

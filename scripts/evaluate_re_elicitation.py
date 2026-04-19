@@ -135,7 +135,7 @@ def main() -> None:
     out_path = f"{output_dir}/evaluation_{TIMESTAMP}.json"
     with open(out_path, "w") as f:
         json.dump(all_results, f, indent=2)
-    print(f"\n  Full results saved → {out_path}")
+    print(f"\n  Full results saved -> {out_path}")
 
 
 if __name__ == "__main__":
