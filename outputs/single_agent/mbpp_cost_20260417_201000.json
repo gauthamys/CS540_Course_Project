@@ -1,0 +1,67 @@
+{
+  "system": "single_agent",
+  "dataset": "mbpp_plus",
+  "started_at": "2026-04-17T20:10:05.093513",
+  "finished_at": "2026-04-17T20:10:52.517235",
+  "summary": {
+    "system": "single_agent",
+    "dataset": "mbpp_plus",
+    "n_tasks": 10,
+    "total_llm_calls": 10,
+    "total_tokens": 1350,
+    "avg_llm_calls": 1.0,
+    "avg_tokens": 135.0
+  },
+  "per_task": [
+    {
+      "task_id": "Mbpp/2",
+      "llm_calls": 1,
+      "total_tokens": 120
+    },
+    {
+      "task_id": "Mbpp/3",
+      "llm_calls": 1,
+      "total_tokens": 142
+    },
+    {
+      "task_id": "Mbpp/4",
+      "llm_calls": 1,
+      "total_tokens": 129
+    },
+    {
+      "task_id": "Mbpp/6",
+      "llm_calls": 1,
+      "total_tokens": 120
+    },
+    {
+      "task_id": "Mbpp/7",
+      "llm_calls": 1,
+      "total_tokens": 128
+    },
+    {
+      "task_id": "Mbpp/8",
+      "llm_calls": 1,
+      "total_tokens": 115
+    },
+    {
+      "task_id": "Mbpp/9",
+      "llm_calls": 1,
+      "total_tokens": 138
+    },
+    {
+      "task_id": "Mbpp/11",
+      "llm_calls": 1,
+      "total_tokens": 234
+    },
+    {
+      "task_id": "Mbpp/12",
+      "llm_calls": 1,
+      "total_tokens": 124
+    },
+    {
+      "task_id": "Mbpp/14",
+      "llm_calls": 1,
+      "total_tokens": 100
+    }
+  ]
+}

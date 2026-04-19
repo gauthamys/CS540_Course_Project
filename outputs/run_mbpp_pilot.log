@@ -1,0 +1,32 @@
+/Users/gauthamys/Desktop/CS540_Project/.venv/lib/python3.14/site-packages/langchain_core/_api/deprecation.py:25: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
+  from pydantic.v1.fields import FieldInfo as FieldInfoV1
+  data/processed/mbpp_plus.jsonl not found — fetching from evalplus...
+Downloading dataset from https://github.com/evalplus/mbppplus_release/releases/download/v0.2.0/MbppPlus.jsonl.gz
+  Cached 378 MBPP+ problems → data/processed/mbpp_plus.jsonl
+=== MBPP+ Run — 10 problems ===
+
+[single_agent] Running on 10 MBPP+ problems...
+  [  1/10] Mbpp/2 → PASS
+  [  2/10] Mbpp/3 → PASS
+  [  3/10] Mbpp/4 → PASS
+  [  4/10] Mbpp/6 → PASS
+  [  5/10] Mbpp/7 → PASS
+  [  6/10] Mbpp/8 → PASS
+  [  7/10] Mbpp/9 → PASS
+  [  8/10] Mbpp/11 → PASS
+  [  9/10] Mbpp/12 → PASS
+  [ 10/10] Mbpp/14 → PASS
+  Saved 10 records → outputs/single_agent/mbpp_solutions_20260417_201000.jsonl
+  Saved 10 records → outputs/single_agent/mbpp_tests_20260417_201000.jsonl
+Cost tracker saved → outputs/single_agent/mbpp_cost_20260417_201000.json
+Traceback (most recent call last):
+  File "/Users/gauthamys/Desktop/CS540_Project/scripts/run_mbpp.py", line 214, in <module>
+    main()
+    ~~~~^^
+  File "/Users/gauthamys/Desktop/CS540_Project/scripts/run_mbpp.py", line 204, in main
+    run_single(records)
+    ~~~~~~~~~~^^^^^^^^^
+  File "/Users/gauthamys/Desktop/CS540_Project/scripts/run_mbpp.py", line 107, in run_single
+    f"  avg_tokens: {tracker.summary()['avg_total_tokens']:.0f}")
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+KeyError: 'avg_total_tokens'
