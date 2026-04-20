@@ -105,11 +105,32 @@ planner
 
 ---
 
+## Model Comparison: Claude vs Local Ollama (2026-04-19)
+
+### Single-Agent Performance on PURE Dataset
+
+| Model | Size | Coverage | Precision | F1 | NFR Coverage |
+|---|---|---|---|---|---|
+| Claude Sonnet 4.6 | ~100B (est.) | 0.359 | 0.367 | **0.338** | 0.186 |
+| Mistral-Nemo 12B | 12B | 0.285 | 0.288 | **0.263** | 0.071 |
+
+**Gap:** Mistral-nemo scores ~20% lower (F1 0.263 vs 0.338). Likely due to:
+- Smaller model capacity (12B vs 100B+)
+- Less optimized for structured output
+- Weaker reasoning on domain-specific patterns
+
+**Conclusion:** Claude Sonnet is production-grade; mistral-nemo is adequate for local dev/testing but with measurable quality loss.
+
+---
+
 ## Changes Made
 
 _Entries will be added here as implementation progresses._
 
 | Date | File | Change | Reason |
 |---|---|---|---|
-| 2026-04-19 | — | Baseline evaluation run on NICE + PURE | Establish scores before any changes |
+| 2026-04-19 | — | Baseline evaluation run on NICE + PURE with Claude | Establish scores before any changes |
 | 2026-04-19 | `reports/ARCHITECTURE_DECISIONS.md` | Created this document | Track decisions and rationale |
+| 2026-04-19 | 10 scripts | Fix Windows Unicode encoding (→ to ->) | UnicodeEncodeError on Windows in print statements |
+| 2026-04-19 | — | Pilot run: mistral-nemo on 3 PURE projects | Verify Ollama integration works |
+| 2026-04-19 | — | Full run: mistral-nemo on 15 PURE projects | Benchmark local model against Claude baseline |

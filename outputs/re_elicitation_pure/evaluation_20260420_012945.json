@@ -1,0 +1,201 @@
+{
+  "single_agent": {
+    "summary": {
+      "n_projects": 15,
+      "mean_coverage": 0.2852,
+      "std_coverage": 0.1682,
+      "mean_precision": 0.288,
+      "std_precision": 0.1778,
+      "mean_semantic_f1": 0.2632,
+      "std_semantic_f1": 0.1395,
+      "mean_fr_coverage": 0.2842,
+      "std_fr_coverage": 0.1699,
+      "mean_nfr_coverage": 0.0711,
+      "std_nfr_coverage": 0.1498,
+      "total_generated": 720,
+      "total_ground_truth": 1624
+    },
+    "per_project": [
+      {
+        "project_id": "0000 - cctns",
+        "system": "single_agent",
+        "coverage": 0.193,
+        "precision": 0.34,
+        "semantic_f1": 0.2462,
+        "fr_coverage": 0.2018,
+        "nfr_coverage": 0.0,
+        "n_generated": 50,
+        "n_ground_truth": 114,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "0000 - gamma j",
+        "system": "single_agent",
+        "coverage": 0.3333,
+        "precision": 0.36,
+        "semantic_f1": 0.3462,
+        "fr_coverage": 0.3438,
+        "nfr_coverage": 0.3158,
+        "n_generated": 50,
+        "n_ground_truth": 51,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "1995 - gemini",
+        "system": "single_agent",
+        "coverage": 0.4364,
+        "precision": 0.28,
+        "semantic_f1": 0.3411,
+        "fr_coverage": 0.4444,
+        "nfr_coverage": 0.0,
+        "n_generated": 50,
+        "n_ground_truth": 55,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "1998 - themas",
+        "system": "single_agent",
+        "coverage": 0.5122,
+        "precision": 0.44,
+        "semantic_f1": 0.4734,
+        "fr_coverage": 0.5122,
+        "nfr_coverage": 0.0,
+        "n_generated": 50,
+        "n_ground_truth": 41,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "1999 - dii",
+        "system": "single_agent",
+        "coverage": 0.1667,
+        "precision": 0.24,
+        "semantic_f1": 0.1967,
+        "fr_coverage": 0.1667,
+        "nfr_coverage": 0.0,
+        "n_generated": 50,
+        "n_ground_truth": 12,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "1999 - tcs",
+        "system": "single_agent",
+        "coverage": 0.3838,
+        "precision": 0.76,
+        "semantic_f1": 0.5101,
+        "fr_coverage": 0.3838,
+        "nfr_coverage": 0.0,
+        "n_generated": 50,
+        "n_ground_truth": 99,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "2003 - qheadache",
+        "system": "single_agent",
+        "coverage": 0.625,
+        "precision": 0.16,
+        "semantic_f1": 0.2548,
+        "fr_coverage": 0.625,
+        "nfr_coverage": 0.0,
+        "n_generated": 50,
+        "n_ground_truth": 8,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "2005 - phin",
+        "system": "single_agent",
+        "coverage": 0.2041,
+        "precision": 0.14,
+        "semantic_f1": 0.1661,
+        "fr_coverage": 0.2041,
+        "nfr_coverage": 0.0,
+        "n_generated": 50,
+        "n_ground_truth": 49,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "2006 - eirene sys 15",
+        "system": "single_agent",
+        "coverage": 0.0121,
+        "precision": 0.08,
+        "semantic_f1": 0.0211,
+        "fr_coverage": 0.0121,
+        "nfr_coverage": 0.0,
+        "n_generated": 50,
+        "n_ground_truth": 247,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "2007-eirene_fun_7-2",
+        "system": "single_agent",
+        "coverage": 0.0429,
+        "precision": 0.14,
+        "semantic_f1": 0.0657,
+        "fr_coverage": 0.0429,
+        "nfr_coverage": 0.0,
+        "n_generated": 50,
+        "n_ground_truth": 583,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "2007-ertms",
+        "system": "single_agent",
+        "coverage": 0.3283,
+        "precision": 0.54,
+        "semantic_f1": 0.4083,
+        "fr_coverage": 0.3283,
+        "nfr_coverage": 0.0,
+        "n_generated": 50,
+        "n_ground_truth": 198,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "2008 - keepass",
+        "system": "single_agent",
+        "coverage": 0.125,
+        "precision": 0.08,
+        "semantic_f1": 0.0976,
+        "fr_coverage": 0.125,
+        "nfr_coverage": 0.0,
+        "n_generated": 50,
+        "n_ground_truth": 32,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "2008 - peering",
+        "system": "single_agent",
+        "coverage": 0.4,
+        "precision": 0.28,
+        "semantic_f1": 0.3294,
+        "fr_coverage": 0.4,
+        "nfr_coverage": 0.0,
+        "n_generated": 50,
+        "n_ground_truth": 20,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "2009 - peppol approved",
+        "system": "single_agent",
+        "coverage": 0.1639,
+        "precision": 0.2,
+        "semantic_f1": 0.1802,
+        "fr_coverage": 0.1333,
+        "nfr_coverage": 0.25,
+        "n_generated": 20,
+        "n_ground_truth": 61,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "2010-blitdraft",
+        "system": "single_agent",
+        "coverage": 0.3519,
+        "precision": 0.28,
+        "semantic_f1": 0.3118,
+        "fr_coverage": 0.34,
+        "nfr_coverage": 0.5,
+        "n_generated": 50,
+        "n_ground_truth": 54,
+        "threshold": 0.6
+      }
+    ]
+  }
+}
