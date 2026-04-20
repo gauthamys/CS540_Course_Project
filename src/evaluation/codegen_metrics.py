@@ -48,6 +48,20 @@ def compute_codegen_metrics(results: list[TestRunResult | dict]) -> dict:
     }
 
 
+def run_single_test_bcb(code: str, test_code: str, task_id: str, attempt: int = 1) -> TestRunResult:
+    """
+    Execute generated code against a unittest.TestCase test suite (BigCodeBench format).
+    Appends unittest.main() so the TestCase actually runs as a script.
+    """
+    runner_suffix = "\n\nif __name__ == '__main__':\n    import unittest\n    unittest.main()\n"
+    return run_single_test(
+        code=code,
+        test_code=test_code + runner_suffix,
+        task_id=task_id,
+        attempt=attempt,
+    )
+
+
 def run_single_test(code: str, test_code: str, task_id: str, attempt: int = 1) -> TestRunResult:
     """
     Execute generated code against test_code in a subprocess with a timeout.
