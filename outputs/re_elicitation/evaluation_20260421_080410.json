@@ -1,0 +1,81 @@
+{
+  "single_agent": {
+    "summary": {
+      "n_projects": 5,
+      "mean_coverage": 0.0,
+      "std_coverage": 0.0,
+      "mean_precision": 0.0,
+      "std_precision": 0.0,
+      "mean_semantic_f1": 0.0,
+      "std_semantic_f1": 0.0,
+      "mean_fr_coverage": 0.0,
+      "std_fr_coverage": 0.0,
+      "mean_nfr_coverage": 0.0,
+      "std_nfr_coverage": 0.0,
+      "total_generated": 0,
+      "total_ground_truth": 273
+    },
+    "per_project": [
+      {
+        "project_id": "0000 - cctns",
+        "system": "single_agent",
+        "coverage": 0.0,
+        "precision": 0.0,
+        "semantic_f1": 0.0,
+        "fr_coverage": 0.0,
+        "nfr_coverage": 0.0,
+        "n_generated": 0,
+        "n_ground_truth": 114,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "0000 - gamma j",
+        "system": "single_agent",
+        "coverage": 0.0,
+        "precision": 0.0,
+        "semantic_f1": 0.0,
+        "fr_coverage": 0.0,
+        "nfr_coverage": 0.0,
+        "n_generated": 0,
+        "n_ground_truth": 51,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "1995 - gemini",
+        "system": "single_agent",
+        "coverage": 0.0,
+        "precision": 0.0,
+        "semantic_f1": 0.0,
+        "fr_coverage": 0.0,
+        "nfr_coverage": 0.0,
+        "n_generated": 0,
+        "n_ground_truth": 55,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "1998 - themas",
+        "system": "single_agent",
+        "coverage": 0.0,
+        "precision": 0.0,
+        "semantic_f1": 0.0,
+        "fr_coverage": 0.0,
+        "nfr_coverage": 0.0,
+        "n_generated": 0,
+        "n_ground_truth": 41,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "1999 - dii",
+        "system": "single_agent",
+        "coverage": 0.0,
+        "precision": 0.0,
+        "semantic_f1": 0.0,
+        "fr_coverage": 0.0,
+        "nfr_coverage": 0.0,
+        "n_generated": 0,
+        "n_ground_truth": 12,
+        "threshold": 0.6
+      }
+    ]
+  }
+}
