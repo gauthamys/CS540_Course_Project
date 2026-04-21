@@ -1,0 +1,131 @@
+{
+  "multi_agent_v1": {
+    "summary": {
+      "n_projects": 2,
+      "mean_coverage": 0.7964,
+      "std_coverage": 0.0965,
+      "mean_precision": 0.64,
+      "std_precision": 0.14,
+      "mean_semantic_f1": 0.6894,
+      "std_semantic_f1": 0.0484,
+      "mean_fr_coverage": 0.9055,
+      "std_fr_coverage": 0.0419,
+      "mean_nfr_coverage": 0.6875,
+      "std_nfr_coverage": 0.1875,
+      "total_generated": 100,
+      "total_ground_truth": 68
+    },
+    "per_project": [
+      {
+        "project_id": "1",
+        "system": "multi_agent_v1",
+        "coverage": 0.8929,
+        "precision": 0.5,
+        "semantic_f1": 0.641,
+        "fr_coverage": 0.9474,
+        "nfr_coverage": 0.875,
+        "n_generated": 50,
+        "n_ground_truth": 28,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "2",
+        "system": "multi_agent_v1",
+        "coverage": 0.7,
+        "precision": 0.78,
+        "semantic_f1": 0.7378,
+        "fr_coverage": 0.8636,
+        "nfr_coverage": 0.5,
+        "n_generated": 50,
+        "n_ground_truth": 40,
+        "threshold": 0.6
+      }
+    ]
+  },
+  "multi_agent_v2_sme": {
+    "summary": {
+      "n_projects": 2,
+      "mean_coverage": 0.759,
+      "std_coverage": 0.134,
+      "mean_precision": 0.58,
+      "std_precision": 0.1,
+      "mean_semantic_f1": 0.6378,
+      "std_semantic_f1": 0.0135,
+      "mean_fr_coverage": 0.8374,
+      "std_fr_coverage": 0.1101,
+      "mean_nfr_coverage": 0.625,
+      "std_nfr_coverage": 0.125,
+      "total_generated": 100,
+      "total_ground_truth": 68
+    },
+    "per_project": [
+      {
+        "project_id": "1",
+        "system": "multi_agent_v2_sme",
+        "coverage": 0.8929,
+        "precision": 0.48,
+        "semantic_f1": 0.6243,
+        "fr_coverage": 0.9474,
+        "nfr_coverage": 0.75,
+        "n_generated": 50,
+        "n_ground_truth": 28,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "2",
+        "system": "multi_agent_v2_sme",
+        "coverage": 0.625,
+        "precision": 0.68,
+        "semantic_f1": 0.6513,
+        "fr_coverage": 0.7273,
+        "nfr_coverage": 0.5,
+        "n_generated": 50,
+        "n_ground_truth": 40,
+        "threshold": 0.6
+      }
+    ]
+  },
+  "single_agent": {
+    "summary": {
+      "n_projects": 2,
+      "mean_coverage": 0.8518,
+      "std_coverage": 0.0768,
+      "mean_precision": 0.73,
+      "std_precision": 0.05,
+      "mean_semantic_f1": 0.7813,
+      "std_semantic_f1": 0.0038,
+      "mean_fr_coverage": 0.9055,
+      "std_fr_coverage": 0.0419,
+      "mean_nfr_coverage": 0.7709,
+      "std_nfr_coverage": 0.1042,
+      "total_generated": 100,
+      "total_ground_truth": 68
+    },
+    "per_project": [
+      {
+        "project_id": "1",
+        "system": "single_agent",
+        "coverage": 0.9286,
+        "precision": 0.68,
+        "semantic_f1": 0.7851,
+        "fr_coverage": 0.9474,
+        "nfr_coverage": 0.875,
+        "n_generated": 50,
+        "n_ground_truth": 28,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "2",
+        "system": "single_agent",
+        "coverage": 0.775,
+        "precision": 0.78,
+        "semantic_f1": 0.7775,
+        "fr_coverage": 0.8636,
+        "nfr_coverage": 0.6667,
+        "n_generated": 50,
+        "n_ground_truth": 40,
+        "threshold": 0.6
+      }
+    ]
+  }
+}

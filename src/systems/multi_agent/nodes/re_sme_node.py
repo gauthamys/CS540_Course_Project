@@ -11,6 +11,7 @@ more comprehensive requirement generation.
 Graph flow (V2):
     planner → sme (advisory) → extractor (SME-informed) → critic → [revise loop]
 """
+import os
 from langchain_core.messages import SystemMessage, HumanMessage
 
 from src.llm.client import get_structured_llm, check_budget
@@ -29,7 +30,7 @@ def re_sme_node(state: dict) -> dict:
     key_quality_attributes = state.get("key_quality_attributes", [])
     llm_calls = state.get("llm_calls", 0)
     total_tokens = state.get("total_tokens", 0)
-    check_budget(llm_calls, total_tokens)
+    check_budget(llm_calls, total_tokens, max_tokens=int(os.getenv("RE_MAX_TOKENS_PER_TASK", "30000")))
 
     system_prompt = format_sme_system_prompt(domain=domain, sme_subject=sme_subject)
     user_prompt = format_sme_advisory_prompt(

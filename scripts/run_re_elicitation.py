@@ -69,7 +69,7 @@ def run_single(projects: list[dict]) -> None:
 
     for i, proj in enumerate(projects, 1):
         pid = proj["project_id"]
-        use_case = proj["use_case_description"]
+        use_case = proj.get("brd_document") or proj.get("use_case_description", "")
         print(f"  [{i:3d}/{len(projects)}] {pid} ...", end=" ", flush=True)
         try:
             reqs, usage = agent.elicit(pid, use_case)
@@ -115,7 +115,7 @@ def run_multi(projects: list[dict]) -> None:
 
     for i, proj in enumerate(projects, 1):
         pid = proj["project_id"]
-        use_case = proj["use_case_description"]
+        use_case = proj.get("brd_document") or proj.get("use_case_description", "")
         print(f"  [{i:3d}/{len(projects)}] {pid} ...", end=" ", flush=True)
         try:
             state = make_initial_state(pid, use_case)
@@ -163,7 +163,7 @@ def run_v2(projects: list[dict]) -> None:
 
     for i, proj in enumerate(projects, 1):
         pid = proj["project_id"]
-        use_case = proj["use_case_description"]
+        use_case = proj.get("brd_document") or proj.get("use_case_description", "")
         print(f"  [{i:3d}/{len(projects)}] {pid} ...", end=" ", flush=True)
         try:
             state = make_initial_state(pid, use_case)

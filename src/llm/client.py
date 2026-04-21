@@ -136,10 +136,21 @@ def get_structured_llm(schema, max_tokens: int = DEFAULT_MAX_TOKENS, temperature
 
 
 
-def check_budget(llm_calls: int, total_tokens: int) -> None:
-    """Raise BudgetExceededError if either fairness limit is hit."""
-    max_calls = int(os.getenv("MAX_LLM_CALLS_PER_TASK", "10"))
-    max_tokens = int(os.getenv("MAX_TOKENS_PER_TASK", "8000"))
+def check_budget(
+    llm_calls: int,
+    total_tokens: int,
+    max_tokens: int | None = None,
+    max_calls: int | None = None,
+) -> None:
+    """Raise BudgetExceededError if either fairness limit is hit.
+
+    max_tokens / max_calls override the env-var defaults, allowing
+    task-specific budgets (e.g. RE elicitation uses RE_MAX_TOKENS_PER_TASK).
+    """
+    if max_calls is None:
+        max_calls = int(os.getenv("MAX_LLM_CALLS_PER_TASK", "10"))
+    if max_tokens is None:
+        max_tokens = int(os.getenv("MAX_TOKENS_PER_TASK", "8000"))
     if llm_calls >= max_calls:
         raise BudgetExceededError(f"LLM call budget exhausted ({llm_calls}/{max_calls})")
     if total_tokens >= max_tokens:

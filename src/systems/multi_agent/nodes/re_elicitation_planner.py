@@ -6,6 +6,7 @@ Receives a use_case_description and returns structured planning output:
 
 Used by both System 2 (multi_agent V1) and System 3 (multi_agent V2 + SME).
 """
+import os
 from langchain_core.messages import SystemMessage, HumanMessage
 
 from src.llm.client import get_structured_llm, check_budget
@@ -18,7 +19,7 @@ def re_elicitation_planner_node(state: dict) -> dict:
     use_case = state["use_case_description"]
     llm_calls = state.get("llm_calls", 0)
     total_tokens = state.get("total_tokens", 0)
-    check_budget(llm_calls, total_tokens)
+    check_budget(llm_calls, total_tokens, max_tokens=int(os.getenv("RE_MAX_TOKENS_PER_TASK", "30000")))
 
     prompt = format_planner_prompt(use_case)
     structured_llm = get_structured_llm(PlannerOutput)

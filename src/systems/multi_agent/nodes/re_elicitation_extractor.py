@@ -6,6 +6,7 @@ guided by the planner's strategy and any critic feedback.
 
 Used by System 2 (V1) and System 3 (V2+SME).
 """
+import os
 from typing import Optional
 from pydantic import BaseModel
 from langchain_core.messages import SystemMessage, HumanMessage
@@ -30,7 +31,7 @@ def re_elicitation_extractor_node(state: dict) -> dict:
     critique: Optional[str] = state.get("critique")
     llm_calls = state.get("llm_calls", 0)
     total_tokens = state.get("total_tokens", 0)
-    check_budget(llm_calls, total_tokens)
+    check_budget(llm_calls, total_tokens, max_tokens=int(os.getenv("RE_MAX_TOKENS_PER_TASK", "30000")))
 
     # SME advisory context (present in V2 only; None/empty in V1)
     sme_advisory: Optional[str] = state.get("sme_advisory") or None

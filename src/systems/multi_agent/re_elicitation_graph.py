@@ -28,7 +28,7 @@ MAX_ITERATIONS = int(os.getenv("RE_MAX_ITERATIONS", "3"))
 
 def _route_after_critic(state: REElicitationState) -> str:
     max_calls = int(os.getenv("MAX_LLM_CALLS_PER_TASK", "10"))
-    max_tokens = int(os.getenv("MAX_TOKENS_PER_TASK", "8000"))
+    max_tokens = int(os.getenv("RE_MAX_TOKENS_PER_TASK", os.getenv("MAX_TOKENS_PER_TASK", "30000")))
     budget_ok = (
         state.get("llm_calls", 0) < max_calls
         and state.get("total_tokens", 0) < max_tokens

@@ -1,0 +1,67 @@
+{
+  "system": "single_agent",
+  "dataset": "nice",
+  "started_at": "2026-04-20T15:13:59.026148",
+  "finished_at": "2026-04-20T15:15:02.148311",
+  "summary": {
+    "system": "single_agent",
+    "dataset": "nice",
+    "n_tasks": 10,
+    "total_llm_calls": 10,
+    "total_tokens": 1584,
+    "avg_llm_calls": 1.0,
+    "avg_tokens": 158.4
+  },
+  "per_task": [
+    {
+      "task_id": "nice_00377",
+      "llm_calls": 1,
+      "total_tokens": 180
+    },
+    {
+      "task_id": "nice_00484",
+      "llm_calls": 1,
+      "total_tokens": 165
+    },
+    {
+      "task_id": "nice_00011",
+      "llm_calls": 1,
+      "total_tokens": 131
+    },
+    {
+      "task_id": "nice_00619",
+      "llm_calls": 1,
+      "total_tokens": 210
+    },
+    {
+      "task_id": "nice_00443",
+      "llm_calls": 1,
+      "total_tokens": 143
+    },
+    {
+      "task_id": "nice_00227",
+      "llm_calls": 1,
+      "total_tokens": 154
+    },
+    {
+      "task_id": "nice_00111",
+      "llm_calls": 1,
+      "total_tokens": 142
+    },
+    {
+      "task_id": "nice_00013",
+      "llm_calls": 1,
+      "total_tokens": 146
+    },
+    {
+      "task_id": "nice_00240",
+      "llm_calls": 1,
+      "total_tokens": 144
+    },
+    {
+      "task_id": "nice_00002",
+      "llm_calls": 1,
+      "total_tokens": 169
+    }
+  ]
+}

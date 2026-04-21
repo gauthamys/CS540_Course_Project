@@ -21,9 +21,9 @@ SYSTEM_RE_ELICITATION = (
 
 def format_elicitation_prompt(use_case: str) -> str:
     return (
-        f"Given the following software project use case description, generate a comprehensive "
+        f"Given the following Business Requirements Document (BRD), generate a comprehensive "
         f"list of software requirements.\n\n"
-        f"USE CASE DESCRIPTION:\n{use_case}\n\n"
+        f"BUSINESS REQUIREMENTS DOCUMENT:\n{use_case}\n\n"
         f"Return a JSON object with a single key 'requirements', whose value is a list of objects. "
         f"Each object must have:\n"
         f"  - req_id: string (e.g. 'R001')\n"
@@ -49,8 +49,8 @@ SYSTEM_PLANNER = (
 
 def format_planner_prompt(use_case: str) -> str:
     return (
-        f"Analyse the following software use case and produce a requirements elicitation plan.\n\n"
-        f"USE CASE DESCRIPTION:\n{use_case}\n\n"
+        f"Analyse the following Business Requirements Document (BRD) and produce a requirements elicitation plan.\n\n"
+        f"BUSINESS REQUIREMENTS DOCUMENT:\n{use_case}\n\n"
         f"Return a JSON object with these fields:\n"
         f"  - domain: string (e.g. 'healthcare', 'e-commerce', 'banking')\n"
         f"  - sme_subject: string (a specific expert role whose domain knowledge would add value, "
@@ -91,7 +91,7 @@ def format_extractor_prompt(
 
     return (
         f"Generate a comprehensive list of software requirements for the following use case.\n\n"
-        f"USE CASE DESCRIPTION:\n{use_case}\n\n"
+        f"BUSINESS REQUIREMENTS DOCUMENT:\n{use_case}\n\n"
         f"ELICITATION STRATEGY:\n{strategy}\n\n"
         f"KEY QUALITY ATTRIBUTES TO COVER: {qa_str}"
         f"{sme_block}"
@@ -129,7 +129,7 @@ def format_sme_advisory_prompt(
     qa_str = ", ".join(key_quality_attributes) if key_quality_attributes else "general quality"
     return (
         f"A requirements engineer is about to elicit requirements for the following {domain} system.\n\n"
-        f"USE CASE DESCRIPTION:\n{use_case}\n\n"
+        f"BUSINESS REQUIREMENTS DOCUMENT:\n{use_case}\n\n"
         f"Quality attributes to consider: {qa_str}\n\n"
         f"As a {sme_subject}, provide advisory context to help the engineer produce a comprehensive "
         f"requirements list. Do NOT write requirements yourself — instead identify what constraints, "
@@ -155,8 +155,8 @@ def format_critic_prompt(use_case: str, requirements: list[dict]) -> str:
     )
     return (
         f"You are a requirements quality critic. Review the following requirements list "
-        f"against the use case description and assess completeness and correctness.\n\n"
-        f"USE CASE DESCRIPTION:\n{use_case}\n\n"
+        f"against the Business Requirements Document and assess completeness and correctness.\n\n"
+        f"BUSINESS REQUIREMENTS DOCUMENT:\n{use_case}\n\n"
         f"REQUIREMENTS:\n{reqs_str}\n\n"
         f"Return a JSON object with:\n"
         f"  - approved: boolean (true if requirements are sufficient)\n"
@@ -168,23 +168,51 @@ def format_critic_prompt(use_case: str, requirements: list[dict]) -> str:
     )
 
 
-# ── Use-case synthesis prompt (for prepare_re_elicitation.py) ─────────────────
+# ── BRD synthesis prompt (for prepare_re_elicitation.py) ──────────────────────
 
-SYSTEM_USE_CASE_SYNTHESIS = (
-    "You are a business analyst. Given a list of software requirements for a project, "
-    "write a concise use case description (3-6 sentences) that describes WHAT the software system does "
-    "and WHO uses it — without referencing the individual requirements. "
-    "Write in plain prose, no bullet points, no headers."
+SYSTEM_BRD_SYNTHESIS = (
+    "You are a senior business analyst. You will be given the actual requirements for a real software project. "
+    "Your task is to reverse-engineer a realistic, detailed Business Requirements Document (BRD) that a "
+    "business analyst would have written BEFORE these requirements were formally elicited. "
+    "The BRD must be rich enough that a requirements engineer reading ONLY the BRD — without seeing the "
+    "original requirements — would naturally elicit similar requirements. "
+    "Write in clear business prose with labelled sections. Do NOT list the given requirements verbatim."
 )
 
 
-def format_use_case_synthesis_prompt(project_id: str, requirements: list[dict]) -> str:
+def format_brd_synthesis_prompt(project_id: str, requirements: list[dict]) -> str:
     reqs_str = "\n".join(
         f"  - [{r.get('label','?')}] {r.get('text','')}" for r in requirements
     )
     return (
         f"Project ID: {project_id}\n\n"
-        f"Requirements ({len(requirements)} total):\n{reqs_str}\n\n"
-        f"Write a concise use case description (3-6 sentences) for this software system. "
-        f"Describe what the system does and who its users are. Do not list requirements."
+        f"Actual requirements for this project ({len(requirements)} total):\n{reqs_str}\n\n"
+        f"Using these requirements as your source of truth, write a Business Requirements Document (BRD) "
+        f"for this software system. The BRD must include the following sections:\n\n"
+        f"1. PROBLEM STATEMENT — What business problem or opportunity is this system addressing? "
+        f"Include measurable pain points where possible.\n\n"
+        f"2. BUSINESS OBJECTIVES & SUCCESS CRITERIA — What must the system achieve? "
+        f"Include measurable KPIs (e.g. response time targets, uptime SLAs, error rate thresholds) "
+        f"that can be derived from the requirements.\n\n"
+        f"3. STAKEHOLDERS — Who are the key stakeholders and what is each one's role and primary need? "
+        f"(e.g. End User, Administrator, Auditor, System Integrator)\n\n"
+        f"4. CURRENT STATE vs FUTURE STATE — What limitations exist today and what will the new system "
+        f"enable? Describe the gap.\n\n"
+        f"5. BUSINESS RULES — What domain-specific rules govern how the system must behave? "
+        f"(e.g. access control policies, approval workflows, data retention rules)\n\n"
+        f"6. SCOPE — What is in scope and out of scope for this system?\n\n"
+        f"7. CONSTRAINTS — List technical, regulatory, and operational constraints "
+        f"(e.g. compliance requirements like HIPAA/GDPR, platform constraints, budget limits).\n\n"
+        f"8. ASSUMPTIONS & DEPENDENCIES — What is assumed to be true or already in place?\n\n"
+        f"Be specific and realistic. Infer business context from the requirements — do not write generic "
+        f"boilerplate. The BRD should feel like it was written for this specific project."
     )
+
+
+# ── Legacy use-case synthesis prompt (kept for backward compatibility) ─────────
+
+SYSTEM_USE_CASE_SYNTHESIS = SYSTEM_BRD_SYNTHESIS
+
+
+def format_use_case_synthesis_prompt(project_id: str, requirements: list[dict]) -> str:
+    return format_brd_synthesis_prompt(project_id, requirements)

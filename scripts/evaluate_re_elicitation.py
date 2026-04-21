@@ -118,6 +118,7 @@ def main() -> None:
               f"± {summary.get('std_semantic_f1', 0):.3f}")
         print(f"    FR coverage:       {summary.get('mean_fr_coverage', 0):.3f}")
         print(f"    NFR coverage:      {summary.get('mean_nfr_coverage', 0):.3f}")
+        
 
     # Summary table
     print("\n" + "=" * 70)
@@ -127,8 +128,8 @@ def main() -> None:
         s = res["summary"]
         print(f"{system:<28} {s.get('mean_coverage', 0):>10.3f} "
               f"{s.get('mean_precision', 0):>10.3f} "
-              f"{s.get('mean_semantic_f1', 0):>10.3f}")
-    print("=" * 70)
+              f"{s.get('mean_semantic_f1', 0):>10.3f} ")
+    print("=" * 90)
 
     # Save
     os.makedirs(output_dir, exist_ok=True)

@@ -6,6 +6,7 @@ returns a CriticVerdict: approved or feedback + missing_types.
 
 Used by System 2 (V1) and System 3 (V2+SME).
 """
+import os
 from langchain_core.messages import SystemMessage, HumanMessage
 
 from src.llm.client import get_structured_llm, check_budget
@@ -25,7 +26,7 @@ def re_elicitation_critic_node(state: dict) -> dict:
     requirements = state.get("draft_requirements") or []
     llm_calls = state.get("llm_calls", 0)
     total_tokens = state.get("total_tokens", 0)
-    check_budget(llm_calls, total_tokens)
+    check_budget(llm_calls, total_tokens, max_tokens=int(os.getenv("RE_MAX_TOKENS_PER_TASK", "30000")))
 
     prompt = format_critic_prompt(use_case=use_case, requirements=requirements)
     structured_llm = get_structured_llm(CriticVerdict)

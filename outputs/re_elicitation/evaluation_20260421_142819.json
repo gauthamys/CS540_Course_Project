@@ -1,0 +1,239 @@
+{
+  "multi_agent_v1": {
+    "summary": {
+      "n_projects": 5,
+      "mean_coverage": 0.0,
+      "std_coverage": 0.0,
+      "mean_precision": 0.0,
+      "std_precision": 0.0,
+      "mean_semantic_f1": 0.0,
+      "std_semantic_f1": 0.0,
+      "mean_fr_coverage": 0.0,
+      "std_fr_coverage": 0.0,
+      "mean_nfr_coverage": 0.0,
+      "std_nfr_coverage": 0.0,
+      "total_generated": 0,
+      "total_ground_truth": 275
+    },
+    "per_project": [
+      {
+        "project_id": "1",
+        "system": "multi_agent_v1",
+        "coverage": 0.0,
+        "precision": 0.0,
+        "semantic_f1": 0.0,
+        "fr_coverage": 0.0,
+        "nfr_coverage": 0.0,
+        "n_generated": 0,
+        "n_ground_truth": 28,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "2",
+        "system": "multi_agent_v1",
+        "coverage": 0.0,
+        "precision": 0.0,
+        "semantic_f1": 0.0,
+        "fr_coverage": 0.0,
+        "nfr_coverage": 0.0,
+        "n_generated": 0,
+        "n_ground_truth": 40,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "3",
+        "system": "multi_agent_v1",
+        "coverage": 0.0,
+        "precision": 0.0,
+        "semantic_f1": 0.0,
+        "fr_coverage": 0.0,
+        "nfr_coverage": 0.0,
+        "n_generated": 0,
+        "n_ground_truth": 79,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "4",
+        "system": "multi_agent_v1",
+        "coverage": 0.0,
+        "precision": 0.0,
+        "semantic_f1": 0.0,
+        "fr_coverage": 0.0,
+        "nfr_coverage": 0.0,
+        "n_generated": 0,
+        "n_ground_truth": 55,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "5",
+        "system": "multi_agent_v1",
+        "coverage": 0.0,
+        "precision": 0.0,
+        "semantic_f1": 0.0,
+        "fr_coverage": 0.0,
+        "nfr_coverage": 0.0,
+        "n_generated": 0,
+        "n_ground_truth": 73,
+        "threshold": 0.6
+      }
+    ]
+  },
+  "multi_agent_v2_sme": {
+    "summary": {
+      "n_projects": 5,
+      "mean_coverage": 0.0,
+      "std_coverage": 0.0,
+      "mean_precision": 0.0,
+      "std_precision": 0.0,
+      "mean_semantic_f1": 0.0,
+      "std_semantic_f1": 0.0,
+      "mean_fr_coverage": 0.0,
+      "std_fr_coverage": 0.0,
+      "mean_nfr_coverage": 0.0,
+      "std_nfr_coverage": 0.0,
+      "total_generated": 0,
+      "total_ground_truth": 275
+    },
+    "per_project": [
+      {
+        "project_id": "1",
+        "system": "multi_agent_v2_sme",
+        "coverage": 0.0,
+        "precision": 0.0,
+        "semantic_f1": 0.0,
+        "fr_coverage": 0.0,
+        "nfr_coverage": 0.0,
+        "n_generated": 0,
+        "n_ground_truth": 28,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "2",
+        "system": "multi_agent_v2_sme",
+        "coverage": 0.0,
+        "precision": 0.0,
+        "semantic_f1": 0.0,
+        "fr_coverage": 0.0,
+        "nfr_coverage": 0.0,
+        "n_generated": 0,
+        "n_ground_truth": 40,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "3",
+        "system": "multi_agent_v2_sme",
+        "coverage": 0.0,
+        "precision": 0.0,
+        "semantic_f1": 0.0,
+        "fr_coverage": 0.0,
+        "nfr_coverage": 0.0,
+        "n_generated": 0,
+        "n_ground_truth": 79,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "4",
+        "system": "multi_agent_v2_sme",
+        "coverage": 0.0,
+        "precision": 0.0,
+        "semantic_f1": 0.0,
+        "fr_coverage": 0.0,
+        "nfr_coverage": 0.0,
+        "n_generated": 0,
+        "n_ground_truth": 55,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "5",
+        "system": "multi_agent_v2_sme",
+        "coverage": 0.0,
+        "precision": 0.0,
+        "semantic_f1": 0.0,
+        "fr_coverage": 0.0,
+        "nfr_coverage": 0.0,
+        "n_generated": 0,
+        "n_ground_truth": 73,
+        "threshold": 0.6
+      }
+    ]
+  },
+  "single_agent": {
+    "summary": {
+      "n_projects": 5,
+      "mean_coverage": 0.873,
+      "std_coverage": 0.0668,
+      "mean_precision": 0.828,
+      "std_precision": 0.0733,
+      "mean_semantic_f1": 0.8478,
+      "std_semantic_f1": 0.0592,
+      "mean_fr_coverage": 0.9397,
+      "std_fr_coverage": 0.0459,
+      "mean_nfr_coverage": 0.7667,
+      "std_nfr_coverage": 0.1209,
+      "total_generated": 250,
+      "total_ground_truth": 275
+    },
+    "per_project": [
+      {
+        "project_id": "1",
+        "system": "single_agent",
+        "coverage": 0.8929,
+        "precision": 0.7,
+        "semantic_f1": 0.7848,
+        "fr_coverage": 1.0,
+        "nfr_coverage": 0.625,
+        "n_generated": 50,
+        "n_ground_truth": 28,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "2",
+        "system": "single_agent",
+        "coverage": 0.775,
+        "precision": 0.82,
+        "semantic_f1": 0.7969,
+        "fr_coverage": 0.8636,
+        "nfr_coverage": 0.6667,
+        "n_generated": 50,
+        "n_ground_truth": 40,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "3",
+        "system": "single_agent",
+        "coverage": 0.9114,
+        "precision": 0.9,
+        "semantic_f1": 0.9057,
+        "fr_coverage": 0.9545,
+        "nfr_coverage": 0.8276,
+        "n_generated": 50,
+        "n_ground_truth": 79,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "4",
+        "system": "single_agent",
+        "coverage": 0.9636,
+        "precision": 0.9,
+        "semantic_f1": 0.9307,
+        "fr_coverage": 0.9615,
+        "nfr_coverage": 0.9643,
+        "n_generated": 50,
+        "n_ground_truth": 55,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "5",
+        "system": "single_agent",
+        "coverage": 0.8219,
+        "precision": 0.82,
+        "semantic_f1": 0.821,
+        "fr_coverage": 0.9189,
+        "nfr_coverage": 0.75,
+        "n_generated": 50,
+        "n_ground_truth": 73,
+        "threshold": 0.6
+      }
+    ]
+  }
+}
