@@ -8,11 +8,13 @@ from typing import Optional
 
 SYSTEM_RE_ELICITATION = (
     "You are a senior requirements engineer. "
-    "You produce structured, unambiguous software requirements. "
+    "You extract precise, testable software requirements from use case descriptions. "
     "Classify each requirement as FR (functional) or NFR (non-functional). "
+    "CRITICAL: Only classify as NFR if the use case explicitly mentions a quality concern "
+    "(e.g. performance, security, reliability, compliance, availability, scalability). "
+    "Do NOT invent NFRs — if unsure, classify as FR. "
     "For NFR, add the most specific subtype from: "
     "performance, security, usability, reliability, maintainability, portability, availability. "
-    "Use 'other' only if none fit. "
     "Output valid JSON only — no prose outside the JSON structure."
 )
 
@@ -21,9 +23,26 @@ SYSTEM_RE_ELICITATION = (
 
 def format_elicitation_prompt(use_case: str) -> str:
     return (
-        f"Given the following software project use case description, generate a comprehensive "
-        f"list of software requirements.\n\n"
+        f"You are eliciting requirements for a software system. Read the use case carefully, "
+        f"then generate requirements by working through three lenses systematically.\n\n"
         f"USE CASE DESCRIPTION:\n{use_case}\n\n"
+        f"STEP 1 — ACTORS: For every actor/role mentioned in the use case, generate requirements "
+        f"covering their complete workflow — what they need to create, view, update, search, "
+        f"submit, approve, or manage. Use the exact actor names from the use case.\n\n"
+        f"STEP 2 — DATA ENTITIES: For every data object or record type mentioned (e.g. cases, "
+        f"reports, users, documents), generate requirements for each operation the system must "
+        f"support on that entity. Use the exact entity names from the use case.\n\n"
+        f"STEP 3 — PROCESSES & WORKFLOWS: For every process, workflow, or system behaviour "
+        f"described, generate requirements that capture each step. Include error handling, "
+        f"validation rules, and notifications where the use case implies them.\n\n"
+        f"RULES:\n"
+        f"- Use the exact terminology and names from the use case — do not paraphrase.\n"
+        f"- Write each requirement at operation level, not feature level. "
+        f"'The system shall record case details' is too vague. "
+        f"'The system shall allow investigators to record the date, location, and narrative "
+        f"description of a criminal case' is correct.\n"
+        f"- Only include NFR if the use case explicitly mentions a quality concern "
+        f"(performance, security, compliance, availability, scalability). Do not invent NFRs.\n\n"
         f"Return a JSON object with a single key 'requirements', whose value is a list of objects. "
         f"Each object must have:\n"
         f"  - req_id: string (e.g. 'R001')\n"
@@ -32,8 +51,7 @@ def format_elicitation_prompt(use_case: str) -> str:
         f"  - nfr_subtype: string or null (only for NFR)\n"
         f"  - source: 'main'\n"
         f"  - rationale: string (brief justification)\n\n"
-        f"Generate up to 50 requirements. Be comprehensive — cover all major functional areas "
-        f"and non-functional concerns. Keep each rationale to one sentence."
+        f"Generate between 60 and 80 requirements. Work through all three steps before stopping."
     )
 
 
