@@ -2,7 +2,7 @@
 Run the V2 multi-agent system (with Test Critic) on the codegen pilot.
 
 Usage (from project root):
-    python scripts/run_pilot_multi_v2.py
+    python scripts/run_codegen_multi_agent_v2.py
 
 Outputs go to outputs/multi_agent_v2/
 """

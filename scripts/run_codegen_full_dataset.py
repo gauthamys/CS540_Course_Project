@@ -2,7 +2,7 @@
 Run all three systems on the full 164-problem HumanEval+ dataset.
 
 Usage (from project root):
-    python scripts/run_full.py [--system single|multi|v2|all]
+    python scripts/run_codegen_full_dataset.py [--system single|multi|v2|all]
 
 Outputs go to:
     outputs/single_agent/full_*

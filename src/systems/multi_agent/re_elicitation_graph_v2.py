@@ -26,10 +26,10 @@ import os
 from langgraph.graph import StateGraph, END
 
 from src.schemas.graph_state import REElicitationState
-from src.systems.multi_agent.nodes.re_elicitation_planner import re_elicitation_planner_node
-from src.systems.multi_agent.nodes.re_elicitation_extractor import re_elicitation_extractor_node
-from src.systems.multi_agent.nodes.re_sme_node import re_sme_node
-from src.systems.multi_agent.nodes.re_elicitation_critic import re_elicitation_critic_node
+from src.systems.multi_agent.nodes.re_elicitation.planner import re_elicitation_planner_node
+from src.systems.multi_agent.nodes.re_elicitation.extractor import re_elicitation_extractor_node
+from src.systems.multi_agent.nodes.re_elicitation.sme import re_sme_node
+from src.systems.multi_agent.nodes.re_elicitation.critic import re_elicitation_critic_node
 
 MAX_ITERATIONS = int(os.getenv("RE_MAX_ITERATIONS", "3"))
 

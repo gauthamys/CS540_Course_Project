@@ -1,13 +1,13 @@
 """
-Run all three RE Elicitation systems on the prepared project dataset.
+Run RE Elicitation systems on the prepared project dataset.
 
 Usage (from project root):
-    python scripts/run_re_elicitation.py [--system single|multi|v2|all] [--dataset nice|pure] [--pilot] [--max_projects N]
+    python scripts/run_re_elicitation.py --system single|multi|v2|all --dataset nice|pure [--pilot] [--max_projects N]
 
 Outputs go to:
-    outputs/re_elicitation{_pure}/single_agent/results_<TIMESTAMP>.jsonl
-    outputs/re_elicitation{_pure}/multi_agent_v1/results_<TIMESTAMP>.jsonl
-    outputs/re_elicitation{_pure}/multi_agent_v2_sme/results_<TIMESTAMP>.jsonl
+    outputs/re_elicitation{_pure}/single_agent/results_<MODEL>_<TIMESTAMP>.jsonl
+    outputs/re_elicitation{_pure}/multi_agent_v1/results_<MODEL>_<TIMESTAMP>.jsonl
+    outputs/re_elicitation{_pure}/multi_agent_v2_sme/results_<MODEL>_<TIMESTAMP>.jsonl
 
 Each output line:
   {
@@ -29,7 +29,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from dotenv import load_dotenv
 load_dotenv()
 
-TIMESTAMP = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+_use_local = os.getenv("USE_LOCAL_LLM", "false").lower() == "true"
+MODEL_TAG = os.getenv("LOCAL_MODEL_ID", "ollama") if _use_local else "claude"
+TIMESTAMP = f"{MODEL_TAG}_{datetime.utcnow().strftime('%Y-%m-%d_%H-%M')}"
 DATA_PATHS = {
     "nice": "data/processed/re_elicitation_projects.jsonl",
     "pure": "data/processed/re_elicitation_projects_pure.jsonl",
@@ -213,9 +215,9 @@ def main() -> None:
     data_path = DATA_PATHS[args.dataset]
     if not os.path.exists(data_path):
         prepare_cmd = (
-            "scripts/prepare_re_elicitation.py"
+            "scripts/prepare_re_nice_dataset.py"
             if args.dataset == "nice"
-            else "scripts/prepare_re_elicitation_pure.py"
+            else "scripts/prepare_re_pure_dataset.py"
         )
         print(f"ERROR: {data_path} not found. Run {prepare_cmd} first.")
         sys.exit(1)

@@ -6,7 +6,7 @@ project, which already have {id, text, label, nfr_subtype} — exactly what the 
 classification pipeline needs. This script flattens them and creates the pilot file.
 
 Run from project root:
-    python scripts/prepare_nice_from_elicitation.py
+    python scripts/prepare_re_classification_data.py
 """
 import os
 import sys

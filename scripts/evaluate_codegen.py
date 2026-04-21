@@ -2,7 +2,7 @@
 Load pilot outputs from both systems and print a comparison table.
 
 Usage:
-    python scripts/evaluate_pilot.py \\
+    python scripts/evaluate_codegen.py \\
         --nice-single   outputs/single_agent/nice_pilot_TIMESTAMP.jsonl \\
         --nice-multi    outputs/multi_agent/nice_pilot_TIMESTAMP.jsonl \\
         --nice-gt       data/pilots/nice_pilot10.jsonl \\
@@ -13,7 +13,7 @@ Usage:
         --cg-multi-tests   outputs/multi_agent/codegen_tests_pilot_TIMESTAMP.jsonl
 
 Or auto-discover latest output files:
-    python scripts/evaluate_pilot.py --auto
+    python scripts/evaluate_codegen.py --auto
 
 Multi-agent V2 (test critic) is always auto-discovered from outputs/multi_agent_v2/.
 """

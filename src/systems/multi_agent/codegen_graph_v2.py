@@ -31,15 +31,15 @@ import os
 from langgraph.graph import StateGraph, END
 
 from src.schemas.graph_state import CodeGenGraphStateV2
-from src.systems.multi_agent.nodes.planner import codegen_planner_node
-from src.systems.multi_agent.nodes.extractor import codegen_extractor_node
-from src.systems.multi_agent.nodes.critic import codegen_critic_node
-from src.systems.multi_agent.nodes.coder import coder_node
-from src.systems.multi_agent.nodes.test_runner import (
+from src.systems.multi_agent.nodes.codegen.planner import codegen_planner_node
+from src.systems.multi_agent.nodes.codegen.extractor import codegen_extractor_node
+from src.systems.multi_agent.nodes.codegen.critic import codegen_critic_node
+from src.systems.multi_agent.nodes.codegen.coder import coder_node
+from src.systems.multi_agent.nodes.codegen.test_runner import (
     test_runner_v2_node,
     should_repair_or_critique,
 )
-from src.systems.multi_agent.nodes.test_critic import test_critic_node, should_augment
+from src.systems.multi_agent.nodes.codegen.test_critic import test_critic_node, should_augment
 
 
 def _route_after_critic(state: CodeGenGraphStateV2) -> str:

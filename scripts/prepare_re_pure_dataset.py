@@ -1,11 +1,11 @@
 """
-Prepare RE Elicitation dataset.
+Prepare RE Elicitation dataset from PURE.
 
 One-time preprocessing step:
-  1. Load NICE dataset, group requirements by project_id
-  2. For each project, call Claude to synthesise a use_case_description
-     from its list of requirements (reverse-mapping)
-  3. Save to data/processed/re_elicitation_projects.jsonl
+  1. Load PURE XML dataset, group requirements by project (document)
+  2. Filter projects with fewer than --min_reqs requirements
+  3. Call Claude to synthesise a use_case_description for each project
+  4. Save to data/processed/re_elicitation_projects_pure.jsonl
 
 Each output record:
   {
@@ -15,13 +15,13 @@ Each output record:
   }
 
 Usage (from project root):
-    python scripts/prepare_re_elicitation.py [--max_projects N] [--data_dir PATH]
+    python scripts/prepare_re_pure_dataset.py
+    python scripts/prepare_re_pure_dataset.py --max_projects 20 --min_reqs 5
 """
 import os
 import sys
 import json
 import argparse
-from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from dotenv import load_dotenv
@@ -29,19 +29,24 @@ load_dotenv()
 
 from langchain_core.messages import SystemMessage, HumanMessage
 
-from src.datasets.nice_loader import load_nice_by_project
+from src.datasets.pure_loader import load_pure_by_project
 from src.llm.client import get_llm
 from src.llm.prompts.re_elicitation_prompts import (
     SYSTEM_USE_CASE_SYNTHESIS,
     format_use_case_synthesis_prompt,
 )
 
-OUTPUT_PATH = "data/processed/re_elicitation_projects.jsonl"
+OUTPUT_PATH = "data/processed/re_elicitation_projects_pure.jsonl"
+MAX_REQS_FOR_SYNTHESIS = 40  # Cap sent to Claude to stay within token limits
 
 
 def synthesise_use_case(llm, project_id: str, requirements: list[dict]) -> str:
-    """Call Claude to produce a use-case description from a project's requirements."""
-    prompt = format_use_case_synthesis_prompt(project_id, requirements)
+    # Sample evenly across the list if it's too long, to preserve diversity
+    reqs = requirements
+    if len(reqs) > MAX_REQS_FOR_SYNTHESIS:
+        step = len(reqs) // MAX_REQS_FOR_SYNTHESIS
+        reqs = reqs[::step][:MAX_REQS_FOR_SYNTHESIS]
+    prompt = format_use_case_synthesis_prompt(project_id, reqs)
     response = llm.invoke(
         [SystemMessage(content=SYSTEM_USE_CASE_SYNTHESIS), HumanMessage(content=prompt)]
     )
@@ -50,23 +55,20 @@ def synthesise_use_case(llm, project_id: str, requirements: list[dict]) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--max_projects", type=int, default=None,
-                        help="Limit number of projects (useful for pilot runs)")
+    parser.add_argument("--max_projects", type=int, default=None)
     parser.add_argument("--data_dir", type=str, default=None,
-                        help="Override NICE_DATA_DIR")
-    parser.add_argument("--min_reqs", type=int, default=4,
-                        help="Skip projects with fewer than N requirements")
+                        help="Override PURE_DATA_DIR")
+    parser.add_argument("--min_reqs", type=int, default=5,
+                        help="Skip projects with fewer than N requirements (default 5)")
     args = parser.parse_args()
 
-    print("=== Preparing RE Elicitation dataset ===")
+    print("=== Preparing RE Elicitation dataset (PURE) ===")
 
-    # Load NICE by project
-    projects = load_nice_by_project(args.data_dir)
-    print(f"  Loaded {len(projects)} projects from NICE dataset")
+    projects = load_pure_by_project(args.data_dir)
+    print(f"  Loaded {len(projects)} documents from PURE dataset")
 
-    # Filter small projects
     projects = {pid: reqs for pid, reqs in projects.items() if len(reqs) >= args.min_reqs}
-    print(f"  {len(projects)} projects with >= {args.min_reqs} requirements")
+    print(f"  {len(projects)} documents with >= {args.min_reqs} requirements")
 
     if args.max_projects:
         project_ids = list(projects.keys())[: args.max_projects]

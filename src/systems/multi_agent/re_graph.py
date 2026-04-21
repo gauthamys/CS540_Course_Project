@@ -31,9 +31,9 @@ import os
 from langgraph.graph import StateGraph, END
 
 from src.schemas.graph_state import REGraphState
-from src.systems.multi_agent.nodes.planner import re_planner_node
-from src.systems.multi_agent.nodes.extractor import re_extractor_node
-from src.systems.multi_agent.nodes.critic import re_critic_node
+from src.systems.multi_agent.nodes.re_classification.planner import re_planner_node
+from src.systems.multi_agent.nodes.re_classification.extractor import re_extractor_node
+from src.systems.multi_agent.nodes.re_classification.critic import re_critic_node
 
 
 def _route_after_critic(state: REGraphState) -> str:
