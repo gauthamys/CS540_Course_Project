@@ -1,5 +1,9 @@
 """
-Detailed single-agent run on first 5 BigCodeBench-Hard problems.
+Detailed single-agent run on first N BigCodeBench-Hard problems.
+
+Usage:
+    python scripts/run_bcb_detailed.py          # first 10 (default)
+    python scripts/run_bcb_detailed.py --n 148  # full dataset
 
 Flow per problem:
   1. Send instruct_prompt to Claude → get code
@@ -19,6 +23,7 @@ Outputs:
 import os
 import sys
 import json
+import argparse
 from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -115,11 +120,15 @@ def run_one(record: dict, llm) -> dict:
 
 
 def main() -> None:
-    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-    print("=== Single-Agent BCB-Hard Detailed Run (first 5) ===\n")
+    parser = argparse.ArgumentParser(description="Detailed single-agent run on BCB-Hard")
+    parser.add_argument("--n", type=int, default=10, help="Number of problems (default: 10, max: 148)")
+    args = parser.parse_args()
 
-    print("Loading first 10 problems...")
-    records = load_bcb_first_n(n=10)
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    print(f"=== Single-Agent BCB-Hard Detailed Run (first {args.n}) ===\n")
+
+    print(f"Loading first {args.n} problems...")
+    records = load_bcb_first_n(n=args.n)
     for r in records:
         print(f"  {r['id']} | libs: {r['libs']}")
 
