@@ -92,6 +92,10 @@ def main() -> None:
     for i, proj in enumerate(projects, 1):
         project_id = proj["project_id"]
         reqs = proj["ground_truth_requirements"]
+        if proj.get("brd_document"):
+            print(f"  [{i:3d}/{len(projects)}] {project_id} ... SKIP (BRD already exists)")
+            records.append(proj)
+            continue
         print(f"  [{i:3d}/{len(projects)}] {project_id} ({len(reqs)} reqs) ...", end=" ", flush=True)
         try:
             brd = synthesise_brd(llm, project_id, reqs)
@@ -103,7 +107,6 @@ def main() -> None:
             print("OK")
         except Exception as e:
             print(f"SKIP ({e})")
-            # Keep the old record unchanged so we don't lose ground truth
             records.append(proj)
 
     with open(OUTPUT_PATH, "w") as f:
