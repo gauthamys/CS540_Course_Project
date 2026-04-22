@@ -1,0 +1,81 @@
+{
+  "single_agent": {
+    "summary": {
+      "n_projects": 5,
+      "mean_coverage": 0.7406,
+      "std_coverage": 0.1434,
+      "mean_precision": 0.6137,
+      "std_precision": 0.191,
+      "mean_semantic_f1": 0.6361,
+      "std_semantic_f1": 0.1351,
+      "mean_fr_coverage": 0.7541,
+      "std_fr_coverage": 0.144,
+      "mean_nfr_coverage": 0.3768,
+      "std_nfr_coverage": 0.3995,
+      "total_generated": 389,
+      "total_ground_truth": 273
+    },
+    "per_project": [
+      {
+        "project_id": "0000 - cctns",
+        "system": "single_agent",
+        "coverage": 0.4561,
+        "precision": 0.7692,
+        "semantic_f1": 0.5727,
+        "fr_coverage": 0.4679,
+        "nfr_coverage": 0.2,
+        "n_generated": 78,
+        "n_ground_truth": 114,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "0000 - gamma j",
+        "system": "single_agent",
+        "coverage": 0.7843,
+        "precision": 0.6282,
+        "semantic_f1": 0.6976,
+        "fr_coverage": 0.8438,
+        "nfr_coverage": 0.6842,
+        "n_generated": 78,
+        "n_ground_truth": 51,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "1995 - gemini",
+        "system": "single_agent",
+        "coverage": 0.8,
+        "precision": 0.5625,
+        "semantic_f1": 0.6606,
+        "fr_coverage": 0.7963,
+        "nfr_coverage": 1.0,
+        "n_generated": 80,
+        "n_ground_truth": 55,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "1998 - themas",
+        "system": "single_agent",
+        "coverage": 0.8293,
+        "precision": 0.8267,
+        "semantic_f1": 0.828,
+        "fr_coverage": 0.8293,
+        "nfr_coverage": 0.0,
+        "n_generated": 75,
+        "n_ground_truth": 41,
+        "threshold": 0.6
+      },
+      {
+        "project_id": "1999 - dii",
+        "system": "single_agent",
+        "coverage": 0.8333,
+        "precision": 0.2821,
+        "semantic_f1": 0.4215,
+        "fr_coverage": 0.8333,
+        "nfr_coverage": 0.0,
+        "n_generated": 78,
+        "n_ground_truth": 12,
+        "threshold": 0.6
+      }
+    ]
+  }
+}
