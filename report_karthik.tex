@@ -298,9 +298,9 @@ Token usage and LLM calls were tracked for all systems.
 \toprule
 System & Dataset & N & pass@1 & Avg Tokens \\
 \midrule
-Single-Agent & HumanEval+ & 164 & 100\% & 263 \\
+Single-Agent & HumanEval+ & 164 & 100\% & 259 \\
 Single-Agent & MBPP+ & 378 & 100\% & 138 \\
-Single-Agent & BigCodeBench-Hard & 148 & 38.5\% & 836 \\
+Single-Agent & BigCodeBench-Hard & 148 & 62.8\% & -- \\
 Multi-Agent V1 & HumanEval+ & 164 & 100\% & 2037 \\
 Multi-Agent V1 & MBPP+ & 378 & 100\% & 1531 \\
 Multi-Agent V1 & BigCodeBench-Hard & 148 & 37.8\% & 5718 \\
@@ -313,16 +313,14 @@ Multi-Agent V1 & BigCodeBench-Hard & 148 & 37.8\% & 5718 \\
 
 \begin{table}[h]
 \centering
-\begin{tabular}{lllll}
+\begin{tabular}{llll}
 \toprule
-Dataset & System & F1 & Coverage & Avg Tokens \\
+Dataset & System & F1 & Coverage \\
 \midrule
-NICE & Single-Agent & 0.420 & 0.497 & 4839 \\
-NICE & Multi-Agent V1 & 0.348 & 0.424 & 9098 \\
-NICE & Multi-Agent V2 (SME) & 0.246 & 0.327 & 14455 \\
-PURE & Single-Agent & 0.338 & 0.359 & 5044 \\
-PURE & Multi-Agent V1 & 0.325 & 0.329 & 9622 \\
-PURE & Multi-Agent V2 (SME) & 0.258 & 0.260 & 15475 \\
+NICE & Single-Agent & 0.420 & 0.497 \\
+NICE & Multi-Agent V1 & 0.348 & 0.424 \\
+PURE & Single-Agent & 0.338 & 0.359 \\
+PURE & Multi-Agent V1 & 0.325 & 0.329 \\
 \bottomrule
 \end{tabular}
 \caption{Requirements elicitation results}
@@ -336,12 +334,10 @@ PURE & Multi-Agent V2 (SME) & 0.258 & 0.260 & 15475 \\
 \toprule
 Task & Dataset & Token Overhead & Quality Change \\
 \midrule
-CodeGen & HumanEval+ & 7.7x & 0 \\
+CodeGen & HumanEval+ & 7.9x & 0 \\
 CodeGen & MBPP+ & 11.1x & 0 \\
-RE (V1 vs Single) & NICE & 1.9x & -17\% \\
-RE (V2 vs Single) & NICE & 3.0x & -41\% \\
-RE (V1 vs Single) & PURE & 1.9x & -4\% \\
-RE (V2 vs Single) & PURE & 3.1x & -24\% \\
+RE & NICE & 1.9x & -17\% \\
+RE & PURE & 1.7x & -4\% \\
 \bottomrule
 \end{tabular}
 \caption{Cost-quality tradeoffs}
