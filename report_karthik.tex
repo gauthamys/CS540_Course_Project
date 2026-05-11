@@ -1,0 +1,369 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\title{Does Orchestration Earn Its Cost?\\
+A Comparative Study of Single-Agent vs. Multi-Agent LLM Systems\\
+on Software Engineering Tasks}
+\author{CS 540 Final Project Report\\
+[Team Member Names]}
+\date{May 2026}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+\subsection{Original Goals of the Project}
+
+The original goal of this project was to compare single-agent and multi-agent large language model (LLM) systems on two canonical software engineering tasks: requirements engineering (RE) classification and code generation.
+
+For requirements engineering, the system would receive a natural-language requirement sentence and classify it as:
+\begin{itemize}
+    \item Functional Requirement (FR)
+    \item Non-Functional Requirement (NFR)
+    \item Not a Requirement (NONE)
+\end{itemize}
+
+with an NFR subtype if applicable.
+
+For code generation, the system would receive a programming problem and generate correct Python code, evaluated through automated test execution.
+
+The central research question was whether multi-agent orchestration---decomposing a task across a Planner, Extractor, Critic, and Coder---improves output quality over a simpler single-shot approach, and whether any quality gain justifies the additional computational cost.
+
+\subsection{Modified Goals}
+
+The RE classification task was redesigned partway through the project into requirements elicitation. Rather than classifying pre-existing sentences, the system now receives a natural-language use-case description and generates a complete list of requirements from scratch.
+
+This modification was made for two reasons:
+
+\begin{enumerate}
+    \item Classification of individual sentences is a low-complexity task where modern LLMs achieve near-ceiling performance in a single call, making it a poor testbed for comparing single-agent vs. multi-agent systems.
+    
+    \item Elicitation better reflects the actual challenge in requirements engineering practice: generating requirements from an informal description, not labeling pre-written ones.
+\end{enumerate}
+
+To support this redesign, use-case descriptions were synthetically generated from ground-truth requirement lists using the Claude API, giving a controlled input/output pair for evaluation.
+
+The datasets changed from NICE (classification) and SecReq to NICE (elicitation) and PURE (elicitation).
+
+A second modification was the addition of BigCodeBench-Hard as a third code generation benchmark. HumanEval+ and MBPP+ both produced 100\% pass@1 for single-agent and V1, making them too easy to reveal differences between systems.
+
+BigCodeBench-Hard was added to stress-test the repair loop on real-world library-dependent tasks.
+
+\subsection{Assumptions}
+
+\begin{itemize}
+    \item Platform: macOS (Darwin 25.0.0, Apple Silicon)
+    \item Programming language: Python 3.14
+    \item LLM: Anthropic \texttt{claude-sonnet-4-6}, temperature = 0
+    \item Orchestration framework: LangGraph (LangChain)
+    \item Evaluation:
+    \begin{itemize}
+        \item Code correctness assessed via subprocess execution
+        \item RE quality assessed via semantic similarity
+    \end{itemize}
+    \item Cost model: Tokens estimated as:
+\[
+\frac{\text{input chars + output chars}}{4}
+\]
+    \item Reproducibility:
+    \begin{itemize}
+        \item temperature = 0
+        \item RANDOM\_SEED = 42
+    \end{itemize}
+\end{itemize}
+
+\subsection{Definitions}
+
+\begin{description}
+    \item[pass@1] Fraction of problems solved correctly on the first attempt.
+    
+    \item[Semantic F1] Harmonic mean of semantic precision and semantic recall using cosine similarity threshold 0.60.
+    
+    \item[Single-agent] One LLM call per task with limited retries on compile/parse failure.
+    
+    \item[Multi-agent V1] Planner $\rightarrow$ Extractor $\rightarrow$ Critic $\rightarrow$ Coder $\rightarrow$ Test Runner pipeline with repair loop.
+    
+    \item[Multi-agent V2] V1 extended with either:
+    \begin{itemize}
+        \item Test Critic node (CodeGen)
+        \item SME advisory node (RE)
+    \end{itemize}
+    
+    \item[Repair Loop] Iterative repair cycle triggered after failed tests.
+    
+    \item[Budget Guard] Hard constraints on:
+    \begin{itemize}
+        \item Maximum LLM calls
+        \item Maximum tokens
+    \end{itemize}
+    
+    \item[Context Trace] Per-invocation log tracking available context during each coder call.
+\end{description}
+
+\subsection{Summary of Approach}
+
+We built three systems on the same underlying model and evaluated them under identical conditions.
+
+For code generation:
+\begin{itemize}
+    \item HumanEval+
+    \item MBPP+
+    \item BigCodeBench-Hard
+\end{itemize}
+
+For requirements elicitation:
+\begin{itemize}
+    \item NICE
+    \item PURE
+\end{itemize}
+
+After observing that all systems achieved 100\% pass@1 on HumanEval+ and MBPP+, we introduced BigCodeBench-Hard to expose regime differences.
+
+During analysis, we identified two context-loss bugs in the V1 repair loop:
+\begin{enumerate}
+    \item Planner output dropped during repair
+    \item Unittest-style tests were never executed
+\end{enumerate}
+
+Both bugs were fixed and the experiments were rerun.
+
+\subsection{Project Deliverables}
+
+\begin{enumerate}
+    \item Three implemented systems:
+    \begin{itemize}
+        \item Single-agent
+        \item Multi-agent V1
+        \item Multi-agent V2
+    \end{itemize}
+    
+    \item Five benchmark evaluations:
+    \begin{itemize}
+        \item HumanEval+
+        \item MBPP+
+        \item BigCodeBench-Hard
+        \item NICE
+        \item PURE
+    \end{itemize}
+    
+    \item Context trace mechanism
+    
+    \item Bug analysis and fixes for context-loss issues
+    
+    \item Resume-safe evaluation scripts
+    
+    \item Results reports and benchmark summaries
+\end{enumerate}
+
+\subsection{Contribution of Individual Team Members}
+
+[To be filled in]
+
+\section{Background Research}
+
+\subsection{Primary Research}
+
+The following tools and frameworks were evaluated:
+
+\begin{itemize}
+    \item LangGraph
+    \item Anthropic Claude API
+    \item EvalPlus
+    \item BigCodeBench-Hard
+    \item sentence-transformers
+\end{itemize}
+
+\subsection{Secondary Research}
+
+The following papers and resources informed the project:
+
+\begin{enumerate}
+    \item EvalPlus
+    \item BigCodeBench
+    \item NICE
+    \item PURE
+    \item Sentence-BERT
+    \item LangGraph Documentation
+\end{enumerate}
+
+\subsection{What Was Most Helpful}
+
+The BigCodeBench paper was the most influential because it revealed that easier benchmarks were insufficient for evaluating orchestration benefits.
+
+LangGraph TypedDict documentation was critical for identifying silent state-loss issues inside the repair loop.
+
+\section{Approach to Goals}
+
+\subsection{Strategy}
+
+The strategy was controlled ablation:
+\begin{itemize}
+    \item Hold model, prompts, and evaluation fixed
+    \item Vary only orchestration architecture
+\end{itemize}
+
+Three systems were implemented:
+\begin{enumerate}
+    \item Single-agent baseline
+    \item Multi-agent V1
+    \item Multi-agent V2
+\end{enumerate}
+
+\subsection{Motivation for Strategy}
+
+The controlled-ablation design isolates orchestration effects from:
+\begin{itemize}
+    \item Model quality
+    \item Prompt engineering
+    \item Framework differences
+\end{itemize}
+
+The study also compares two fundamentally different tasks:
+\begin{itemize}
+    \item Code generation (binary correctness)
+    \item Requirements elicitation (semantic correctness)
+\end{itemize}
+
+\subsection{Division of Work Among Team Members}
+
+[To be filled in]
+
+\section{Implementation}
+
+\subsection{Software Design}
+
+The project is implemented as a Python package with the following modules:
+
+\begin{itemize}
+    \item \texttt{src/llm/client.py}
+    \item \texttt{src/schemas/}
+    \item \texttt{src/systems/single\_agent/}
+    \item \texttt{src/systems/multi\_agent/nodes/}
+    \item \texttt{src/evaluation/}
+    \item \texttt{scripts/}
+\end{itemize}
+
+\subsection{External Components}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+\toprule
+Component & Version & Purpose \\
+\midrule
+langgraph & latest & Multi-agent orchestration \\
+anthropic & latest & Claude API access \\
+evalplus & latest & Benchmark evaluation \\
+sentence-transformers & latest & Semantic similarity \\
+pydantic & v2 & Structured outputs \\
+\bottomrule
+\end{tabular}
+\caption{External libraries and frameworks}
+\end{table}
+
+\subsection{Design of Empirical Studies}
+
+\subsubsection*{Code Generation Evaluation}
+
+Generated code was executed in isolated subprocesses with benchmark test suites.
+
+\subsubsection*{Requirements Elicitation Evaluation}
+
+Requirements were evaluated using sentence embeddings and cosine similarity matching.
+
+\subsubsection*{Cost Tracking}
+
+Token usage and LLM calls were tracked for all systems.
+
+\section{Results}
+
+\subsection{Empirical Results}
+
+\subsubsection{Code Generation}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+\toprule
+System & Dataset & N & pass@1 & Avg Tokens \\
+\midrule
+Single-Agent & HumanEval+ & 164 & 100\% & 263 \\
+Single-Agent & MBPP+ & 378 & 100\% & 138 \\
+Single-Agent & BigCodeBench-Hard & 148 & 38.5\% & 836 \\
+Multi-Agent V1 & HumanEval+ & 164 & 100\% & 2037 \\
+Multi-Agent V1 & MBPP+ & 378 & 100\% & 1531 \\
+Multi-Agent V1 & BigCodeBench-Hard & 148 & 37.8\% & 5718 \\
+\bottomrule
+\end{tabular}
+\caption{Code generation results}
+\end{table}
+
+\subsubsection{Requirements Elicitation}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llll}
+\toprule
+Dataset & System & F1 & Coverage \\
+\midrule
+NICE & Single-Agent & 0.420 & 0.497 \\
+NICE & Multi-Agent V1 & 0.348 & 0.424 \\
+PURE & Single-Agent & 0.338 & 0.359 \\
+PURE & Multi-Agent V1 & 0.325 & 0.329 \\
+\bottomrule
+\end{tabular}
+\caption{Requirements elicitation results}
+\end{table}
+
+\subsubsection{Cross-Task Cost Analysis}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llll}
+\toprule
+Task & Dataset & Token Overhead & Quality Change \\
+\midrule
+CodeGen & HumanEval+ & 7.7x & 0 \\
+CodeGen & MBPP+ & 11.1x & 0 \\
+RE & NICE & 1.9x & -17\% \\
+RE & PURE & 1.7x & -4\% \\
+\bottomrule
+\end{tabular}
+\caption{Cost-quality tradeoffs}
+\end{table}
+
+\subsection{Software Deliverables}
+
+\begin{itemize}
+    \item \texttt{scripts/run\_mbpp.py}
+    \item \texttt{scripts/run\_bigcodebench.py}
+    \item \texttt{scripts/run\_re\_elicitation.py}
+    \item \texttt{scripts/evaluate\_re\_elicitation.py}
+    \item \texttt{scripts/prepare\_re\_elicitation.py}
+\end{itemize}
+
+\section{Waiting Room}
+
+The following items were planned but not completed:
+
+\begin{enumerate}
+    \item Fixed V1 full rerun on BigCodeBench-Hard
+    \item Extended qualitative failure analysis
+    \item Additional orchestration variants
+\end{enumerate}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
